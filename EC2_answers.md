@@ -18,18 +18,27 @@ when you instance stored backup when the machine is shut down the data is  lost 
 
 
 Ephemeral storage directly attached to the host.
+
 Temporary storage that is not preserved when the instance is stopped or terminated.
+
 High I/O performance.
+
 Ideal for stateless applications or applications with data replicated across multiple instances or availability zones.
+
 Cost-effective as no additional storage costs are incurred.
 
 
 where as EBS elastic block storage , each instance is attached with seperate volume
 
 Root volume and additional EBS volumes attached to the instance.
+
 Persistent storage that remains even when the instance is stopped or terminated.
+
 Flexible storage options, including different volume types, sizes, and performance characteristics.
+
 Snapshots for data backups, replication, and disaster recovery.
+
 Ability to resize, detach, and reattach volumes.
+
 Suitable for applications with persistent data requirements or those that require advanced storage features.
 
