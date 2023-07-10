@@ -1,5 +1,5 @@
 
-How does EC2 placement groups work and what are their use cases?
+22. How does EC2 placement groups work and what are their use cases?
 
 Placement groups in AWS are a feature that allows you to influence the way your Amazon EC2 instances are placed within the AWS infrastructure. Placement groups can help optimize network performance, improve fault tolerance, and enable specific deployment scenarios.
 
@@ -10,3 +10,26 @@ Spread Placement Groups: Spread placement groups are designed for applications t
 
 
 This region, network,these are isolated locations within a region that are designed to be independent from each other in terms of power, cooling, and network connectivity. EC2 instance placement in different AZs follows a process that aims to provide fault tolerance, high availability, and workload distributio
+
+
+23. What is the difference between instance store-backed and EBS-backed instances?
+
+when you instance stored backup when the machine is shut down the data is  lost since the instance has physical memory attached to it, this is also known as empherical storage
+
+
+Ephemeral storage directly attached to the host.
+Temporary storage that is not preserved when the instance is stopped or terminated.
+High I/O performance.
+Ideal for stateless applications or applications with data replicated across multiple instances or availability zones.
+Cost-effective as no additional storage costs are incurred.
+
+
+where as EBS elastic block storage , each instance is attached with seperate volume
+
+Root volume and additional EBS volumes attached to the instance.
+Persistent storage that remains even when the instance is stopped or terminated.
+Flexible storage options, including different volume types, sizes, and performance characteristics.
+Snapshots for data backups, replication, and disaster recovery.
+Ability to resize, detach, and reattach volumes.
+Suitable for applications with persistent data requirements or those that require advanced storage features.
+
