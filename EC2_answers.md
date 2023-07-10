@@ -92,7 +92,7 @@ aws ec2 run-instances --image-id <image-id> --instance-type <instance-type> --en
 
 Enable Enhanced Networking for Running Instances:
 a. EC2 Configuration: If you want to enable enhanced networking for already running EC2 instances, you can do so by stopping and starting the instances. When starting the instances, follow the same steps as mentioned above to enable enhanced networking during instance launch.
-b. ModifyInstanceAttribute API: You can also use the ModifyInstanceAttribute API to modify the instance attribute SriovNetSupport or EnaSupport and set it to the appropriate value to enable enhanced networking.
+b. ModifyInstanceAttribute API: You can also use the ModifyInstanceAttribute API to modify the instance attribute **SriovNetSupport or EnaSupport** and set it to the appropriate value to enable enhanced networking.
 
 Verify Enhanced Networking: After enabling enhanced networking, you can verify whether it is functioning correctly on your instances. You can check the instance metadata for confirmation. On a running instance, you can retrieve the instance metadata by making an HTTP GET request to http://169.254.169.254/latest/meta-data/ and checking the response for the network/interfaces/macs/mac-<mac-address>/interface-id attribute. If the attribute is present, it indicates that enhanced networking is enabled.
 
