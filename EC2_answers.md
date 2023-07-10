@@ -80,7 +80,21 @@ By using EC2 Auto Scaling, you can ensure that your application scales seamlessl
 You can run any number of Amazon EC2 instances within a VPC, so long as your VPC is appropriately sized to have an IP address assigned to each instance. You are initially limited to launching 20 Amazon EC2 instances per VPC at any one time and a maximum VPC size of /16 (65,536 IPs)¹. If you would like to exceed these limits, you can request an increase¹.
 
 
+**27. How can you enable enhanced networking for EC2 instances?**
 
+Verify Instance Support: Ensure that your instance type supports enhanced networking. Enhanced networking is available for specific instance types, such as the C5, M5, and R5 instances, among others. You can check the AWS documentation for a complete list of supported instance types.
+
+Enable Enhanced Networking during Instance Launch:
+a. AWS Management Console: If you are launching a new EC2 instance using the AWS Management Console, you can enable enhanced networking during the instance launch wizard. In the "Configure Instance" section, expand the "Advanced Details" section, and select the appropriate Enhanced Networking option, such as "Single Root I/O Virtualization (SR-IOV)" or "ENA (Elastic Network Adapter)".
+b. AWS CLI: If you are using the AWS Command Line Interface (CLI) to launch instances, you can specify the --ena-support or --sriov-net-support parameters with the corresponding value to enable enhanced networking
+
+aws ec2 run-instances --image-id <image-id> --instance-type <instance-type> --ena-support
+
+Enable Enhanced Networking for Running Instances:
+a. EC2 Configuration: If you want to enable enhanced networking for already running EC2 instances, you can do so by stopping and starting the instances. When starting the instances, follow the same steps as mentioned above to enable enhanced networking during instance launch.
+b. ModifyInstanceAttribute API: You can also use the ModifyInstanceAttribute API to modify the instance attribute SriovNetSupport or EnaSupport and set it to the appropriate value to enable enhanced networking.
+
+Verify Enhanced Networking: After enabling enhanced networking, you can verify whether it is functioning correctly on your instances. You can check the instance metadata for confirmation. On a running instance, you can retrieve the instance metadata by making an HTTP GET request to http://169.254.169.254/latest/meta-data/ and checking the response for the network/interfaces/macs/mac-<mac-address>/interface-id attribute. If the attribute is present, it indicates that enhanced networking is enabled.
 
 
 
