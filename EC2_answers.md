@@ -98,6 +98,31 @@ Verify Enhanced Networking: After enabling enhanced networking, you can verify w
 
 
 
+**28.Explain the difference between public, private, and Elastic IP addresses.**
+
+Public, private, and Elastic IP addresses are different types of IP addresses used in the context of Amazon EC2 instances. Here's an explanation of each type:
+
+Public IP Address:
+
+A public IP address is assigned to an EC2 instance by default when it is launched in a public subnet.
+Public IP addresses are globally unique and can be accessed over the internet.
+They allow inbound and outbound communication with the internet, enabling direct access to the instance from the public network.
+Public IP addresses can change when an instance is stopped and started, unless Elastic IP (EIP) is associated with it.
+Private IP Address:
+
+A private IP address is assigned to an EC2 instance within a virtual private cloud (VPC).
+Private IP addresses are unique within the VPC, but not globally.
+They are used for communication within the VPC and between instances in the same VPC or connected via peering or VPN connections.
+Private IP addresses are not directly accessible from the public internet unless there is network address translation (NAT) or a bastion host configured.
+Elastic IP Address:
+
+An Elastic IP address is a static, public IP address that you can allocate and associate with your EC2 instances.
+Unlike the default public IP addresses, Elastic IP addresses do not change when an instance is stopped and started.
+Elastic IP addresses are associated with your AWS account and can be reassigned to different instances as needed.
+They are useful when you need a persistent, publicly accessible IP address that remains consistent even if instances are stopped or terminated.
+Elastic IP addresses are particularly helpful when you have services or applications that rely on fixed IP addresses, such as DNS records or firewall configurations.
+
+
 
 
 
