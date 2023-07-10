@@ -71,6 +71,15 @@ Configuration options for EC2 Auto Scaling include:
 You can configure EC2 Auto Scaling using the AWS Management Console, AWS CLI, or AWS SDKs. The configuration involves setting up the Auto Scaling group, defining launch templates or configurations, specifying scaling policies, and configuring other parameters as per your requirements.
 
 By using EC2 Auto Scaling, you can ensure that your application scales seamlessly to handle fluctuations in demand, maintain availability, and optimize costs by dynamically adjusting the number of EC2 instances based on workload requirements.
+**
+25.Explain the concept of EC2 instance metadata and user data.**
+
+
+**26.What is the maximum number of EC2 instances that can be launched in a VPC?**
+
+You can run any number of Amazon EC2 instances within a VPC, so long as your VPC is appropriately sized to have an IP address assigned to each instance. You are initially limited to launching 20 Amazon EC2 instances per VPC at any one time and a maximum VPC size of /16 (65,536 IPs)¹. If you would like to exceed these limits, you can request an increase¹.
+
+
 
 
 
