@@ -19,10 +19,7 @@ Some key things to know about Amazon EC2:
 - It integrates with other AWS services like auto-scaling, load balancing, VPCs, security groups etc. to enable distributed application architectures.
 
 - The AWS management console and APIs allow full control over instance deployment, management, networking and security.
-**
-
-
-2.	What are the different instance types available in EC2 and their use cases?**
+**2.	What are the different instance types available in EC2 and their use cases?**
 Amazon EC2 provides a wide variety of instance types optimized for different use cases. The main instance families are:
 
 - General purpose: Balance of compute, memory and networking resources. Use cases include web servers, code repositories, application servers etc. Examples - M5, T3
@@ -46,8 +43,7 @@ Some other capabilities offered:
 - Infrequent access: Low cost option for workloads that do not need continuous computing power.
 
 
-**
-3.	How does EC2 security groups work?**
+**3.	How does EC2 security groups work?**
 
 EC2 security groups act as a virtual firewall to control inbound and outbound traffic to EC2 instances. Some key points on how they work:
 
@@ -75,8 +71,7 @@ EC2 security groups act as a virtual firewall to control inbound and outbound tr
 
 So in summary, security groups provide instance-level firewall to restrict access based on the application's needs. Rules can be modified to open only necessary ports to enable access.
 
-**
-4.	Explain the difference between an instance store and Amazon EBS volumes.**
+**4.	Explain the difference between an instance store and Amazon EBS volumes.**
 The main differences between EC2 instance store and EBS volumes are:
 
 - Instance store provides temporary block-level storage for an EC2 instance. EBS provides durable and persistent block storage volumes.
@@ -99,8 +94,7 @@ The main differences between EC2 instance store and EBS volumes are:
 
 In summary, instance store provides ephemeral storage for transient data while EBS offers durable, persistent and scalable block storage for applications that need to retain data.
 
-**
-5.	What is the purpose of an Amazon Machine Image (AMI)?**
+**5.	What is the purpose of an Amazon Machine Image (AMI)?**
 
 An Amazon Machine Image (AMI) serves as a template for launching EC2 instances. The main purposes of an AMI are:
 
@@ -125,8 +119,7 @@ An Amazon Machine Image (AMI) serves as a template for launching EC2 instances. 
 - It allows bundling resources like apps, binaries, scripts that can be deployed as a package.
 
 So in summary, AMIs allow reusable configuration templates for launching pre-packaged EC2 instances that are faster, consistent and more reliable.
-**
-6.	How can you increase the instance type of a running EC2 instance?**
+**6.	How can you increase the instance type of a running EC2 instance?**
 
 There are a couple of ways to increase the instance type (size) of a running EC2 instance:
 
@@ -175,7 +168,7 @@ Some key points on how it works:
 
 So in summary, EC2 auto-recovery automatically restarts impaired instances to maintain application health and availability without manual intervention. It helps recover from underlying hardware/software faults.
 
-8.	What are the different ways to launch an EC2 instance?
+**8.	What are the different ways to launch an EC2 instance?**
 There are several ways to launch an EC2 instance:
 
 1. AWS Management Console:
@@ -204,8 +197,7 @@ There are several ways to launch an EC2 instance:
 
 So in summary, EC2 offers APIs, CLIs, SDKs and tight integration with other AWS services to enable launching instances in scripts, templates or config files for automation and control.
 
-**
-9.	How do you monitor EC2 instances using CloudWatch?**
+**9.	How do you monitor EC2 instances using CloudWatch?**
 
 Amazon CloudWatch can be used to monitor various metrics and logs of EC2 instances. Some ways to monitor EC2 instances with CloudWatch are:
 
@@ -308,8 +300,7 @@ There are a few ways to encrypt data on EC2 instances:
 
 So in summary, EBS encryption, SSL connections, KMS integration and tools like CloudHSM provide a secure way to encrypt data at rest and in transit for EC2 instances.
 
-**
-13.	What is the difference between an EC2 instance and an EC2 container?**
+**13.	What is the difference between an EC2 instance and an EC2 container?**
 
 The key differences between EC2 instances and EC2 containers are:
 
@@ -332,8 +323,7 @@ The key differences between EC2 instances and EC2 containers are:
 - Containers are more portable across cloud environments. VMs have more provider specific dependencies.
 
 In summary, containers provide lightweight, portable application deployment while instances are isolated machines with persistent storage more suitable for legacy apps. The choice depends on the application architecture and resource needs.
-**
-14.	How can you resize an EBS volume attached to an EC2 instance?**
+**14.	How can you resize an EBS volume attached to an EC2 instance?**
 There are a couple of ways to resize an EBS (Elastic Block Store) volume attached to an EC2 instance:
 
 1. Stop the instance, detach the volume, modify the volume size, reattach and restart the instance.
@@ -426,8 +416,7 @@ Key things to know about EC2 instance metadata:
 So in summary, EC2 instance metadata provides a simple way to dynamically customize and configure instances with the information they need to operate in an AWS environment.
 
 
-**
-16.	Explain the difference between public and private IP addresses in EC2.**
+**16.	Explain the difference between public and private IP addresses in EC2.**
 The key differences between public and private IP addresses in EC2 are:
 
 Public IP addresses:
@@ -483,8 +472,7 @@ In summary, public IPs enable external internet access to EC2 instances while pr
 
 So in summary, while key pairs are the most common and secure way, AWS provides alternative mechanisms like SSM, Serial Console, IAM roles etc. to access EC2 instances without direct key usage.
 
-**
-How to access instance if key pair is lost**
+**How to access instance if key pair is lost**
 
 Here are some options if you lose the key pair for your EC2 instance and can no longer access it:
 
@@ -505,8 +493,7 @@ Here are some options if you lose the key pair for your EC2 instance and can no 
 - If EBS root volume is encrypted with default KMS key, you can force stop the instance and it will be unrecoverable.
 
 So in short, stopping the instance and attaching root volume to another instance is usually the simplest way to reset access. SSM Session Manager is also very helpful if already setup.
-**
-18.	What is the significance of user data in EC2 instances?**
+**18.	What is the significance of user data in EC2 instances?**
 
 User data in EC2 allows running custom scripts or providing configuration data during the boot process of an instance. Some key uses of EC2 user data are:
 
@@ -535,8 +522,7 @@ User data in EC2 allows running custom scripts or providing configuration data d
 - Pass ephemeral bootstrap data only needed during initialization
 
 So in summary, EC2 user data executes during the first boot to automatically customize, configure and prepare newly launched instances instead of manual steps after launch.
-**
-19.	How can you troubleshoot connectivity issues with EC2 instances?**
+**19.	How can you troubleshoot connectivity issues with EC2 instances?**
 
 Here are some ways to troubleshoot and diagnose connectivity issues with EC2 instances:
 
@@ -597,8 +583,7 @@ Key points about instance profiles:
 - Fine grained control over expiration, permissions provided through IAM policies.
 
 So in summary, EC2 instance profiles provide applications on EC2 easy access to other AWS services in a secure and managed way through temporary credentials.
-**
-21.	Explain the concept of EC2 instance states and transitions.**
+**21.	Explain the concept of EC2 instance states and transitions.**
 
 EC2 instances transition through different states during their lifecycle. The main EC2 instance states are:
 
@@ -655,8 +640,7 @@ EC2 instances can be launched in different Availability Zones (AZs) within a reg
 
 So in summary, spreading EC2 instances across AZs provides high availability protection from AZ outages. Careful placement considering failure domains is needed for mission critical applications.
 
-**23.	What is the difference between instance store-backed and EBS-backed instances?
-**
+**23.	What is the difference between instance store-backed and EBS-backed instances?**
 The key differences between EC2 instance store-backed vs EBS-backed instances are:
 
 Instance store-backed:
@@ -688,8 +672,7 @@ EBS-backed:
 So in summary, instance stores provide high performance ephemeral storage while EBS volumes enable long-term durable and flexible storage. The choice depends on persistence needs.
 
 
-**24.	How does EC2 Auto Scaling work and how can it be configured?
-**
+**24.	How does EC2 Auto Scaling work and how can it be configured?**
 EC2 Auto Scaling allows automatically adding or removing EC2 instances based on defined conditions to maintain application availability and optimize costs. Here is an overview:
 
 - An Auto Scaling group is created that launches EC2 instances based on a launch configuration specifying instance properties. 
@@ -712,8 +695,7 @@ EC2 Auto Scaling allows automatically adding or removing EC2 instances based on 
 
 So in summary, Auto Scaling provides automated and self-adjusting horizontal scaling capability to optimally distribute application load across a pool of EC2 instances.
 
-**25.	Explain the concept of EC2 instance metadata and user data.
-**
+**25.	Explain the concept of EC2 instance metadata and user data.**
 EC2 instance metadata and user data allow customizing and configuring instances when they boot.
 
 Instance metadata:
@@ -746,8 +728,7 @@ User data:
 
 So in summary, metadata provides info about the instance while user data executes custom logic during instance first boot. Both are useful for automatically configuring instances.
 
-**26.	What is the maximum number of EC2 instances that can be launched in a VPC?
-**
+**26.	What is the maximum number of EC2 instances that can be launched in a VPC?**
 There is no fixed limit on the maximum number of EC2 instances that can be launched in a VPC (Virtual Private Cloud). The upper limit depends on these factors:
 
 - Instance type - The total vCPUs and memory across all instances must fit within the VPC CIDR IPv4 address space and memory limits.
@@ -766,8 +747,7 @@ There is no fixed limit on the maximum number of EC2 instances that can be launc
 
 So in essence, the private IPs, subnets, net interfaces impose a practical limit typically in 100s of instances per VPC. The actual number depends on instance sizes and VPC address space. Larger instances further constrain the limit.
 
-**27.	How can you enable enhanced networking for EC2 instances?
-**
+**27.	How can you enable enhanced networking for EC2 instances?**
 There are a couple ways to enable enhanced networking for EC2 instances to provide lower latency and higher throughput:
 
 1. Elastic Network Adapter (ENA)
@@ -794,8 +774,7 @@ There are a couple ways to enable enhanced networking for EC2 instances to provi
 
 So in summary, ENA and EFA allow greater network performance through accelerated networking drivers optimized for supported EC2 instance types.
 
-**28.	Explain the difference between public, private, and Elastic IP addresses.
-**
+**28.	Explain the difference between public, private, and Elastic IP addresses.**
 
 **29.	How can you create a custom AMI from a running EC2 instance?
 **Here are the steps to create a custom AMI (Amazon Machine Image) from an existing EC2 instance:
@@ -821,8 +800,7 @@ So in summary, ENA and EFA allow greater network performance through accelerated
 So in summary, stopping the instance if needed, creating an image of the root volume and capturing secondary volume snapshots produces a reusable custom AMI for launching customized EC2 instances.
 
 
-**30.	What is the purpose of an Elastic Network Interface (ENI) in EC2?
-**
+**30.	What is the purpose of an Elastic Network Interface (ENI) in EC2?**
 An Elastic Network Interface (ENI) is a logical networking component in EC2 that represents a virtual network card. Here are some key purposes:
 
 - Provides a private IPv4 address and one or more public IPv4 addresses for an instance.
@@ -849,7 +827,7 @@ An Elastic Network Interface (ENI) is a logical networking component in EC2 that
 
 So in summary, ENIs provide advanced networking capabilities like movable IPs, multiple interfaces, and subnet portability for EC2 instances.
 
-31.	How does EC2 security groups differ from network ACLs?
+**31.	How does EC2 security groups differ from network ACLs?**
 EC2 security groups and network ACLs have some key differences:
 
 - Security groups control inbound and outbound traffic at the instance level. Network ACLs control traffic in and out of subnets.
@@ -870,8 +848,7 @@ EC2 security groups and network ACLs have some key differences:
 
 So in summary, security groups provide instance level traffic filtering, while network ACLs offer subnet level filtering to add an extra layer of security if needed.
 
-
-32.	Explain the difference between horizontal and vertical scaling in EC2.
+**32.	Explain the difference between horizontal and vertical scaling in EC2.**
 Horizontal and vertical scaling are two strategies to scale compute resources in EC2:
 
 Horizontal scaling:
