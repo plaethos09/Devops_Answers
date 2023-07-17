@@ -72,6 +72,7 @@ EC2 security groups act as a virtual firewall to control inbound and outbound tr
 So in summary, security groups provide instance-level firewall to restrict access based on the application's needs. Rules can be modified to open only necessary ports to enable access.
 
 **4.	Explain the difference between an instance store and Amazon EBS volumes.**
+
 The main differences between EC2 instance store and EBS volumes are:
 
 - Instance store provides temporary block-level storage for an EC2 instance. EBS provides durable and persistent block storage volumes.
@@ -119,6 +120,7 @@ An Amazon Machine Image (AMI) serves as a template for launching EC2 instances. 
 - It allows bundling resources like apps, binaries, scripts that can be deployed as a package.
 
 So in summary, AMIs allow reusable configuration templates for launching pre-packaged EC2 instances that are faster, consistent and more reliable.
+
 **6.	How can you increase the instance type of a running EC2 instance?**
 
 There are a couple of ways to increase the instance type (size) of a running EC2 instance:
@@ -169,6 +171,7 @@ Some key points on how it works:
 So in summary, EC2 auto-recovery automatically restarts impaired instances to maintain application health and availability without manual intervention. It helps recover from underlying hardware/software faults.
 
 **8.	What are the different ways to launch an EC2 instance?**
+
 There are several ways to launch an EC2 instance:
 
 1. AWS Management Console:
