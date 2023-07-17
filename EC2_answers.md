@@ -1,7 +1,6 @@
 
-**
 
-1.	What is Amazon EC2 and how does it work?**
+**1.	What is Amazon EC2 and how does it work?**
 
 Amazon EC2 (Elastic Compute Cloud) is a web service that provides secure, resizable compute capacity in the cloud. It allows users to launch virtual server instances that can scale up or down based on computing requirements. 
 
