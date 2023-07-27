@@ -1,4 +1,4 @@
-1.	What is AWS Lambda and how does it work?
+**1.	What is AWS Lambda and how does it work?**
 AWS Lambda is a serverless computing service provided by Amazon Web Services (AWS). It allows you to run code without provisioning or managing servers. 
 
 Here's a quick overview of how AWS Lambda works:
@@ -20,7 +20,7 @@ So in summary, Lambda allows you to run code on demand without managing any serv
 
 
 
-2.	What are the benefits of using AWS Lambda?
+**2.	What are the benefits of using AWS Lambda?**
 
 Here are some of the key benefits of using AWS Lambda:
 
@@ -43,8 +43,8 @@ Here are some of the key benefits of using AWS Lambda:
 - Reduced operational complexity - Lambda removes the operational complexities of provisioning, configuring and managing servers. This simplifies management and operations.
 
 So in summary, Lambda reduces operational overheads, provides high speed and scalability, is very cost efficient and simplifies building event-driven applications.
-
-3.	Can you explain the concept of "serverless" computing in the context of AWS Lambda?
+**
+3.	Can you explain the concept of "serverless" computing in the context of AWS Lambda?**
 
 The term "serverless" computing refers to the fact that with AWS Lambda, you can run code without having to provision or manage servers. The key aspects of serverless computing in the context of Lambda are:
 
@@ -62,11 +62,11 @@ The term "serverless" computing refers to the fact that with AWS Lambda, you can
 
 So in summary, "serverless" highlights the fact that with Lambda, your code can run without having to manage any servers. The cloud provider manages all server resources for you.
 
-4.	What programming languages are supported by AWS Lambda?
+**4.	What programming languages are supported by AWS Lambda?**
 
 Java, c#, nodejs, python
-
-5.	How does AWS Lambda handle scaling and concurrency?
+**
+5.	How does AWS Lambda handle scaling and concurrency?**
 AWS Lambda automatically scales the number of function instances based on the number of concurrent executions. This helps Lambda handle load seamlessly as traffic varies.
 
 Here's how Lambda handles scaling and concurrency:
@@ -87,8 +87,8 @@ Here's how Lambda handles scaling and concurrency:
 
 So in summary, Lambda automatically and seamlessly handles scaling based on traffic volumes to ensure smooth functioning of your serverless applications. The scaling happens in near real-time to match demand.
 
-6.	What is the maximum execution time for an AWS Lambda function?
-
+**6.	What is the maximum execution time for an AWS Lambda function?
+**
 The maximum execution time for an AWS Lambda function is 15 minutes. 
 
 Some key points about Lambda function execution time limits:
@@ -108,8 +108,8 @@ Some key points about Lambda function execution time limits:
 - Functions requiring over 15 minutes may indicate they are not properly following serverless architecture principles and should be redesigned.
 
 So in summary, for optimally using Lambda, it is best to design functions to execute within 15 minutes limit and leverage asynchronous invocations if needed. The 15 minute cap ensures Lambda functions remain lightweight and event-driven.
-
-7.	Can you explain the concept of "cold start" in AWS Lambda?
+**
+7.	Can you explain the concept of "cold start" in AWS Lambda?**
 
 The term "cold start" refers to the latency that can occur when an AWS Lambda function is invoked after being idle for some time. 
 
@@ -140,8 +140,8 @@ Key things to note about cold starts:
 - Recursively invoking the function periodically can keep containers warm and avoid cold starts.
 
 So in summary, cold starts are the latency associated with initializing a new function instance - an inherent tradeoff for the ease and automation of serverless platforms like AWS Lambda.
-
-What is cold boot?
+**
+What is cold boot?**
 
 Cold boot refers to the process of starting up an AWS Lambda function instance from a completely uninitialized state. It is similar to the concept of "cold starts" in Lambda.
 
@@ -182,7 +182,7 @@ To minimize cold boots:
 So in summary, cold boots refer to invoking Lambda functions from a completely uninitialized state, which adds significant latency. Managing cold boots improves overall function performance.
 
 
-8.	What is the maximum memory allocation for an AWS Lambda function?
+**8.	What is the maximum memory allocation for an AWS Lambda function?**
 
 The maximum memory that can be allocated to an AWS Lambda function is 10,240 MB (10 GB).
 
@@ -208,8 +208,8 @@ Some key points about Lambda function memory allocation:
 
 So in summary, Lambda allows allocating up to 10,240 MB of memory to optimize performance for different function requirements. The memory allocation impacts execution duration limits and costs.
 
-
-9.	How can you control the concurrency of an AWS Lambda function?
+**
+9.	How can you control the concurrency of an AWS Lambda function?**
 
 Here are a few ways to control concurrency in AWS Lambda:
 
@@ -229,8 +229,8 @@ Here are a few ways to control concurrency in AWS Lambda:
 
 So in summary, the main levers are the concurrency limits, provisioned concurrency, and queuing services, along with code logic to meter parallel execution.
 
-
-10.	How does AWS Lambda integrate with other AWS services?
+**
+10.	How does AWS Lambda integrate with other AWS services?**
 
 AWS Lambda integrates natively with many other AWS services which makes it easy to build serverless applications. Here are some common integrations:
 
@@ -254,7 +254,7 @@ AWS Lambda integrates natively with many other AWS services which makes it easy 
 
 So in summary, Lambda integrates natively with most other AWS services like S3, DynamoDB, API Gateway etc. to make building serverless applications on AWS very convenient.
 
-11.	Can you explain the difference between AWS Lambda and AWS EC2?
+**11.	Can you explain the difference between AWS Lambda and AWS EC2?**
 
 The main differences between AWS Lambda and EC2 are:
 
@@ -275,7 +275,7 @@ The main differences between AWS Lambda and EC2 are:
 In summary, Lambda is easier to use and scales automatically, but EC2 gives you more control and customization. Lambda is preferred for event-driven serverless workloads, while EC2 is recommended for long-running stateful applications.
 
 
-12.	What is an event source in AWS Lambda?
+**12.	What is an event source in AWS Lambda?**
 
 An event source in AWS Lambda refers to any AWS service or custom application that can invoke a Lambda function. Lambda supports different event source types that trigger function execution.
 
@@ -306,7 +306,7 @@ Some common event sources for Lambda include:
 So in summary, any service, application or data source that needs to trigger Lambda function execution is considered an event source. Lambda supports a wide variety of event sources.
 
 
-13.	What is an execution role in AWS Lambda?
+**13.	What is an execution role in AWS Lambda?**
 
 An execution role in AWS Lambda refers to the IAM (Identity and Access Management) role that gives the permissions a Lambda function needs to access AWS services, resources and other components. 
 
@@ -336,8 +336,8 @@ So in summary, the execution role is a crucial part of a Lambda function definit
 
 
 
-
-14. How can you troubleshoot and debug issues in an AWS Lambda function?
+**
+14. How can you troubleshoot and debug issues in an AWS Lambda function?**
 
 Here are some ways to troubleshoot and debug AWS Lambda functions:
 
@@ -363,8 +363,8 @@ Here are some ways to troubleshoot and debug AWS Lambda functions:
 
 - Leverage AWS CloudWatch alerts to be automatically notified of errors or thresholds breached.
 
-
-15	. Can you explain the concept of dead-letter queues in AWS Lambda?
+**
+15	. Can you explain the concept of dead-letter queues in AWS Lambda?**
 
 
 Dead-letter queues in AWS Lambda provide a way to handle and analyze function failures. 
@@ -473,7 +473,7 @@ In the context of Lambda dead-letter queues:
 So SQS provides reliable, scalable message queuing that has many uses including as dead-letter queues for Lambda.
 
 
-16. What is the maximum payload size for an AWS Lambda function?
+**16. What is the maximum payload size for an AWS Lambda function?**
 
 The maximum payload size that can be passed to an AWS Lambda function is 256KB when using synchronous invocation. 
 
@@ -499,8 +499,8 @@ Some key points on Lambda payload size limits:
 
 So in summary, 256KB is a soft payload limit for synchronous Lambda invocations. The payload size should be optimized appropriately based on the specific use case and invocation type.
 
-
-17. How can you encrypt data in transit and at rest in AWS Lambda?
+**
+17. How can you encrypt data in transit and at rest in AWS Lambda?**
 
 There are a few ways to encrypt data in transit and at rest with AWS Lambda:
 
@@ -532,7 +532,7 @@ Encryption at rest:
 
 So in summary, use HTTPS, encryption helpers in SDKs, payload encryption and AWS KMS to protect sensitive data used by Lambda functions in transit and at rest. Follow security best practices in code as well.
 
-18. Can you explain the concept of VPC (Virtual Private Cloud) in the context of AWS Lambda?
+**18. Can you explain the concept of VPC (Virtual Private Cloud) in the context of AWS Lambda?**
 
 
 AWS Lambda functions can be configured to run within your VPC (Virtual Private Cloud) for additional isolation and security. Here are some key aspects of using VPC with Lambda:
@@ -559,8 +559,8 @@ AWS Lambda functions can be configured to run within your VPC (Virtual Private C
 
 So in summary, VPCs provide private and isolated networking for Lambda functions to securely access private resources and data within the VPC boundaries.
 
-
-19. How can you manage environment variables in AWS Lambda?
+**
+19. How can you manage environment variables in AWS Lambda?**
 
 
 There are a few options to manage environment variables in AWS Lambda:
@@ -586,8 +586,8 @@ There are a few options to manage environment variables in AWS Lambda:
 So in summary, environment variables provide a way to externalize configuration for Lambda functions. For security, minimize usage within functions and instead retrieve them dynamically at runtime when needed.
 
 
-20. What is the difference between synchronous and asynchronous invocation of an AWS Lambda function?
-
+**20. What is the difference between synchronous and asynchronous invocation of an AWS Lambda function?
+**
 The main differences between synchronous and asynchronous invocation of AWS Lambda functions are:
 
 Synchronous invocation:
@@ -623,8 +623,8 @@ So in summary, synchronous invocation provides request-response processing while
 
 
 
-21. How can you monitor and log AWS Lambda function invocations?
-
+**21. How can you monitor and log AWS Lambda function invocations?
+**
 Here are some ways to monitor and log AWS Lambda function invocations:
 
 - Use CloudWatch Logs to view execution logs for each invocation. Logs include start/end times, duration, memory usage, and any console output or errors.
@@ -652,8 +652,8 @@ Here are some ways to monitor and log AWS Lambda function invocations:
 So in summary, CloudWatch and X-Ray provide powerful native monitoring, which can be supplemented by custom logging, metrics publication, and third-party tools.
 
 
-22. Can you explain the concept of X-Ray tracing in AWS Lambda?
-
+**22. Can you explain the concept of X-Ray tracing in AWS Lambda?
+**
 AWS X-Ray provides tracing and visualization of requests as they flow through Lambda and other AWS services. This enables debugging and analysis of complex architectures. 
 
 Some key aspects of using X-Ray tracing with Lambda:
@@ -679,8 +679,8 @@ Some key aspects of using X-Ray tracing with Lambda:
 So in summary, X-Ray tracing provides observability into Lambda execution and integration with other services to identify and debug issues.
 
 
-23. What is the difference between the AWS Lambda free tier and the paid tier?
-
+**23. What is the difference between the AWS Lambda free tier and the paid tier?
+**
 The key differences between the AWS Lambda free tier and paid tier are:
 
 AWS Lambda Free Tier:
@@ -710,8 +710,8 @@ AWS Lambda Paid Tier:
 So in summary, Lambda free tier provides limited free usage per month, while paid tier is charged based on all usage without free quota.
 
 
-24. Can you explain the concept of reserved concurrency in AWS Lambda?
-
+**24. Can you explain the concept of reserved concurrency in AWS Lambda?
+**
 Reserved concurrency in AWS Lambda refers to purchasing pre-allocated provisioned concurrency for a function to run without any cold starts.
 
 Here are some key aspects:
@@ -739,8 +739,8 @@ Here are some key aspects:
 So in summary, reserved concurrency provides initialized, warm execution environments ready to run eliminating cold starts.
 
 
-25. How can you handle long-running tasks in AWS Lambda?
-
+**25. How can you handle long-running tasks in AWS Lambda?
+**
 AWS Lambda functions are best suited for short executions up to 15 minutes. For long-running tasks, there are a few approaches: 
 
 - Break up processing into smaller functions - Design the workflow to use multiple chained Lambda functions each running for shorter durations.
@@ -764,8 +764,8 @@ AWS Lambda functions are best suited for short executions up to 15 minutes. For 
 So in summary, use asynchronous processing, optimize performance, increase timeout and break up processing across functions to handle long-running tasks within Lambda's constraints.
 
 
-26. What is the difference between a custom runtime and a managed runtime in AWS Lambda?
-
+**26. What is the difference between a custom runtime and a managed runtime in AWS Lambda?
+**
 AWS Lambda supports both managed runtimes and custom runtimes for executing Lambda functions:
 
 Managed runtimes:
@@ -798,8 +798,8 @@ So in summary, managed runtimes are easier to use while custom runtimes provide 
 
 
 
-27. Can you explain the concept of provisioning concurrency in AWS Lambda?
-
+**27. Can you explain the concept of provisioning concurrency in AWS Lambda?
+**
 Provisioned concurrency is a feature in AWS Lambda that allows you to initialize a specific number of execution environments so that they are prepared to respond immediately to incoming invocations. This helps eliminate cold starts.
 
 Here are some key aspects of provisioned concurrency:
@@ -827,8 +827,8 @@ Here are some key aspects of provisioned concurrency:
 So in summary, provisioned concurrency lets you pay to initialize environments proactively to improve Lambda function performance.
 
 
-28. What is the difference between a warm start and a cold start in AWS Lambda?
-
+**28. What is the difference between a warm start and a cold start in AWS Lambda?
+**
 
 The main differences between a warm start and cold start in AWS Lambda are:
 
@@ -865,8 +865,8 @@ Key Differences:
 So in summary, cold starts impact latency while warm starts provide faster performance using pre-initialized function instances.
 
 
-29. Can you explain the concept of event-driven architecture and how it relates to AWS Lambda?
-
+**29. Can you explain the concept of event-driven architecture and how it relates to AWS Lambda?
+**
 Event-driven architecture is a software design pattern focused on emitting and reacting to events - a natural fit for serverless platforms like AWS Lambda.
 
 In an event-driven architecture:
@@ -896,8 +896,8 @@ AWS Lambda is well suited for event-driven architectures:
 So in summary, the reactive event-driven nature of Lambda makes it ideal for implementing scalable, decoupled event-driven systems and architectures.
 
 
-30. How can you control the timeout period for an AWS Lambda function?
-
+**30. How can you control the timeout period for an AWS Lambda function?
+**
 There are a few ways to control the timeout period for an AWS Lambda function:
 
 - Set the Timeout value when creating or updating the function in the AWS Lambda console. Timeout can be set from 1 second to 15 minutes.
@@ -930,8 +930,8 @@ exports.handler = async (event, context) => {
 So in summary, Lambda timeout can be configured during creation and updated anytime to control the maximum execution duration for a function.
 
 
-31. Can you explain the concept of versioning in AWS Lambda?
-
+**31. Can you explain the concept of versioning in AWS Lambda?
+**
 AWS Lambda provides versioning capabilities to manage Lambda functions:
 
 - Each Lambda function has an unpublished $LATEST version that keeps changing as code is updated.
@@ -993,8 +993,8 @@ So in summary, publish immutable versions from your $LATEST code, create aliases
 
 
 
-32. What is the difference between an AWS Lambda function and an AWS Step Function?
-
+**32. What is the difference between an AWS Lambda function and an AWS Step Function?
+**
 
 The key differences between AWS Lambda functions and Step Functions are:
 
@@ -1042,8 +1042,8 @@ In summary:
 
 
 
-33. How can you secure your AWS Lambda functions?
-
+**33. How can you secure your AWS Lambda functions?
+**
 Here are some best practices for securing AWS Lambda functions:
 
 - Use IAM roles and least privilege permissions. Grant functions only the permissions they absolutely need.
@@ -1075,8 +1075,8 @@ Here are some best practices for securing AWS Lambda functions:
 So in summary, apply the principles of least privilege, encryption, validation and monitoring to secure serverless functions on AWS Lambda.
 
 
-34. Can you explain the concept of function aliases in AWS Lambda?
-
+**34. Can you explain the concept of function aliases in AWS Lambda?
+**
 AWS Lambda function aliases provide a way to create and manage different versions of your functions. Some key aspects of Lambda aliases:
 
 - An alias is like a named pointer associated with a specific function version. 
@@ -1104,8 +1104,8 @@ AWS Lambda function aliases provide a way to create and manage different version
 So in summary, Lambda aliases offer a simple and effective way to manage deployments, testing and rollbacks across function versions.
 
 
-35. What are the best practices for error handling in AWS Lambda?
-
+**35. What are the best practices for error handling in AWS Lambda?
+**
 Here are some best practices for handling errors in AWS Lambda:
 
 - Wrap all your function code in try/catch blocks to gracefully handle errors.
@@ -1137,8 +1137,8 @@ Here are some best practices for handling errors in AWS Lambda:
 So in essence, plan for errors, handle them gracefully, monitor failure rates, implement retries and alerts to make Lambda functions resilient.
 
 
-36. How can you control the logging level in an AWS Lambda function?
-
+**36. How can you control the logging level in an AWS Lambda function?
+**
 There are a few ways to control the logging level in an AWS Lambda function:
 
 - Set the environment variable AWS_LAMBDA_LOG_LEVEL to the desired level - OFF, FATAL, ERROR, INFO, WARN, DEBUG, TRACE.
@@ -1171,8 +1171,8 @@ logger.options.level = 'info';
 So in summary, control the logging level generated by Lambda functions based on the runtime, console methods, environment variables and CloudWatch Logs configuration.
 
 
-37. Can you explain the concept of layers in AWS Lambda?
-
+**37. Can you explain the concept of layers in AWS Lambda?
+**
 AWS Lambda layers allow packaging libraries, custom runtimes, dependencies etc. that can be reused across multiple functions. Here are some key aspects of Lambda layers:
 
 - Layers contain arbitrary code and data packaged as zip archives. 
@@ -1200,8 +1200,8 @@ AWS Lambda layers allow packaging libraries, custom runtimes, dependencies etc. 
 So in summary, Lambda layers allow reusable logic and dependencies to be packaged separately from function code while providing versioning and sharing capabilities.
 
 
-38. What is the maximum number of concurrent executions for an AWS Lambda function?
-
+**38. What is the maximum number of concurrent executions for an AWS Lambda function?
+**
 
 The maximum concurrent executions that can be configured for a single AWS Lambda function is 1000.
 
@@ -1230,8 +1230,8 @@ Some key points on Lambda concurrent execution limits:
 So in essence, the concurrent execution limit per Lambda function tops out at 1000 which can provide significant scaling capacity for event-driven workloads.
 
 
-39. How can you handle authentication and authorization in AWS Lambda?
-
+**39. How can you handle authentication and authorization in AWS Lambda?
+**
 There are several options for handling authentication and authorization in AWS Lambda:
 
 - Use Amazon Cognito user pools to manage users and authenticate via tokens. Validate tokens in the function code. 
@@ -1257,8 +1257,8 @@ There are several options for handling authentication and authorization in AWS L
 So in summary, commonly used authentication patterns like API keys, user pools, and authorizers combined with IAM policies and network controls can protect access to Lambda functions.
 
 
-40. Can you explain the concept of event filtering in AWS Lambda?
-
+**40. Can you explain the concept of event filtering in AWS Lambda?
+**
 Event filtering in AWS Lambda refers to restricting the events that can invoke a Lambda function by filtering on attributes such as source, account, time etc. Key capabilities:
 
 - Event source mapping configurations can specify an event filter.
@@ -1286,8 +1286,8 @@ Event filtering in AWS Lambda refers to restricting the events that can invoke a
 So in summary, event filtering provides fine-grained control over sources and types of events that trigger Lambda functions leading to cost optimization and flexibility.
 
 
-41. What are the limitations of AWS Lambda?
-
+**41. What are the limitations of AWS Lambda?
+**
 Some key limitations and constraints to be aware of with AWS Lambda include:
 
 - Execution duration limit of 15 minutes per invocation. Not suitable for long-running processes.
@@ -1316,8 +1316,8 @@ Some key limitations and constraints to be aware of with AWS Lambda include:
 
 So in summary, Lambda is subject to limits on duration, memory, payload size, storage etc. that may require optimizing functions for serverless execution.
 
-42. How can you automate the deployment of AWS Lambda functions?
-
+**42. How can you automate the deployment of AWS Lambda functions?
+**
 Here are some options for automating deployments of AWS Lambda functions:
 
 - Use AWS SAM (Serverless Application Model) which lets you define functions, events, permissions and deploy as CloudFormation stacks.
@@ -1343,8 +1343,8 @@ Here are some options for automating deployments of AWS Lambda functions:
 So in summary, SAM, CI/CD pipelines, Infrastructure as Code, and programmatic automation provide great options for reliably and repeatably deploying Lambda functions.
 
 
-43. Can you explain the concept of provisioned concurrency in AWS Lambda?
-
+**43. Can you explain the concept of provisioned concurrency in AWS Lambda?
+**
 Provisioned concurrency is a feature in AWS Lambda that initializes a requested number of execution environments so they are prepared to respond immediately to incoming invoke events. 
 
 Here are some key points about provisioned concurrency:
@@ -1370,8 +1370,8 @@ Here are some key points about provisioned concurrency:
 In summary, provisioned concurrency optimizes Lambda function performance for real-time applications by eliminating cold starts, but should be configured carefully to manage costs.
 
 
-44. What are the best practices for optimizing the performance of AWS Lambda functions?
-
+**44. What are the best practices for optimizing the performance of AWS Lambda functions?
+**
 
 Here are some best practices for optimizing AWS Lambda function performance:
 
@@ -1404,8 +1404,8 @@ Here are some best practices for optimizing AWS Lambda function performance:
 So in summary, well-designed, efficient code combined with proper configuration of memory, networking and concurrency is key to optimizing Lambda function performance.
 
 
-45. How can you configure a custom domain name for an AWS Lambda function?
-
+**45. How can you configure a custom domain name for an AWS Lambda function?
+**
 There are a couple options for configuring a custom domain name for an AWS Lambda function:
 
 1. Use Amazon API Gateway
@@ -1433,8 +1433,8 @@ Things to note:
 So in summary, API Gateway and CloudFront can both map custom domains to a Lambda function to provide branded, vanity URLs for serverless applications.
 
 
-46. Can you explain the concept of environment-specific configuration in AWS Lambda?
-
+**46. Can you explain the concept of environment-specific configuration in AWS Lambda?
+**
 Environment-specific configuration allows you to customize AWS Lambda function settings and resources for different environments or stages (e.g. dev, test, prod). 
 
 Some ways this can be achieved with Lambda:
@@ -1464,8 +1464,8 @@ Some ways this can be achieved with Lambda:
 In summary, Lambda's versioning, aliases, IAM, API Gateway integration, and supporting resources enable full environment-based control over serverless applications.
 
 
-47. What is the difference between synchronous and asynchronous invocation of an AWS Lambda function?
-
+**47. What is the difference between synchronous and asynchronous invocation of an AWS Lambda function?
+**
 The main differences between synchronous and asynchronous invocation of AWS Lambda functions are:
 
 - Synchronous invocation - The request waits for the function execution to complete before returning a response. Great for real-time request-response patterns.
@@ -1489,8 +1489,8 @@ The main differences between synchronous and asynchronous invocation of AWS Lamb
 In summary, synchronous is better for request-response flows while asynchronous works better for long-running background tasks.
 
 
-48. How can you manage multiple AWS Lambda functions within an application?
-
+**48. How can you manage multiple AWS Lambda functions within an application?
+**
 Here are some options for managing multiple Lambda functions within a serverless application:
 
 - Group functions into AWS SAM applications or CloudFormation stacks for easy deployment, updates and permissions management.
@@ -1520,8 +1520,8 @@ Here are some options for managing multiple Lambda functions within a serverless
 So in essence, organize functions into applications, automate deployments, manage configurations centrally and use cloud native services to get cross-functional visibility.
 
 
-49. Can you explain the concept of function composition in AWS Lambda?
-
+**49. Can you explain the concept of function composition in AWS Lambda?
+**
 Function composition is a pattern in AWS Lambda that involves orchestrating and chaining multiple Lambda functions together to build larger applications. 
 
 Some key aspects of function composition:
@@ -1551,8 +1551,8 @@ Some key aspects of function composition:
 So in essence, function composition provides a structured way to build sophisticated serverless systems using small, focused functions as key components.
 
 
-50. What are the best practices for monitoring AWS Lambda functions?
-
+**50. What are the best practices for monitoring AWS Lambda functions?
+**
 Here are some best practices for monitoring AWS Lambda functions:
 
 - Enable CloudWatch Logs for all functions to centralize logging, then ship logs to a tool like ElasticSearch for analysis.
@@ -1582,8 +1582,8 @@ Here are some best practices for monitoring AWS Lambda functions:
 - Use services like SQS or SNS to buffer traffic spikes and reduce throttling risk.
 
 
-51. How can you handle retries and error handling in AWS Lambda?
-
+**51. How can you handle retries and error handling in AWS Lambda?
+**
 Here are some ways to implement retries and error handling for AWS Lambda functions:
 
 - Wrap risky logic in try/catch blocks and handle errors gracefully. Rethrow errors to surface in monitoring.
@@ -1614,8 +1614,8 @@ In summary, wrappers, DLQs, alarms, logging, and testing help build reliable and
 
 
 
-52. Can you explain the concept of event-driven scaling in AWS Lambda?
-
+**52. Can you explain the concept of event-driven scaling in AWS Lambda?
+**
 Event-driven auto-scaling is a core capability of AWS Lambda that allows functions to scale automatically in response to workload without any configuration. 
 
 Some key aspects of event-driven scaling in Lambda:
@@ -1645,8 +1645,8 @@ Some key aspects of event-driven scaling in Lambda:
 So in summary, Lambda can automatically scale function concurrency up and down based on event loads making it highly elastic to usage spikes and troughs.
 
 
-53. What is the maximum number of concurrent executions for a single AWS account in AWS Lambda?
-
+**53. What is the maximum number of concurrent executions for a single AWS account in AWS Lambda?
+**
 The maximum number of concurrent executions across all functions per region in an AWS Lambda account is 1000.
 
 This limit applies to the total concurrent executions for all Lambda functions within a given AWS region in an account.
@@ -1674,8 +1674,8 @@ Some key notes on the concurrent execution limit:
 So in summary, be aware of the 1000 concurrent execution soft limit per region as you scale your account's Lambda usage to avoid throttling.
 
 
-54. How can you implement cross-region replication for AWS Lambda functions?
-
+**54. How can you implement cross-region replication for AWS Lambda functions?
+**
 Here are some ways to implement cross-region replication for AWS Lambda functions:
 
 - Use the Serverless Application Model (SAM) which supports deploying a single template to multiple regions.
@@ -1701,8 +1701,8 @@ Here are some ways to implement cross-region replication for AWS Lambda function
 So in summary, automation tools like SAM, StackSets and CodePipeline combined with programmatic deployment help maintain Lambda functions in multiple regions.
 
 
-55. Can you explain the concept of fine-grained access control in AWS Lambda?
-
+**55. Can you explain the concept of fine-grained access control in AWS Lambda?
+**
 Fine-grained access control in AWS Lambda refers to the ability to manage permissions to Lambda functions and resources in a granular, precise manner. Some key aspects:
 
 - IAM policies grant least privilege permissions to users/roles to perform allowed actions only.
@@ -1734,8 +1734,8 @@ Fine-grained access control in AWS Lambda refers to the ability to manage permis
 So in summary, Lambda provides many levers to implement precise, least privilege access models meeting complex security requirements. Fine-grained control reduces risk and blast radius.
 
 
-56. What is the difference between synchronous and asynchronous invocations in AWS Lambda?
-
+**56. What is the difference between synchronous and asynchronous invocations in AWS Lambda?
+**
 
 The main differences between synchronous and asynchronous invocations in AWS Lambda are:
 
@@ -1762,8 +1762,8 @@ The main differences between synchronous and asynchronous invocations in AWS Lam
 In summary, synchronous invocation provides tighter coupling while asynchronous invocation enables looser, event-driven architectures.
 
 
-57. How can you configure custom runtime parameters for an AWS Lambda function?
-
+**57. How can you configure custom runtime parameters for an AWS Lambda function?
+**
 
 There are a few options for configuring custom runtime parameters for AWS Lambda functions:
 
@@ -1790,8 +1790,8 @@ There are a few options for configuring custom runtime parameters for AWS Lambda
 So in summary, environment variables, layers, invocation parameters, API Gateway, SSM, and config files provide flexibility for customizing Lambda functions.
 
 
-58. Can you explain the concept of asynchronous error handling in AWS Lambda?
-
+**58. Can you explain the concept of asynchronous error handling in AWS Lambda?
+**
 Asynchronous error handling in AWS Lambda involves processing and re-trying failed events/messages to make applications more fault-tolerant. Some key aspects:
 
 - Lambda events from sources like SQS can be invoked asynchronously.
@@ -1819,8 +1819,8 @@ Asynchronous error handling in AWS Lambda involves processing and re-trying fail
 So in summary, asynchronous processing combined with DLQs and automatic retries makes building resilient serverless applications simpler.
 
 
-59. What are the best practices for securing AWS Lambda functions?
-
+**59. What are the best practices for securing AWS Lambda functions?
+**
 Here are some best practices for securing AWS Lambda functions:
 
 - Use IAM roles and policies to grant least privilege permissions to each function. Follow the principle of least privilege.
@@ -1850,8 +1850,8 @@ Here are some best practices for securing AWS Lambda functions:
 In summary, applying security best practices for IAM, encryption, VPCs, and coding will help harden serverless applications built on Lambda.
 
 
-60. How can you perform blue/green deployments with AWS Lambda?
-
+**60. How can you perform blue/green deployments with AWS Lambda?
+**
 Here are some strategies for implementing blue/green deployments with AWS Lambda:
 
 - Create two separate Lambda functions - "blue" and "green".
@@ -1881,8 +1881,8 @@ Here are some strategies for implementing blue/green deployments with AWS Lambda
 So in summary, Lambda aliases combined with traffic shifting allows implementing blue/green deployment strategies for serverless applications to reduce risks.
 
 
-61. Can you explain the concept of event-driven architectures in AWS Lambda?
-
+**61. Can you explain the concept of event-driven architectures in AWS Lambda?
+**
 Event-driven architecture is a key pattern leveraged by AWS Lambda and serverless applications. Here are some key aspects:
 
 - Lambda functions are triggered by events such as object uploads, API calls, database changes, queues, streams, etc.
@@ -1908,8 +1908,8 @@ Event-driven architecture is a key pattern leveraged by AWS Lambda and serverles
 In summary, event-driven architectures allow Lambda based applications to drive scalability, resilience and agility by reacting to real-time events.
 
 
-62. What is the difference between the AWS Lambda console and the AWS CLI?
-
+**62. What is the difference between the AWS Lambda console and the AWS CLI?
+**
 The main differences between the AWS Lambda console and AWS CLI are:
 
 AWS Lambda Console:
@@ -1951,8 +1951,8 @@ In summary:
 - They can complement each other's capabilities.
 
 
-63. How can you configure alarms and notifications for AWS Lambda functions?
-
+**63. How can you configure alarms and notifications for AWS Lambda functions?
+**
 There are a few options for setting up alarms and notifications for AWS Lambda functions:
 
 - CloudWatch Alarms - Set up alarms based on Lambda metrics like errors, throttles, duration, invocations. Trigger SNS notifications when alarm thresholds are breached.
@@ -1978,8 +1978,8 @@ There are a few options for setting up alarms and notifications for AWS Lambda f
 So in summary, CloudWatch, X-Ray, CloudTrail, and EventBridge provide robust capabilities for monitoring Lambda functions and configuring alerts.
 
 
-64. Can you explain the concept of function policies in AWS Lambda?
-
+**64. Can you explain the concept of function policies in AWS Lambda?
+**
 AWS Lambda function policies provide granular control over who can invoke a Lambda function. Some key aspects:
 
 - Function policies are attached to the Lambda function configuration.
@@ -2011,8 +2011,8 @@ So in summary, function policies provide levers to implement authentication, acc
 
 
 
-65. What is the difference between API Gateway and AWS Lambda?
-
+**65. What is the difference between API Gateway and AWS Lambda?
+**
 API Gateway and AWS Lambda are complementary AWS services that are often used together:
 
 - API Gateway is used to create, publish, monitor, and secure APIs at any scale.
@@ -2036,8 +2036,8 @@ API Gateway and AWS Lambda are complementary AWS services that are often used to
 In summary, API Gateway handles API management while Lambda executes application logic triggered by API calls. They complement each other in serverless architectures.
 
 
-66. How can you deploy AWS Lambda functions using AWS CloudFormation?
-
+**66. How can you deploy AWS Lambda functions using AWS CloudFormation?
+**
 There are a few options for deploying AWS Lambda functions using AWS CloudFormation:
 
 - Define a `AWS::Lambda::Function` resource in your CloudFormation template specifying the function configuration and code location. 
@@ -2066,8 +2066,8 @@ In summary, CloudFormation provides a robust way to declare Lambda functions and
 
 
 
-67. Can you explain the concept of function state in AWS Lambda?
-
+**67. Can you explain the concept of function state in AWS Lambda?
+**
 AWS Lambda functions are intended to be stateless, meaning they do not store state or data between invocations. However, there are some ways to maintain state in Lambda functions:
 
 - Function state can be stored externally in Amazon S3, DynamoDB, RDS etc. Retrieve state from these sources when function starts.
@@ -2093,8 +2093,8 @@ AWS Lambda functions are intended to be stateless, meaning they do not store sta
 So in essence, Lambda functions themselves should remain stateless with any persistent state externalized, but some short-term caching does help performance.
 
 
-68. What are the best practices for error handling in AWS Lambda?
-
+**68. What are the best practices for error handling in AWS Lambda?
+**
 Here are some best practices for handling errors in AWS Lambda:
 
 - Catch and handle expected errors gracefully within the function code itself. 
@@ -2128,8 +2128,8 @@ Here are some best practices for handling errors in AWS Lambda:
 In summary, robust logging, monitoring, alerts, and testing will help build resilient Lambda functions and applications.
 
 
-69. How can you perform load testing on AWS Lambda functions?
-
+**69. How can you perform load testing on AWS Lambda functions?
+**
 Here are some options for load testing AWS Lambda functions:
 
 - Use AWS Lambda console to simulate concurrent invocations and monitor performance.
@@ -2162,8 +2162,8 @@ So in summary, use both managed AWS services and external tools to generate high
 
 
 
-70. Can you explain the concept of function versioning in AWS Lambda?
-
+**70. Can you explain the concept of function versioning in AWS Lambda?
+**
 AWS Lambda provides function versioning to help manage code deployments and rollbacks. Here are some key points about Lambda function versioning:
 
 - When you first create a Lambda function, it starts at version $LATEST by default.
@@ -2191,8 +2191,8 @@ AWS Lambda provides function versioning to help manage code deployments and roll
 So in summary, Lambda function versioning is a valuable feature to manage code deployments, rollbacks, and testing safely in production.
 
 
-71. What is the difference between AWS Lambda and AWS Batch?
-
+**71. What is the difference between AWS Lambda and AWS Batch?
+**
 The key differences between AWS Lambda and AWS Batch are:
 
 - Lambda runs code on-demand in response to triggers like HTTP requests. Batch runs jobs on a schedule or on-demand.
@@ -2217,8 +2217,8 @@ The key differences between AWS Lambda and AWS Batch are:
 
 In summary, Lambda is optimized for serverless, event-driven use cases while Batch focuses on long-running batch processing workloads.
 
-72. How can you handle long-running tasks in AWS Lambda?
-
+**72. How can you handle long-running tasks in AWS Lambda?
+**
 AWS Lambda limits execution time to 15 minutes maximum per invocation. Here are some options for handling long-running tasks within this constraint:
 
 - Break long-running processes into smaller functions that each run for under 15 minutes. Chain execution using Step Functions workflows.
@@ -2242,8 +2242,8 @@ AWS Lambda limits execution time to 15 minutes maximum per invocation. Here are 
 In summary, break apart processing, leverage durable storage, and use background processing with queues or workflows to handle long-running tasks with Lambda.
 
 
-73. Can you explain the concept of parallel execution in AWS Lambda?
-
+**73. Can you explain the concept of parallel execution in AWS Lambda?
+**
 Parallel execution in AWS Lambda refers to the ability to run multiple instances of a Lambda function concurrently to process events simultaneously. Here are some key points:
 
 - By default, Lambda functions can execute up to 1000 instances concurrently per account per region. 
@@ -2271,8 +2271,8 @@ Parallel execution in AWS Lambda refers to the ability to run multiple instances
 So in summary, Lambda parallelizes function executions automatically to enable high-throughput and low-latency applications.
 
 
-74. What are the best practices for logging in AWS Lambda?
-
+**74. What are the best practices for logging in AWS Lambda?
+**
 Here are some best practices for logging with AWS Lambda:
 
 - Send all Lambda function logs to CloudWatch Logs for centralization and persistence. Never write locally.
@@ -2305,8 +2305,8 @@ In summary, centralized CloudWatch logging with thoughtful design and monitoring
 
 
 
-75. How can you implement a retry mechanism in AWS Lambda?
-
+**75. How can you implement a retry mechanism in AWS Lambda?
+**
 Here are some ways to implement retry logic with AWS Lambda:
 
 - Wrap your function handler logic in a retry loop that catches errors and invokes the function recursively up to a max retry limit.
@@ -2334,8 +2334,8 @@ Here are some ways to implement retry logic with AWS Lambda:
 In summary, wrapping handlers, DLQ configuration, backoff timing, and idempotency patterns are useful for resilient Lambdas.
 
 
-76. Can you explain the concept of event-driven concurrency in AWS Lambda?
-
+**76. Can you explain the concept of event-driven concurrency in AWS Lambda?
+**
 Event-driven concurrency refers to AWS Lambda automatically scaling function concurrency in response to incoming event triggers from various sources. Here is an explanation:
 
 - Lambda functions can process events concurrently up to an account limit per region. Default is 1000.
@@ -2361,8 +2361,8 @@ Event-driven concurrency refers to AWS Lambda automatically scaling function con
 So in summary, Lambda responds to real-time events by transparently scaling concurrent executions within predefined account limits.
 
 
-77. What is the difference between AWS Lambda and AWS Fargate?
-
+**77. What is the difference between AWS Lambda and AWS Fargate?
+**
 The key differences between AWS Lambda and AWS Fargate are:
 
 - Lambda runs code without any servers to manage. Fargate runs containers but AWS manages the underlying EC2 instances.
@@ -2387,8 +2387,8 @@ The key differences between AWS Lambda and AWS Fargate are:
 
 In summary, Lambda is serverless and optimized for event-driven workloads, while Fargate focuses on container orchestration and long-running tasks.
 
-78. How can you implement a caching mechanism in AWS Lambda?
-
+**78. How can you implement a caching mechanism in AWS Lambda?
+**
 Here are some ways to implement caching in AWS Lambda:
 
 - Use local disk storage (/tmp dir) to cache files, static assets and data across invocations. Max storage is 512MB.
@@ -2418,8 +2418,8 @@ Here are some ways to implement caching in AWS Lambda:
 So in summary, various on-instance storage, in-memory caching, and managed caching services can help improve Lambda function performance.
 
 
-79. Can you explain the concept of batch processing in AWS Lambda?
-
+**79. Can you explain the concept of batch processing in AWS Lambda?
+**
 Batch processing in AWS Lambda refers to invoking a Lambda function asynchronously to process a batch of events or messages from queue-based services like SQS, SNS or Kinesis.
 
 Some key aspects of Lambda batch processing:
@@ -2449,8 +2449,8 @@ Some key aspects of Lambda batch processing:
 So in essence, Lambda batch processing offloads heavy work across invocations while efficiently leveraging infrastructure.
 
 
-80. What are the best practices for optimizing memory usage in AWS Lambda functions?
-
+**80. What are the best practices for optimizing memory usage in AWS Lambda functions?
+**
 
 Here are some best practices for optimizing memory usage in AWS Lambda functions:
 
@@ -2485,8 +2485,8 @@ Here are some best practices for optimizing memory usage in AWS Lambda functions
 So in essence, right size allocated memory based on actual function workload and continuously tune it for optimum utilization and cost efficiency.
 
 
-81. How can you implement authentication and authorization in AWS Lambda?
-
+**81. How can you implement authentication and authorization in AWS Lambda?
+**
 
 Here are some options for implementing authentication and authorization with AWS Lambda:
 
@@ -2515,8 +2515,8 @@ Here are some options for implementing authentication and authorization with AWS
 So in summary, API Gateway, Cognito, and IAM provide powerful tools to implement robust authentication and authorization flows for serverless applications.
 
 
-82. Can you explain the concept of function aliases in AWS Lambda?
-
+**82. Can you explain the concept of function aliases in AWS Lambda?
+**
 AWS Lambda function aliases are pointers to specific function versions that provide several benefits:
 
 - Aliases abstract version numbers from callers - you invoke "prod" rather than "version 3".
@@ -2544,8 +2544,8 @@ AWS Lambda function aliases are pointers to specific function versions that prov
 So in summary, aliases add powerful versioning semantics like blue-green and canary deployments on top of Lambda functions.
 
 
-83. What is the difference between AWS Lambda and AWS Glue?
-
+**83. What is the difference between AWS Lambda and AWS Glue?
+**
 The key differences between AWS Lambda and AWS Glue are:
 
 AWS Lambda:
@@ -2592,8 +2592,8 @@ In summary:
 - Glue for heavy lifting data transformation and loading.
 
 
-84. How can you handle data processing and transformation in AWS Lambda?
-
+**84. How can you handle data processing and transformation in AWS Lambda?
+**
 Here are some good options for handling data processing and transformation workloads in AWS Lambda:
 
 - For small data sizes, directly process data in memory within the Lambda function.
@@ -2623,8 +2623,8 @@ Here are some good options for handling data processing and transformation workl
 So in essence, Lambda provides diverse integration paths to enable data processing at scale while avoiding infrastructure management.
 
 
-85. Can you explain the concept of asynchronous messaging in AWS Lambda?
-
+**85. Can you explain the concept of asynchronous messaging in AWS Lambda?
+**
 Asynchronous messaging is a key pattern enabled by AWS Lambda to build decoupled, event-driven systems. 
 
 Some key aspects of asynchronous messaging with Lambda:
@@ -2655,8 +2655,8 @@ Some key aspects of asynchronous messaging with Lambda:
 
 So in essence, asynchronous messaging is a key enabler of event-driven architectures on Lambda.
 
-86. What are the best practices for securing sensitive data in AWS Lambda?
-
+**86. What are the best practices for securing sensitive data in AWS Lambda?
+**
 Here are some best practices for securing sensitive data used by AWS Lambda functions:
 
 - Avoid coding credentials directly in Lambda function code. 
@@ -2685,8 +2685,8 @@ Here are some best practices for securing sensitive data used by AWS Lambda func
 
 So in summary, never persist raw secrets in Lambda code or logs. Secure sensitive data in transit, at rest, and manage network access carefully based on security best practices.
 
-87. How can you implement data encryption in AWS Lambda?
-
+**87. How can you implement data encryption in AWS Lambda?
+**
 Here are some good options for encrypting data in AWS Lambda:
 
 - Encrypt environment variables and application secrets using KMS encryption helpers.
@@ -2715,8 +2715,8 @@ Here are some good options for encrypting data in AWS Lambda:
 
 So in essence, a combination of client-side encryption, SSL/TLS connections, HSMs, and AWS data service encryption provides a secure environment for serverless applications.
 
-88. Can you explain the concept of event-driven architecture in AWS Lambda?
-
+**88. Can you explain the concept of event-driven architecture in AWS Lambda?
+**
 Event-driven architecture is a common pattern used in building serverless applications with AWS Lambda. Here are some key aspects:
 
 - Components communicate by emitting events in response to state changes rather than direct call.
@@ -2748,8 +2748,8 @@ Event-driven architecture is a common pattern used in building serverless applic
 So in essence, the event-driven model maximizes agility, scalability and elasticity leveraging Lambda's auto-scaling capabilities.
 
 
-89. What is the difference between AWS Lambda and AWS Step Functions?
-
+**89. What is the difference between AWS Lambda and AWS Step Functions?
+**
 The key differences between AWS Lambda and Step Functions are:
 
 - Lambda runs isolated functions to process events and data. Step Functions coordinates Lambda functions into workflows.
@@ -2774,8 +2774,8 @@ The key differences between AWS Lambda and Step Functions are:
 
 In summary, Lambda executes application logic while Step Functions compose and orchestrate multi-step stateful serverless workflows.
 
-90. How can you implement parallel processing in AWS Lambda?
-
+**90. How can you implement parallel processing in AWS Lambda?
+**
 There are several options for implementing parallel processing in AWS Lambda:
 
 - Configure event source mapping batch size to process batches of records concurrently.
@@ -2805,8 +2805,8 @@ There are several options for implementing parallel processing in AWS Lambda:
 So in essence, there are diverse patterns like batches, queues, orchestration and compute distribution that enable parallel processing across serverless functions.
 
 
-91. Can you explain the concept of function versioning and aliasing in AWS Lambda?
-
+**91. Can you explain the concept of function versioning and aliasing in AWS Lambda?
+**
 
 AWS Lambda supports function versioning and aliases to manage code deployments: 
 
@@ -2835,8 +2835,8 @@ AWS Lambda supports function versioning and aliases to manage code deployments:
 In summary, Lambda versioning and aliases enable controlling deployments, routing traffic, and rolling back code changes safely.
 
 
-92. What are the best practices for managing dependencies in AWS Lambda functions?
-
+**92. What are the best practices for managing dependencies in AWS Lambda functions?
+**
 Here are some best practices for managing dependencies with AWS Lambda:
 
 - Use layers to package libraries and frameworks that can be reused across functions. Keep business logic separate.
@@ -2864,8 +2864,8 @@ Here are some best practices for managing dependencies with AWS Lambda:
 In summary, layers, vendoring, CI pipelines, immutable infrastructure, and static linking enable robust and stable Lambda deployments.
 
 
-93. How can you configure concurrent execution limits for AWS Lambda functions?
-
+**93. How can you configure concurrent execution limits for AWS Lambda functions?
+**
 There are a few ways to configure concurrency limits for AWS Lambda functions:
 
 - Set a Reserved Concurrency limit when configuring a function to reserve a specific number of simultaneous executions.
@@ -2892,8 +2892,8 @@ There are a few ways to configure concurrency limits for AWS Lambda functions:
 
 So in summary, reserved concurrency limits, provisioned capacities, CloudWatch alarms and throttling controls allow fine-grained control over concurrent executions.
 
-94. Can you explain the concept of fan-out/fan-in patterns in AWS Lambda?
-
+**94. Can you explain the concept of fan-out/fan-in patterns in AWS Lambda?
+**
 The fan-out/fan-in pattern in AWS Lambda refers to invoking multiple functions concurrently (fan-out) and then aggregating the results (fan-in). 
 
 Some key aspects of fan-out/fan-in with Lambda:
@@ -2920,8 +2920,8 @@ Some key aspects of fan-out/fan-in with Lambda:
 
 So in summary, fan-out/fan-in provides a parallelization pattern to improve performance and throughput in serverless architectures.
 
-95. What is the difference between AWS Lambda and AWS AppSync?
-
+**95. What is the difference between AWS Lambda and AWS AppSync?
+**
 The key differences between AWS Lambda and AWS AppSync are:
 
 - Lambda executes application code in response to triggers like HTTP requests. AppSync is a managed GraphQL service.
@@ -2950,8 +2950,8 @@ In summary, Lambda provides serverless compute while AppSync offers a managed Gr
 
 
 
-96. How can you implement event-driven data processing in AWS Lambda?
-
+**96. How can you implement event-driven data processing in AWS Lambda?
+**
 Here are some patterns for implementing event-driven data processing using AWS Lambda:
 
 - Trigger Lambda functions from data sources like S3, Kinesis, and DynamoDB streams to process new data as it arrives.
@@ -2979,8 +2979,8 @@ Here are some patterns for implementing event-driven data processing using AWS L
 In summary, Lambda coupled with Amazon services like S3, DynamoDB, Kinesis etc. provides a powerful stack for implementing scalable serverless data processing applications.
 
 
-97. Can you explain the concept of event-driven scaling in AWS Lambda?
-
+**97. Can you explain the concept of event-driven scaling in AWS Lambda?
+**
 Event-driven scaling refers to how AWS Lambda automatically scales the number of function instances up and down in response to incoming invocation events. Some key points:
 
 - By default, Lambda can run up to 1000 concurrent executions per AWS account per region.
@@ -3006,8 +3006,8 @@ Event-driven scaling refers to how AWS Lambda automatically scales the number of
 So in summary, Lambda responds to events by transparently auto-scaling executions in near real-time while abstracting away server capacity concerns.
 
 
-98. What are the best practices for managing environment variables in AWS Lambda?
-
+**98. What are the best practices for managing environment variables in AWS Lambda?
+**
 Here are some best practices for managing environment variables with AWS Lambda:
 
 - Use environment variables for configuration that varies between environments/stages (dev vs prod).
@@ -3036,8 +3036,8 @@ Here are some best practices for managing environment variables with AWS Lambda:
 
 In summary, externalizing variables, secrets management, automation, validation, and encryption help make configuration and secrets management robust, secure and repeatable.
 
-99. How can you implement data streaming and processing with AWS Lambda?
-
+**99. How can you implement data streaming and processing with AWS Lambda?
+**
 
 Here are some ways to implement data streaming and processing using AWS Lambda:
 
@@ -3063,8 +3063,8 @@ Here are some ways to implement data streaming and processing using AWS Lambda:
 
 So in summary, Lambda coupled with Kinesis, S3, DynamoDB, and other streaming sources provides a versatile platform for scalable serverless data pipelines.
 
-100. Can you explain the concept of serverless orchestration in AWS Lambda?
-
+**100. Can you explain the concept of serverless orchestration in AWS Lambda?
+**
 Serverless orchestration refers to coordinating and managing multiple Lambda functions to implement complex workflows and business logic. Some key aspects:
 
 - Orchestration services manage the invocation, execution, and inter-communication between Lambda functions.
