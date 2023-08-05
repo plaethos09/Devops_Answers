@@ -1,4 +1,5 @@
-1.	What are the different authentication and authorization mechanisms available in AWS?
+**What are the different authentication and authorization mechanisms available in AWS?**
+
 Here are some of the main authentication and authorization mechanisms available in AWS:
 - AWS Identity and Access Management (IAM) - Allows you to manage access to AWS services and resources. You can create IAM users and assign permissions to control what they can access.
 - Amazon Cognito - Provides user identity and data synchronization. Can handle sign-up, sign-in, and access control for web and mobile apps using OAuth 2.0, SAML, and OpenID Connect.
