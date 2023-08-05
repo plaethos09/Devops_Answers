@@ -123,7 +123,7 @@ Impacts on Compliance:
 By understanding the shared responsibility model, customers can design their AWS environment and processes to enhance security and effectively meet compliance requirements.
 
 
-**How do you use AWS CloudTrail to monitor and log API activity within your AWS account? **
+**How do you use AWS CloudTrail to monitor and log API activity within your AWS account?**
 
 
 Here are some ways to use AWS CloudTrail to monitor and log API activity in your AWS account:
@@ -152,7 +152,7 @@ Here are some ways to use AWS CloudTrail to monitor and log API activity in your
 
 By leveraging these CloudTrail capabilities, you can gain visibility into API requests made within your AWS accounts for security and operational insights.
 
-**Explain the concept of AWS Identity Federation and how it can be used for cross-account access. **
+**Explain the concept of AWS Identity Federation and how it can be used for cross-account access.**
 
 AWS Identity Federation allows users to authenticate with a federated identity provider instead of creating IAM users. The main benefits are:
 
@@ -181,7 +181,7 @@ This allows a single set of Active Directory credentials to grant users access t
 So in summary, identity federation with AD or third-party IdPs enables SSO and centralized access across accounts and AWS while removing the need for separate IAM users.
 
 
-**What are AWS Security Groups, and how do they control inbound and outbound traffic? **
+**What are AWS Security Groups, and how do they control inbound and outbound traffic?**
 
 Security groups in AWS are like virtual firewalls that control inbound and outbound traffic to AWS resources like EC2 instances. Key things to know about security groups:
 
@@ -199,7 +199,7 @@ Security groups in AWS are like virtual firewalls that control inbound and outbo
 
 So in summary, security groups let you tightly control how instances are accessed, for both inbound and outbound connectivity. You can create separate groups for web servers, databases etc and allow precise access between them. This provides an important layer of security in AWS.
 
-**How do you configure VPC Security Group rules to restrict access to specific ports and protocols? **
+**How do you configure VPC Security Group rules to restrict access to specific ports and protocols?**
 
 Here are some tips for configuring VPC security group rules to restrict access to specific ports and protocols:
 
@@ -224,7 +224,7 @@ Here are some tips for configuring VPC security group rules to restrict access t
 Following these tips will help restrict access and improve your AWS security posture. Security groups provide a key building block for secure cloud deployments.
 
 
-**What is AWS WAF (Web Application Firewall), and how does it help protect web applications? **
+**What is AWS WAF (Web Application Firewall), and how does it help protect web applications?**
 
 
 AWS WAF (Web Application Firewall) is a web application firewall that helps protect web applications from common web exploits. Here are some key things to know about WAF:
@@ -246,7 +246,7 @@ AWS WAF (Web Application Firewall) is a web application firewall that helps prot
 In summary, AWS WAF is a key security tool to protect public-facing web applications from ever-evolving web exploits and malicious attacks at scale. The firewall rules provide precision safeguards while allowing legitimate traffic through.
 
 
-**Explain the purpose of AWS Shield and how it helps mitigate DDoS attacks. **
+**Explain the purpose of AWS Shield and how it helps mitigate DDoS attacks.**
 
 AWS Shield is a managed Distributed Denial of Service (DDoS) protection service that safeguards applications running on AWS. Here is an overview:
 
@@ -267,7 +267,7 @@ AWS Shield is a managed Distributed Denial of Service (DDoS) protection service 
 By providing always-on protection and intelligent mitigation, AWS Shield helps absorb DDoS attacks so applications can maintain performance and availability during an attack.
 
 
-**How do you encrypt data at rest in AWS using services like AWS Key Management Service (KMS)? **
+**How do you encrypt data at rest in AWS using services like AWS Key Management Service (KMS)?**
 
 Here are some ways to encrypt data at rest in AWS using KMS:
 
@@ -294,7 +294,7 @@ Here are some ways to encrypt data at rest in AWS using KMS:
 By using KMS in conjunction with other AWS services, you can easily build secure solutions that encrypt all your data at rest without having to manage encryption keys or infrastructure.
 
 
-**What are AWS Key Management Service (KMS) and AWS CloudHSM, and how do they differ? **
+**What are AWS Key Management Service (KMS) and AWS CloudHSM, and how do they differ?**
 
 AWS Key Management Service (KMS) and AWS CloudHSM are both services for managing encryption keys on AWS, but have some key differences:
 
@@ -330,7 +330,8 @@ AWS CloudHSM:
 
 In summary, KMS is easier to use while CloudHSM gives more direct control of keys for meeting strict security and compliance needs.
 
-**How do you configure AWS CloudTrail to deliver logs to an S3 bucket in a separate AWS account? **
+
+**How do you configure AWS CloudTrail to deliver logs to an S3 bucket in a separate AWS account?**
 
 To configure CloudTrail to deliver logs to an S3 bucket in a separate AWS account, you would follow these steps:
 
@@ -367,7 +368,9 @@ To configure CloudTrail to deliver logs to an S3 bucket in a separate AWS accoun
 
 This allows CloudTrail logs from one account to be securely delivered to a central bucket in another account for aggregation and analysis. The bucket policy controls write access between accounts.
 
-**Explain the concept of AWS Config and how it helps assess and monitor resource configurations. **
+
+**Explain the concept of AWS Config and how it helps assess and monitor resource configurations.**
+
 
 AWS Config provides continuous monitoring of resource configurations and allows you to assess your AWS environments against desired states. Here's an overview:
 
@@ -391,7 +394,9 @@ AWS Config provides continuous monitoring of resource configurations and allows 
 
 In summary, AWS Config allows continuously monitoring and recording your AWS resource configurations, evaluating them against compliance rules, and getting alerts on configuration drifts. This helps maintain the desired secure and compliant state.
 
-**How do you enable AWS Config rules to ensure compliance with specific security requirements? **
+
+**How do you enable AWS Config rules to ensure compliance with specific security requirements?**
+
 
 Here are some tips for enabling AWS Config rules to ensure compliance with security requirements:
 
@@ -412,6 +417,7 @@ Here are some tips for enabling AWS Config rules to ensure compliance with secur
 - Enable AWS Config rules in a staging environment first to tune and test rules before production rollout.
 
 Following these practices will help build automated compliance checks for your security policy requirements using Config capabilities. This reduces risk and ensures continuous compliance.
+
 
 **What is AWS Secrets Manager, and how does it help manage and secure sensitive information?** 
 
@@ -439,7 +445,9 @@ AWS Secrets Manager is a service that helps securely manage and rotate credentia
 
 Overall, Secrets Manager improves security posture by centralizing secret storage, enabling regular rotation, removing hardcoded credentials, and establishing audit trails for access to sensitive information across both applications and services. This reduces risk of compromised credentials and accidental exposures.
 
-**Explain the concept of AWS Artifact and how it helps with compliance reporting and assurance. **
+
+**Explain the concept of AWS Artifact and how it helps with compliance reporting and assurance.**
+
 
 AWS Artifact is a self-service portal that provides on-demand access to AWS security and compliance reports and select online agreements. Key features:
 
@@ -464,7 +472,7 @@ AWS Artifact is a self-service portal that provides on-demand access to AWS secu
 In summary, AWS Artifact provides on-demand access to compliance reports, certifications and agreements needed by auditors and security teams to demonstrate adherence to security standards, regulations and policies when using AWS.
 
 
-**How do you use AWS Security Hub to centrally manage and monitor security findings? **
+**How do you use AWS Security Hub to centrally manage and monitor security findings?**
 
 
 AWS Security Hub provides a central place to manage security across AWS accounts and services. Here are some ways to use it:
@@ -494,7 +502,7 @@ AWS Security Hub provides a central place to manage security across AWS accounts
 By centralizing multiple security data sources into Security Hub, you can get a unified view of security posture to simplify compliance and security management.
 
 
-**What are AWS GuardDuty and Amazon Macie, and how do they help detect security threats? **
+**What are AWS GuardDuty and Amazon Macie, and how do they help detect security threats?**
 
 
 AWS GuardDuty and Amazon Macie are two services that can help detect potential security threats for workloads running on AWS.
@@ -511,7 +519,7 @@ Both services integrate with AWS Security Hub to provide centralized visibility.
 Together GuardDuty and Macie provide intelligent threat detection and data security across infrastructure, user activity logs, application data and cloud storage to identify issues early and enable quick response.
 
 
-**How do you configure AWS Shield Advanced to provide additional DDoS protection? **
+**How do you configure AWS Shield Advanced to provide additional DDoS protection?**
 
 
 Here are the key steps to configure AWS Shield Advanced for enhanced DDoS protection:
@@ -541,7 +549,7 @@ Here are the key steps to configure AWS Shield Advanced for enhanced DDoS protec
 By leveraging these best practices, Shield Advanced provides expanded DDoS resiliency for internet-facing applications on AWS.
 
 
-**Explain the purpose of AWS Systems Manager Parameter Store and how it helps manage secure configuration data. **
+**Explain the purpose of AWS Systems Manager Parameter Store and how it helps manage secure configuration data.**
 
 
 
@@ -566,7 +574,7 @@ AWS Systems Manager Parameter Store provides secure, hierarchical storage for co
 In summary, Parameter Store lets you securely store all your application configuration data, secrets and credentials in one place, while controlling access and tracking changes. This improves security and manageability of sensitive data. It is more secure than storing in plaintext files or scripts.
 
 
-**How do you use AWS Certificate Manager to manage SSL/TLS certificates for your applications? **
+**How do you use AWS Certificate Manager to manage SSL/TLS certificates for your applications?**
 
 
 Here are some ways to use AWS Certificate Manager (ACM) to manage SSL/TLS certificates:
@@ -596,7 +604,7 @@ Here are some ways to use AWS Certificate Manager (ACM) to manage SSL/TLS certif
 By centralizing SSL certificate management in ACM, you can deploy certificates to AWS resources easily and automatically renew them to maintain validity and avoid outages.
 
 
-**What is the AWS Well-Architected Framework, and how does it guide secure and compliant cloud architecture? **
+**What is the AWS Well-Architected Framework, and how does it guide secure and compliant cloud architecture?**
 
 
 The AWS Well-Architected Framework provides a consistent set of guidelines for architecting secure, high-performing, resilient, and efficient infrastructure on AWS. Here's an overview:
@@ -618,7 +626,7 @@ The AWS Well-Architected Framework provides a consistent set of guidelines for a
 By adhering to the Framework principles and best practices, you can build workloads that are secure, meet compliance requirements, and provide business value on AWS.
 
 
-**How do you secure data in transit using AWS services like AWS Certificate Manager and AWS PrivateLink? **
+**How do you secure data in transit using AWS services like AWS Certificate Manager and AWS PrivateLink?**
 
 
 Here are some key ways to secure data in transit using AWS services:
@@ -646,7 +654,7 @@ Here are some key ways to secure data in transit using AWS services:
 By making encryption ubiquitous, minimizing plaintext traffic, and protecting services, you can establish secure data transmission across the AWS environment.
 
 
-**Explain the concept of AWS CloudHSM and how it provides hardware-based key storage and encryption. **
+**Explain the concept of AWS CloudHSM and how it provides hardware-based key storage and encryption.**
 
 
 AWS CloudHSM provides dedicated Hardware Security Module (HSM) appliances within AWS for generating and using encryption keys securely. Key features:
@@ -672,7 +680,7 @@ AWS CloudHSM provides dedicated Hardware Security Module (HSM) appliances within
 In summary, CloudHSM enables creating and using secure encryption keys backed by dedicated HSM hardware to meet the most stringent data security and compliance needs.
 
 
-**How do you use AWS Macie to discover, classify, and protect sensitive data in your AWS environment? **
+**How do you use AWS Macie to discover, classify, and protect sensitive data in your AWS environment?**
 
 Here are some key ways to use AWS Macie for sensitive data protection:
 
@@ -699,7 +707,7 @@ Here are some key ways to use AWS Macie for sensitive data protection:
 By leveraging Macie's capabilities, you can automatically discover sensitive data at scale, understand risk levels, and take appropriate actions to better secure data on AWS.
 
 
-**What are AWS Security Token Service (STS) and AWS Identity and Access Management (IAM) roles, and how do they work together? **
+**What are AWS Security Token Service (STS) and AWS Identity and Access Management (IAM) roles, and how do they work together?**
 
 AWS Security Token Service (STS) and IAM roles work together to provide temporary security credentials to access AWS resources. Here's an overview:
 
@@ -726,7 +734,7 @@ AWS Security Token Service (STS) and IAM roles work together to provide temporar
 In summary, STS allows generating temporary credentials to assume IAM roles, enabling securely granting access to AWS resources without permanent keys.
 
 
-**How do you configure AWS Single Sign-On (SSO) to provide centralized access management for multiple AWS accounts? **
+**How do you configure AWS Single Sign-On (SSO) to provide centralized access management for multiple AWS accounts?**
 
 Here are the main steps to configure AWS SSO for centralized access management:
 
@@ -751,7 +759,7 @@ Here are the main steps to configure AWS SSO for centralized access management:
 Key benefits include centralizing access management, enabling single sign-on, and drastically simplifying granting and revoking access to resources across accounts.
 
 
-**Explain the concept of AWS Resource Access Manager (RAM) and how it helps share resources securely across accounts. **
+**Explain the concept of AWS Resource Access Manager (RAM) and how it helps share resources securely across accounts.**
 
 AWS Resource Access Manager (RAM) enables sharing AWS resources like VPCs, subnets, AMIs across accounts securely. Key features:
 
@@ -776,7 +784,7 @@ AWS Resource Access Manager (RAM) enables sharing AWS resources like VPCs, subne
 In summary, RAM simplifies sharing resources across accounts while maintaining access controls and isolation via permissions managed centrally. This removes duplication while enabling collaboration securely across accounts.
 
 
-**How do you use AWS Organizations to enforce service control policies (SCPs) across multiple AWS accounts? **
+**How do you use AWS Organizations to enforce service control policies (SCPs) across multiple AWS accounts?**
 
 Here is an overview of using AWS Organizations and SCPs to enforce policies across accounts:
 
@@ -801,7 +809,7 @@ Here is an overview of using AWS Organizations and SCPs to enforce policies acro
 By centralizing governance through SCPs, you can enforce consistent guardrails on security, compliance, and operations across all accounts in your AWS organization.
 
 
-**What is the AWS Firewall Manager, and how does it help centrally manage AWS WAF rules across accounts? **
+**What is the AWS Firewall Manager, and how does it help centrally manage AWS WAF rules across accounts?**
 
 AWS Firewall Manager provides centralized management of AWS WAF web access control rules across multiple accounts and resources. Key features:
 
@@ -826,7 +834,7 @@ AWS Firewall Manager provides centralized management of AWS WAF web access contr
 By leveraging Firewall Manager, you can establish consistent web protections across accounts, respond faster to threats, and reduce maintenance overhead for distributed deployments.
 
 
-**Explain the concept of AWS Security Hub's integrated partner solutions and how they enhance security monitoring and compliance. **
+**Explain the concept of AWS Security Hub's integrated partner solutions and how they enhance security monitoring and compliance.**
 
 AWS Security Hub integrates security monitoring and compliance capabilities from many different AWS and third-party partner solutions. Here's an explanation of how these integrated solutions enhance Security Hub:
 
@@ -849,7 +857,7 @@ AWS Security Hub integrates security monitoring and compliance capabilities from
 By correlating findings from all these integrated solutions, Security Hub provides a powerful security command center with comprehensive insight into threats, risks and misconfigurations. The third-party integrations significantly expand monitoring capabilities.
 
 
-**How do you configure AWS Config to automatically remediate non-compliant resource configurations? **
+**How do you configure AWS Config to automatically remediate non-compliant resource configurations?**
 
 Here are the key steps to configure AWS Config for auto-remediation of non-compliant resources:
 
@@ -876,7 +884,7 @@ Here are the key steps to configure AWS Config for auto-remediation of non-compl
 This allows taking automated correction steps to fix improperly configured resources in order to maintain compliant baseline configurations automatically.
 
 
-**What is the AWS Secrets Manager rotation feature, and how does it help automate the rotation of credentials? **
+**What is the AWS Secrets Manager rotation feature, and how does it help automate the rotation of credentials?**
 
 The AWS Secrets Manager rotation feature helps automatically rotate credentials for RDS databases, Amazon Redshift clusters, and other services. Here's an overview:
 
@@ -901,7 +909,7 @@ The AWS Secrets Manager rotation feature helps automatically rotate credentials 
 By leveraging Secrets Manager rotation, you can improve security posture by automating credential rotation seamlessly without service disruptions.
 
 
-**How do you use AWS Secrets Manager to store and rotate database credentials securely? **
+**How do you use AWS Secrets Manager to store and rotate database credentials securely?**
 
 
 Here is an overview of using Secrets Manager to securely store and rotate database credentials:
@@ -931,7 +939,7 @@ Here is an overview of using Secrets Manager to securely store and rotate databa
 By centrally managing and automatically rotating database credentials via Secrets Manager, you improve security and meet compliance requirements.
 
 
-**Explain the concept of AWS KMS customer managed keys (CMKs) and how they are used for data encryption. **
+**Explain the concept of AWS KMS customer managed keys (CMKs) and how they are used for data encryption.**
 
 
 AWS Key Management Service (KMS) allows creation and management of customer managed keys (CMKs) for data encryption. Here's an explanation of how CMKs work:
@@ -955,7 +963,7 @@ AWS Key Management Service (KMS) allows creation and management of customer mana
 In summary, customer managed CMKs allow creating and controlling encryption keys used to protect sensitive data across various AWS services. KMS makes it easy to encrypt data without managing the underlying key material.
 
 
-**What is the AWS Audit Manager, and how does it help automate and streamline the auditing process? **
+**What is the AWS Audit Manager, and how does it help automate and streamline the auditing process?**
 
 AWS Audit Manager helps continuously audit your AWS usage to simplify compliance with regulations and industry standards. Key capabilities:
 
@@ -982,7 +990,7 @@ AWS Audit Manager helps continuously audit your AWS usage to simplify compliance
 By automating evidence collection, auditing resources, and report generation, Audit Manager simplifies demonstrating compliance with regulations and security standards on AWS.
 
 
-**How do you configure AWS Security Hub to generate custom security findings and notifications? **
+**How do you configure AWS Security Hub to generate custom security findings and notifications?**
 
 Here are some ways to configure AWS Security Hub to generate custom findings and notifications:
 
@@ -1009,7 +1017,7 @@ Here are some ways to configure AWS Security Hub to generate custom findings and
 By injecting your own findings, you can customize Security Hub to match your unique environment and notification requirements.
 
 
-**What is AWS Security Token Service (STS) federation, and how does it enable temporary access to AWS resources? **
+**What is AWS Security Token Service (STS) federation, and how does it enable temporary access to AWS resources?**
 
 AWS Security Token Service (STS) federation allows creating temporary security credentials to access AWS resources. It works as follows:
 
@@ -1031,7 +1039,7 @@ AWS Security Token Service (STS) federation allows creating temporary security c
 
 In this way, STS federation enables single sign-on and temporary access to AWS, removing the need to create long-term IAM user credentials or manage resource access policies. It provides seamless authentication and authorization across identity providers, applications and AWS.
 
-**How do you configure AWS Macie to detect and classify sensitive data stored in Amazon S3 buckets? **
+**How do you configure AWS Macie to detect and classify sensitive data stored in Amazon S3 buckets?**
 
 Here are the main steps to configure Amazon Macie for detecting sensitive data in S3 buckets:
 
@@ -1057,7 +1065,7 @@ Here are the main steps to configure Amazon Macie for detecting sensitive data i
 
 By leveraging Macie's capabilities, you can automatically identify, classify and understand sensitive data exposures in S3 storage to better secure your cloud environment.
 
-**Explain the purpose of AWS Artifact's compliance reports and how they assist with regulatory requirements. **
+**Explain the purpose of AWS Artifact's compliance reports and how they assist with regulatory requirements.**
 
 AWS Artifact provides on-demand access to AWS security and compliance reports to assist with regulatory requirements:
 
@@ -1080,7 +1088,7 @@ AWS Artifact provides on-demand access to AWS security and compliance reports to
 In summary, AWS Artifact and its compliance reports reduce the effort for customers to audit AWS security and compliance controls. Having on-demand access to AWS certifications assists customers with meeting their own regulatory audit requirements in the cloud.
 
 
-**How do you enable AWS CloudTrail logs to be delivered to a central logging solution outside of AWS? **
+**How do you enable AWS CloudTrail logs to be delivered to a central logging solution outside of AWS?**
 
 
 Here are the main steps to deliver AWS CloudTrail logs to an external central logging solution:
@@ -1108,7 +1116,7 @@ Here are the main steps to deliver AWS CloudTrail logs to an external central lo
 This architecture provides a serverless, scalable pipeline to reliably export AWS API activity logs to any external SIEM or log analytics solution for long term retention and analysis.
 
 
-**What is AWS Control Tower, and how does it help enforce security and compliance standards across multiple AWS accounts? **
+**What is AWS Control Tower, and how does it help enforce security and compliance standards across multiple AWS accounts?**
 
 
 AWS Control Tower provides centralized governance across multiple AWS accounts within an organization. Key capabilities:
@@ -1134,7 +1142,7 @@ AWS Control Tower provides centralized governance across multiple AWS accounts w
 In summary, Control Tower automates setting up new standard-compliant accounts and enforcing security best practices centrally across an AWS environment.
 
 
-**Explain the concept of AWS WAF rules and how they help protect web applications from common attacks. **
+**Explain the concept of AWS WAF rules and how they help protect web applications from common attacks.**
 
 
 AWS WAF rules allow creating filters that block or allow web requests based on conditions like IP addresses, HTTP headers, request strings, SQL code etc. This enables protecting web apps from common attacks like:
@@ -1160,7 +1168,7 @@ AWS WAF rules allow creating filters that block or allow web requests based on c
 You can configure WAF directly on API Gateways, CloudFront distributions, ALBs or use AWS Firewall Manager for central control. This allows creating layered defenses tailored to your specific application vulnerabilities.
 
 
-**How do you use AWS Firewall Manager to centrally manage security group rules across multiple VPCs? **
+**How do you use AWS Firewall Manager to centrally manage security group rules across multiple VPCs?**
 
 
 Here are the main steps to use AWS Firewall Manager for centralized security group management:
@@ -1190,7 +1198,7 @@ Here are the main steps to use AWS Firewall Manager for centralized security gro
 Using Firewall Manager simplifies managing security groups at scale across many accounts while letting you control and audit centrally.
 
 
-**What is the AWS Security Hub Findings format, and how can it be used to automate security response workflows? **
+**What is the AWS Security Hub Findings format, and how can it be used to automate security response workflows?**
 
 
 The AWS Security Hub Findings format provides a standardized JSON schema for representing security alerts and issues. Key ways it enables security automation:  
@@ -1218,7 +1226,7 @@ The AWS Security Hub Findings format provides a standardized JSON schema for rep
 Overall, the standardized schema of Security Hub findings enables easier aggregation, automation, sharing and response across your security tools, teams and processes.
 
 
-How do you configure AWS Shield Advanced to provide protection against volumetric and state-exhaustion attacks? 
+**How do you configure AWS Shield Advanced to provide protection against volumetric and state-exhaustion attacks?**
 
 
 Here are some best practices for configuring AWS Shield Advanced for protection against volumetric and state-exhaustion DDoS attacks:
@@ -1248,8 +1256,7 @@ Here are some best practices for configuring AWS Shield Advanced for protection 
 By leveraging Shield Advanced protections and architectures that scale under load, you can absorb and mitigate the impacts of large volumetric and resource exhaustion DDoS attacks.
 
 
-Explain the concept of AWS Secrets Manager's automatic rotation feature and how it enhances security for credentials. 
-
+**Explain the concept of AWS Secrets Manager's automatic rotation feature and how it enhances security for credentials.**
 
 AWS Secrets Manager provides a feature to automatically rotate secrets/credentials as per specified schedules and configurations. Here's how it enhances security:
 
@@ -1273,8 +1280,8 @@ AWS Secrets Manager provides a feature to automatically rotate secrets/credentia
 
 By taking care of credentials renewal in a secure and reliable manner, Secrets Manager's automated rotation capabilities significantly improve the security hygiene of secrets management.
 
-What is the AWS Trusted Advisor, and how does it help identify security and cost optimization opportunities? 
 
+**What is the AWS Trusted Advisor, and how does it help identify security and cost optimization opportunities?**
 
 AWS Trusted Advisor is a service that analyzes your AWS configurations and provides recommendations to improve security, performance, fault tolerance, and cost optimization. Key ways it helps identify security and cost opportunities:
 
@@ -1307,8 +1314,7 @@ Cost Optimization:
 By acting on Trusted Advisor recommendations, you can improve your AWS security posture and optimize spending.
 
 
-How do you configure AWS Security Hub to ingest security findings from third-party security tools? 
-
+**How do you configure AWS Security Hub to ingest security findings from third-party security tools?**
 
 Here are the main steps to ingest third-party security findings into AWS Security Hub:
 
@@ -1335,8 +1341,7 @@ Here are the main steps to ingest third-party security findings into AWS Securit
 This allows normalizing and correlating findings from all your security tools into Security Hub for better reporting, analysis and visibility across your AWS environments.
 
 
-Explain the concept of AWS Config managed rules and how they help maintain compliant configurations. 
-
+**Explain the concept of AWS Config managed rules and how they help maintain compliant configurations.**
 
 AWS Config managed rules allow creating pre-defined rules to evaluate resource configurations for compliance with standards and best practices. Key features:
 
@@ -1363,8 +1368,7 @@ AWS Config managed rules allow creating pre-defined rules to evaluate resource c
 Overall, managed Config rules simplify implementing security and compliance monitoring in a consistent, automated way across resource configurations.
 
 
-How do you use AWS Systems Manager Automation documents to automate security remediation actions? 
-
+**How do you use AWS Systems Manager Automation documents to automate security remediation actions?**
 
 Here are some ways to use AWS Systems Manager Automation documents for automated security remediation:
 
@@ -1389,7 +1393,7 @@ Here are some ways to use AWS Systems Manager Automation documents for automated
 By leveraging Automation documents, you can rapidly respond and correct security issues at scale across AWS environments.
 
 
-What is AWS SSO permission sets, and how do they simplify access management across AWS accounts? 
+**What is AWS SSO permission sets, and how do they simplify access management across AWS accounts?**
 
 AWS SSO permission sets allow defining a bundle of policies and attaching them to groups in your identity source to manage access across accounts. Key benefits:
 
@@ -1415,11 +1419,10 @@ AWS SSO permission sets allow defining a bundle of policies and attaching them t
 
 By leveraging permission sets, you can define Access Control strategies reusably and manage access across AWS accounts from a central location.
 
+**How do you configure AWS Single Sign-On (SSO) to provide seamless access to AWS Management Console for users?**
 
-•  How do you configure AWS Single Sign-On (SSO) to provide seamless access to AWS Management Console for users? 
 
-
-•  Explain the concept of AWS Security Hub custom actions and how they can be used for security automation. 
+• ** Explain the concept of AWS Security Hub custom actions and how they can be used for security automation. 
 •  What is the AWS License Manager, and how does it help track and enforce software licenses in AWS? 
 •  How do you enable AWS CloudTrail to deliver logs to a third-party logging solution outside of AWS? 
 •  What is AWS Elemental MediaPackage, and how does it help secure video content delivery? 
@@ -1462,3 +1465,4 @@ By leveraging permission sets, you can define Access Control strategies reusably
 •  Explain the concept of AWS Outposts access control, and how it ensures secure access to on-premises resources. 
 •  How do you use AWS Control Tower to enforce specific security and compliance guardrails across AWS accounts?
 
+**
