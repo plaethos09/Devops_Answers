@@ -86,7 +86,7 @@ Here are some best practices to enforce secure password policies for IAM users i
 - Use temporary credentials - Rely on temporary access keys instead of long-term passwords where feasible.
 By leveraging AWS IAM password policy options and enforcing secure policies, you can ensure strong authentication for your IAM users.
 
-**What is the AWS Shared Responsibility Model, and how does it impact security and compliance? **
+**What is the AWS Shared Responsibility Model, and how does it impact security and compliance?**
 
 The AWS Shared Responsibility Model outlines the security and compliance responsibilities of AWS and the customer when using AWS services. Key things to know:
 
