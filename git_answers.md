@@ -2117,37 +2117,419 @@ Here are some additional tips for configuring Git to automatically remove obsole
 
 The reflog is a log of all changes that have been made to a ref, such as HEAD, master, or origin/master. The reflog can be helpful for debugging and recovering from mistakes. However, it can also grow quite large over time. If you do not need to keep a full history of all reflog entries, you can configure Git to automatically remove obsolete reflog entries.
 
+
 **84. What is the purpose of the Git "bisect run" command? **
+
+The Git bisect run command is a powerful command that can be used to find the commit that introduced a bug in your code. It works by bisecting the commit history, which means that it divides the commit history into two halves and then checks to see if the bug is present in one half or the other. This process is repeated until the commit that introduced the bug is found.
+
+The bisect run command takes a number of options that allow you to specify how it should work. For example, you can use the `-b` option to specify the bad commit, or you can use the `-r` option to specify the good commit.
+
+Here is an example of how you can use the Git bisect run command to find the commit that introduced a bug:
+
+```
+git bisect run -b bad_commit -r good_commit
+```
+
+This command will start the bisect process and will try to find the commit that introduced the bug. The bisect process will print out the current commit and ask you if the bug is present in that commit. You can answer yes or no. If you answer yes, the bisect process will move to the next commit in the bad half of the history. If you answer no, the bisect process will move to the next commit in the good half of the history.
+
+The bisect process will continue until it finds the commit that introduced the bug. When it finds the commit, it will print out the commit hash and the commit message.
+
+The bisect run command is a powerful tool, but it can be time-consuming to use. If you have a large commit history, the bisect process can take a long time to complete.
+
+Here are some additional tips for using the Git bisect run command:
+
+* You can use the `git bisect skip` command to skip a commit.
+* You can use the `git bisect reset` command to reset the bisect process.
+* You can use the `git bisect visualize` command to visualize the bisect process.
+
 
 **85. How do you configure Git to automatically clean up stale references in reflogs? **
 
+Sure. Here are the steps on how to configure Git to automatically clean up stale references in reflogs:
+
+1. Open the `.gitconfig` file in your text editor.
+2. Add the following line to the `.gitconfig` file:
+
+```
+[reflog]
+expire = <number of days>
+```
+
+where `<number of days>` is the number of days after which a reflog entry should be considered stale. For example, to set the reflog expire to 7 days, you would add the following line to the `.gitconfig` file:
+
+```
+[reflog]
+expire = 7
+```
+
+3. Save the `.gitconfig` file.
+
+Once you have configured Git to automatically clean up stale references in reflogs, Git will automatically remove reflog entries that are older than the specified number of days when you run the `git reflog expire` command.
+
+Here are some additional tips for configuring Git to automatically clean up stale references in reflogs:
+
+* You can use the `git config --global` command to set the `reflog.expire` configuration option for all repositories.
+* You can use the `git config --local` command to set the `reflog.expire` configuration option for a specific repository.
+* You can use the `git reflog expire` command to manually remove stale reflog entries.
+
+
 **86. Explain the concept of Git rerere diff and how it can be used. **
+
+The Git rerere diff command is used to show the differences between the original and resolved versions of a file that has been involved in a merge conflict. This can be helpful if you want to see how Git resolved the conflict, or if you want to manually resolve the conflict yourself.
+
+The rerere diff command takes a number of options that allow you to specify which file you want to see the differences for. For example, to see the differences for the file `myfile.txt`, you would use the following command:
+
+```
+git rerere diff myfile.txt
+```
+
+The rerere diff command will print out the differences between the original and resolved versions of the file. The differences will be highlighted, so you can easily see what was changed.
+
+The rerere diff command is a useful tool for understanding how Git resolved merge conflicts. It can also be helpful for manually resolving merge conflicts, if you are not happy with the way that Git resolved the conflict.
+
+Here are some additional tips for using the Git rerere diff command:
+
+* You can use the `git config --global` command to set the `rerere.enabled` configuration option to `true` to enable the rerere feature globally.
+* You can use the `git config --local` command to set the `rerere.enabled` configuration option to `true` to enable the rerere feature for a specific repository.
+* You can use the `git rerere` command to manually forget about a resolved conflict
+
 
 **87. How do you configure Git to automatically remove stale references in reflogs? **
 
+To configure Git to automatically remove stale references in reflogs, you can use the `reflog.expire` configuration option. The `reflog.expire` option can have one argument, which is an integer value that specifies the number of days that a reflog entry should be kept before it is automatically removed. For example, to configure Git to automatically remove reflog entries that are older than 7 days, you would use the following command:
+
+```
+git config --global reflog.expire 7
+```
+
+Once you have set the `reflog.expire` configuration option, Git will automatically remove reflog entries that are older than the specified number of days when you run the `git reflog expire` command.
+
+Here are some additional tips for configuring Git to automatically remove stale references in reflogs:
+
+* You can use the `git config --global` command to set the `reflog.expire` configuration option for all repositories.
+* You can use the `git config --local` command to set the `reflog.expire` configuration option for a specific repository.
+* You can use the `git reflog expire` command to manually remove stale reflog entries.
+
+**However, it is important to note that automatically removing stale reflog entries can have some negative consequences. For example, it can make it difficult to track changes over time.**
+
+If you are not sure whether or not you want to automatically remove stale reflog entries, it is best to leave the `reflog.expire` configuration option set to `false` and manually remove stale reflog entries that you no longer need.
+
+
+
 **88. What is the purpose of the Git "stash drop" command? **
+
+The git stash drop command is used to remove a stash. A stash is a collection of changes that you can save temporarily to your Git repository. You can use stashes to save your changes if you want to work on something else, or if you are having problems with your current branch.
+
+To use the git stash drop command, you need to specify the name of the stash that you want to drop. For example, to drop the stash with the name `mystash`, you would use the following command:
+
+```
+git stash drop mystash
+```
+
+The git stash drop command will remove the stash with the name `mystash` from your Git repository. You will no longer be able to access the changes that were saved in the stash.
+
+Here are some additional tips for using the git stash drop command:
+
+* You can use the `git stash list` command to list all of the stashes that are currently stored in your Git repository.
+* You can use the `git stash show` command to show the contents of a specific stash.
+* You can use the `git stash pop` command to reapply a stash to your working directory.
+
 
 **89. How do you configure Git to automatically clean up unreachable objects? **
 
+To configure Git to automatically clean up unreachable objects, you can use the `gc.prune` configuration option. The `gc.prune` option can have one argument, which is an integer value that specifies the number of days that an object should be considered unreachable before it is automatically removed. For example, to configure Git to automatically remove unreachable objects that are older than 7 days, you would use the following command:
+
+```
+git config --global gc.prune 7
+```
+
+Once you have set the `gc.prune` configuration option, Git will automatically remove unreachable objects that are older than the specified number of days when you run the `git gc` command.
+
+Here are some additional tips for configuring Git to automatically clean up unreachable objects:
+
+* You can use the `git config --global` command to set the `gc.prune` configuration option for all repositories.
+* You can use the `git config --local` command to set the `gc.prune` configuration option for a specific repository.
+* You can use the `git gc` command to manually remove unreachable objects.
+
+**However, it is important to note that automatically removing unreachable objects can have some negative consequences. For example, it can make it difficult to recover from a corrupted repository.**
+
+If you are not sure whether or not you want to automatically remove unreachable objects, it is best to leave the `gc.prune` configuration option set to `false` and manually remove unreachable objects that you no longer need.
+
+
+Unreachable objects are objects that are no longer referenced by any commit in your Git repository. This can happen if you delete a commit, or if you move a file around in your repository. Unreachable objects can take up space in your Git repository, so it is a good idea to clean them up periodically.
+
+The `git gc` command is used to perform garbage collection on your Git repository. This includes removing unreachable objects, as well as other tasks such as compacting your database.
+
+
+
 **90. Explain the concept of Git merge strategy octopus and how it can be used. **
+
+Sure. The Git merge strategy octopus is a merge strategy that can be used to merge multiple branches into a single branch. It is the default merge strategy for Git, and it is a good choice for most merge scenarios.
+
+The octopus merge strategy works by first finding the common ancestor of all of the branches that you are merging. Then, it will recursively merge the changes from each branch into the common ancestor. If there are any conflicts, the octopus merge strategy will try to resolve them automatically.
+
+The octopus merge strategy is a good choice for most merge scenarios because it is relatively fast and easy to use. It can also handle most merge conflicts that you will encounter.
+
+Here are some examples of how you can use the Git octopus merge strategy:
+
+* To merge the master branch, the develop branch, and the feature branch into the master branch, you would use the following command:
+
+```
+git merge master develop feature
+```
+
+* To merge the develop branch and the feature branch into the master branch, and resolve any conflicts manually, you would use the following command:
+
+```
+git merge -X ours master develop feature
+```
+
+The `-X ours` option tells Git to use your version of the files in the case of a conflict.
+
+The octopus merge strategy is a powerful tool, but it should be used with caution. It can be used to merge changes in a way that is irreversible. If you are not sure how to use the octopus merge strategy, it is best to consult the documentation or ask for help from a more experienced Git user.
+
+Here are some additional tips for using the Git octopus merge strategy:
+
+* You can use the `git mergetool` command to manually resolve conflicts that the octopus merge strategy cannot resolve automatically.
+* You can use the `git merge.conflictstyle` configuration option to specify how Git should resolve conflicts.
+* You can use the `git merge.renames` configuration option to tell Git to automatically detect and handle renames during a merge.
+
+The octopus merge strategy is the default merge strategy for Git, but it is not the only merge strategy that is available. There are a number of other merge strategies that you can use, depending on your specific needs.
+
+
 
 **91. How do you configure Git to automatically garbage collect expired reflog entries? **
 
+Sure. To configure Git to automatically garbage collect expired reflog entries, you can use the `reflog.expire` configuration option. The `reflog.expire` option can have one argument, which is an integer value that specifies the number of days that a reflog entry should be kept before it is automatically garbage collected. For example, to configure Git to automatically remove reflog entries that are older than 7 days, you would use the following command:
+
+```
+git config --global reflog.expire 7
+```
+
+Once you have set the `reflog.expire` configuration option, Git will automatically remove reflog entries that are older than the specified number of days when you run the `git reflog expire` command.
+
+Here are some additional tips for configuring Git to automatically garbage collect expired reflog entries:
+
+* You can use the `git config --global` command to set the `reflog.expire` configuration option for all repositories.
+* You can use the `git config --local` command to set the `reflog.expire` configuration option for a specific repository.
+* You can use the `git reflog expire` command to manually garbage collect expired reflog entries.
+
+The reflog is a log of all changes that have been made to a ref, such as HEAD, master, or origin/master. The reflog can be helpful for debugging and recovering from mistakes. However, it can also grow quite large over time. If you do not need to keep a full history of all reflog entries, you can configure Git to automatically garbage collect expired reflog entries.
+
+Here are some additional details about the `reflog.expire` configuration option:
+
+* The value of the `reflog.expire` configuration option can be any integer value.
+* If the value of the `reflog.expire` configuration option is set to 0, Git will not garbage collect any reflog entries.
+* If the value of the `reflog.expire` configuration option is set to a negative value, Git will never garbage collect any reflog entries.
+
+
 **92. What is the purpose of the Git "fetch --prune" command? **
+
+The git fetch --prune command is used to fetch all of the changes from a remote repository and remove any remote tracking branches that are no longer present on the remote repository. This can be helpful for keeping your local repository clean and up-to-date.
+
+To use the git fetch --prune command, you need to specify the name of the remote repository that you want to fetch from. For example, to fetch from the remote repository named `origin`, you would use the following command:
+
+```
+git fetch --prune origin
+```
+
+The git fetch --prune command will fetch all of the changes from the `origin` remote repository, and it will remove any remote tracking branches that are no longer present on the `origin` remote repository.
+
+Here are some additional tips for using the git fetch --prune command:
+
+* You can use the `git fetch` command without the `--prune` option to fetch all of the changes from a remote repository, but it will not remove any remote tracking branches that are no longer present on the remote repository.
+* You can use the `git fetch --prune --update-shallow` command to fetch all of the changes from a remote repository and also update any shallow clones that you have of the remote repository.
+* You can use the `git fetch --prune --dry-run` command to see what the git fetch --prune command would do without actually making any changes to your local repository.
+
+
 
 **93. How do you configure Git to automatically garbage collect stale references in reflogs? **
 
+You can configure Git to automatically garbage collect stale references in reflogs by setting the `reflog.expire` configuration option to a positive integer value. The `reflog.expire` configuration option specifies the number of days that a reflog entry should be kept before it is automatically garbage collected. For example, to configure Git to automatically remove reflog entries that are older than 7 days, you would use the following command:
+
+```
+git config --global reflog.expire 7
+```
+
+Once you have set the `reflog.expire` configuration option, Git will automatically remove reflog entries that are older than the specified number of days when you run the `git reflog expire` command.
+
+Here are some additional tips for configuring Git to automatically garbage collect stale references in reflogs:
+
+* You can use the `git config --global` command to set the `reflog.expire` configuration option for all repositories.
+* You can use the `git config --local` command to set the `reflog.expire` configuration option for a specific repository.
+* You can use the `git reflog expire` command to manually garbage collect stale reflog entries.
+
+The reflog is a log of all changes that have been made to a ref, such as HEAD, master, or origin/master. The reflog can be helpful for debugging and recovering from mistakes. However, it can also grow quite large over time. If you do not need to keep a full history of all reflog entries, you can configure Git to automatically garbage collect stale reflog entries.
+
+Here are some additional details about the `reflog.expire` configuration option:
+
+* The value of the `reflog.expire` configuration option can be any integer value.
+* If the value of the `reflog.expire` configuration option is set to 0, Git will not garbage collect any reflog entries.
+* If the value of the `reflog.expire` configuration option is set to a negative value, Git will never garbage collect any reflog entries.
+
 **94. Explain the concept of Git rerere reuse recorded resolution and how it can be used. **
+
+Sure. The Git rerere reuse recorded resolution is a feature that can be used to automatically resolve merge conflicts that you have already resolved in the past. This can be helpful if you are frequently merging branches that have the same conflicts.
+
+To use the Git rerere reuse recorded resolution feature, you need to first resolve a merge conflict manually. Once you have resolved the conflict, you can use the `git rerere` command to record the resolution. The `git rerere` command will store the resolution in a file called `.git/rr-cache`.
+
+The next time you merge a branch that has the same conflict, Git will automatically try to use the resolution that you recorded. If the resolution is successful, Git will not prompt you to resolve the conflict.
+
+Here are some additional tips for using the Git rerere reuse recorded resolution feature:
+
+* You can use the `git config --global rerere.enabled` configuration option to enable the rerere feature globally.
+* You can use the `git config --local rerere.enabled` configuration option to enable the rerere feature for a specific repository.
+* You can use the `git rerere clear` command to clear the `.git/rr-cache` file.
+
+The rerere reuse recorded resolution feature can be a helpful timesaver if you are frequently merging branches that have the same conflicts. However, it is important to note that the rerere feature is not perfect. Sometimes, the rerere feature may not be able to resolve a conflict automatically. In these cases, you will still need to resolve the conflict manually.
+
+
 
 **95. How do you configure Git to automatically garbage collect unreachable objects? **
 
+Sure. To configure Git to automatically garbage collect unreachable objects, you can set the `gc.prune` configuration option to a positive integer value. The `gc.prune` configuration option specifies the number of days that an object should be considered unreachable before it is automatically garbage collected. For example, to configure Git to automatically remove unreachable objects that are older than 7 days, you would use the following command:
+
+```
+git config --global gc.prune 7
+```
+
+Once you have set the `gc.prune` configuration option, Git will automatically remove unreachable objects that are older than the specified number of days when you run the `git gc` command.
+
+Here are some additional tips for configuring Git to automatically garbage collect unreachable objects:
+
+* You can use the `git config --global` command to set the `gc.prune` configuration option for all repositories.
+* You can use the `git config --local` command to set the `gc.prune` configuration option for a specific repository.
+* You can use the `git gc` command to manually garbage collect unreachable objects.
+
+Unreachable objects are objects that are no longer referenced by any commit in your Git repository. This can happen if you delete a commit, or if you move a file around in your repository. Unreachable objects can take up space in your Git repository, so it is a good idea to clean them up periodically.
+
+The `git gc` command is used to perform garbage collection on your Git repository. This includes removing unreachable objects, as well as other tasks such as compacting your database.
+
+Here are some additional details about the `gc.prune` configuration option:
+
+* The value of the `gc.prune` configuration option can be any integer value.
+* If the value of the `gc.prune` configuration option is set to 0, Git will not garbage collect any unreachable objects.
+* If the value of the `gc.prune` configuration option is set to a negative value, Git will never garbage collect any unreachable objects.
+
+
 **96. What is the purpose of the Git "rebase --skip" command? **
+
+The git rebase --skip command is used to skip a commit during a rebase. This can be helpful if you are rebasing your branch and you encounter a commit that you do not want to include in the rebase.
+
+To use the git rebase --skip command, you need to specify the commit that you want to skip. For example, to skip the commit with the hash `abc123`, you would use the following command:
+
+```
+git rebase --skip abc123
+```
+
+The git rebase --skip command will skip the commit with the hash `abc123` and continue the rebase with the next commit.
+
+Here are some additional tips for using the git rebase --skip command:
+
+* You can use the `git rebase -i` command to interactively rebase your branch. This will allow you to skip commits, edit commits, and more.
+* You can use the `git rebase --abort` command to abort a rebase that you are in the middle of.
+* You can use the `git rebase --continue` command to continue a rebase that you have aborted.
+
+The git rebase --skip command can be a helpful tool for skipping commits during a rebase. However, it is important to note that skipping commits can make it difficult to track the history of your repository. If you are not sure whether or not you should skip a commit, it is best to consult with a more experienced Git user.
+
 
 **97. How do you configure Git to automatically garbage collect expired objects? **
 
+Sure. To configure Git to automatically garbage collect expired objects, you can set the `gc.autopacklimit` configuration option to a positive integer value. The `gc.autopacklimit` configuration option specifies the number of objects that Git will keep in memory when it is garbage collecting. Once the number of objects in memory reaches the `gc.autopacklimit` value, Git will automatically garbage collect the oldest objects. For example, to configure Git to automatically remove objects that are older than 100, you would use the following command:
+
+```
+git config --global gc.autopacklimit 100
+```
+
+Once you have set the `gc.autopacklimit` configuration option, Git will automatically garbage collect expired objects when you run the `git gc` command.
+
+Here are some additional tips for configuring Git to automatically garbage collect expired objects:
+
+* You can use the `git config --global` command to set the `gc.autopacklimit` configuration option for all repositories.
+* You can use the `git config --local` command to set the `gc.autopacklimit` configuration option for a specific repository.
+* You can use the `git gc` command to manually garbage collect expired objects.
+
+Expired objects are objects that are no longer referenced by any commit in your Git repository. This can happen if you delete a commit, or if you move a file around in your repository. Expired objects can take up space in your Git repository, so it is a good idea to clean them up periodically.
+
+The `git gc` command is used to perform garbage collection on your Git repository. This includes removing expired objects, as well as other tasks such as compacting your database.
+
+Here are some additional details about the `gc.autopacklimit` configuration option:
+
+* The value of the `gc.autopacklimit` configuration option can be any integer value.
+* If the value of the `gc.autopacklimit` configuration option is set to 0, Git will not garbage collect any expired objects.
+* If the value of the `gc.autopacklimit` configuration option is set to a negative value, Git will never garbage collect any expired objects.
+
+
+
+
 **98. Explain the concept of Git rerere clear and how it can be used. **
+Sure. To configure Git to automatically garbage collect expired objects, you can set the `gc.autopacklimit` configuration option to a positive integer value. The `gc.autopacklimit` configuration option specifies the number of objects that Git will keep in memory when it is garbage collecting. Once the number of objects in memory reaches the `gc.autopacklimit` value, Git will automatically garbage collect the oldest objects. For example, to configure Git to automatically remove objects that are older than 100, you would use the following command:
+
+```
+git config --global gc.autopacklimit 100
+```
+
+Once you have set the `gc.autopacklimit` configuration option, Git will automatically garbage collect expired objects when you run the `git gc` command.
+
+Here are some additional tips for configuring Git to automatically garbage collect expired objects:
+
+* You can use the `git config --global` command to set the `gc.autopacklimit` configuration option for all repositories.
+* You can use the `git config --local` command to set the `gc.autopacklimit` configuration option for a specific repository.
+* You can use the `git gc` command to manually garbage collect expired objects.
+
+Expired objects are objects that are no longer referenced by any commit in your Git repository. This can happen if you delete a commit, or if you move a file around in your repository. Expired objects can take up space in your Git repository, so it is a good idea to clean them up periodically.
+
+The `git gc` command is used to perform garbage collection on your Git repository. This includes removing expired objects, as well as other tasks such as compacting your database.
+
+Here are some additional details about the `gc.autopacklimit` configuration option:
+
+* The value of the `gc.autopacklimit` configuration option can be any integer value.
+* If the value of the `gc.autopacklimit` configuration option is set to 0, Git will not garbage collect any expired objects.
+* If the value of the `gc.autopacklimit` configuration option is set to a negative value, Git will never garbage collect any expired objects.
+
 
 **99. How do you configure Git to automatically garbage collect stale references? **
 
+Sure. To configure Git to automatically garbage collect stale references, you can set the `gc.reflogexpire` configuration option to a positive integer value. The `gc.reflogexpire` configuration option specifies the number of days that a reflog entry should be kept before it is automatically garbage collected. For example, to configure Git to automatically remove reflog entries that are older than 7 days, you would use the following command:
+
+```
+git config --global gc.reflogexpire 7
+```
+
+Once you have set the `gc.reflogexpire` configuration option, Git will automatically remove reflog entries that are older than the specified number of days when you run the `git gc` command.
+
+Here are some additional tips for configuring Git to automatically garbage collect stale references:
+
+* You can use the `git config --global` command to set the `gc.reflogexpire` configuration option for all repositories.
+* You can use the `git config --local` command to set the `gc.reflogexpire` configuration option for a specific repository.
+* You can use the `git gc` command to manually garbage collect stale references.
+
+Stale references are references that are no longer pointing to a valid object. This can happen if you delete a commit, or if you move a file around in your repository. Stale references can take up space in your Git repository, so it is a good idea to clean them up periodically.
+
+The `git gc` command is used to perform garbage collection on your Git repository. This includes removing stale references, as well as other tasks such as compacting your database.
+
+Here are some additional details about the `gc.reflogexpire` configuration option:
+
+* The value of the `gc.reflogexpire` configuration option can be any integer value.
+* If the value of the `gc.reflogexpire` configuration option is set to 0, Git will not garbage collect any reflog entries.
+* If the value of the `gc.reflogexpire` configuration option is set to a negative value, Git will never garbage collect any reflog entries.
+
 
 **100. What is the purpose of the Git "reflog expire" command? **
+
+The git reflog expire command is used to remove old reflog entries from your Git repository. Reflog entries are a record of all changes that have been made to a ref, such as HEAD, master, or origin/master. They can be helpful for debugging and recovering from mistakes. However, they can also take up space in your Git repository, so it is a good idea to clean them up periodically.
+
+The git reflog expire command takes a number of options that allow you to specify which reflog entries to remove. For example, to remove all reflog entries that are older than 7 days, you would use the following command:
+
+```
+git reflog expire --expire=7
+```
+
+The `- expire` option tells Git to remove all reflog entries that are older than the specified number of days.
+
+Here are some additional tips for using the git reflog expire command:
+
+* You can use the `git reflog expire --verbose` option to see a list of all the reflog entries that are being removed.
+* You can use the `git reflog expire --dry-run` option to see what the git reflog expire command would do without actually removing any reflog entries.
+
+The git reflog expire command is a powerful tool for cleaning up your Git repository. However, it is important to use it with caution. If you remove too many reflog entries, you may not be able to recover from a mistake.
