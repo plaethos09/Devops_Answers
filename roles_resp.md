@@ -1,13 +1,13 @@
 Here is a comprehensive list of roles and responsibilities that you can explain during an advanced DevOps engineer job interview, given your experience with Linux, Git, Docker, Kubernetes, Jenkins, Ansible, Terraform, and AWS, while working in the financial and FMCG sectors:
 
-**Roles:**
+**My Roles Are:**
 
-1. **Infrastructure Automation:**
+1. **Infrastructure Automation:Terraform**
    - Design, implement, and maintain infrastructure-as-code (IaC) solutions using Terraform to provision and manage cloud resources on AWS.
    - Define reusable infrastructure modules and templates for different environments and applications.
    - Ensure infrastructure is versioned, tested, and deployed consistently across different stages of the software development lifecycle (SDLC).
 
-2. **Containerization and Orchestration:**
+2. **Containerization and Orchestration:Docker and kubernetes**
    - Develop Docker containers for packaging applications and their dependencies, ensuring consistent and portable deployments.
    - Manage Kubernetes clusters for container orchestration, including deployment, scaling, and monitoring of microservices-based applications.
    - Optimize container resource allocation and scaling strategies to achieve high availability and optimal performance.
