@@ -1,5 +1,4 @@
-Hi i am your name, I am currently working for macroserv techno solutions, iam a graduate from your college name, currently I am working for example: Travis Perkins which is a physical infrastructure based company in UK , and my previous projects  were Example: Meridian bank and example: great west life co , I am working on AWS cloud infrastructure for my current project my roles are
-
+Hi i am your name, I am currently working for macroserv techno solutions, iam a graduate from your college name, currently I am working for example: Travis Perkins which is a physical infrastructure based company in UK , and my previous projects  were Example: Meridian bank and example: great west life co , I am working on AWS cloud infrastructure for my current project.
 
 **My Roles Are:**
 
