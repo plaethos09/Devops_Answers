@@ -455,8 +455,9 @@ Private IP addresses:
 
 In summary, public IPs enable external internet access to EC2 instances while private IPs allow secure communication internally between instances and VPC resources based on security groups and routing tables.
 
-**17.	How can you access EC2 instances without using a key pair?
-**There are a few ways to access EC2 instances without using a key pair:
+**17.	How can you access EC2 instances without using a key pair?**
+
+There are a few ways to access EC2 instances without using a key pair:
 
 - Session Manager - Provides interactive shell access using AWS CLI without SSH. Does not need open inbound ports.
 
