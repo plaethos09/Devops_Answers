@@ -168,6 +168,8 @@ Some key points on how it works:
 
 - Auto-recovery actions are logged in EventBridge for auditing and correlation.
 
+``aws ec2 recover-instances --instance-ids <instance-id>``
+
 So in summary, EC2 auto-recovery automatically restarts impaired instances to maintain application health and availability without manual intervention. It helps recover from underlying hardware/software faults.
 
 **8.	What are the different ways to launch an EC2 instance?**
