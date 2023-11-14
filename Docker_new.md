@@ -226,8 +226,6 @@
     Command: `docker run --dns [dns_server] [image_name]`
 
 
-Of course! Here are more challenging Docker-related questions along with their corresponding commands:
-
 26. **How can you view the Docker logs in real-time for multiple containers?**
     Command: `docker logs -f $(docker ps -q)`
 
