@@ -74,8 +74,6 @@
 25. **What's the command to tag a Docker image?**
     Command: `docker tag [image_id] [new_image_name:tag]`
 
-
-
 1. **How do you list all running containers?**
    Command: `docker ps`
 
@@ -150,8 +148,6 @@
 
 25. **What's the command to prune all stopped containers and volumes?**
     Command: `docker container prune -f && docker volume prune -f`
-
-
 
 
 26. **How can you view the Docker logs in real-time for multiple containers?**
@@ -230,4 +226,80 @@
     Command: `docker run --dns [dns_server] [image_name]`
 
 
+Of course! Here are more challenging Docker-related questions along with their corresponding commands:
+
+26. **How can you view the Docker logs in real-time for multiple containers?**
+    Command: `docker logs -f $(docker ps -q)`
+
+27. **What command would you use to limit the container's network bandwidth?**
+    Command: `docker run --net=container:[container_id/name] [image_name]`
+
+28. **How do you share namespaces between containers?**
+    Command: Not directly achievable via command; it involves custom configurations and orchestration tools like Kubernetes.
+
+29. **How can you run a Docker container with a specific user ID?**
+    Command: `docker run --user=[user_id] [image_name]`
+
+30. **What's the command to list dangling volumes?**
+    Command: `docker volume ls -f dangling=true`
+
+31. **How do you specify a custom Dockerfile name while building an image?**
+    Command: `docker build -t [image_name] -f [Dockerfile_name] .`
+
+32. **How can you limit the number of available CPUs for a container?**
+    Command: `docker run --cpuset-cpus=0,1 [image_name]`
+
+33. **What command would you use to create a Docker container with a specific hostname?**
+    Command: `docker run --hostname [custom_hostname] [image_name]`
+
+34. **How do you pause all running containers at once?**
+    Command: `docker pause $(docker ps -q)`
+
+35. **How can you set up a Docker container to automatically remove itself after exiting?**
+    Command: `docker run --rm [image_name]`
+
+36. **What's the command to set up a container to start in read-only mode?**
+    Command: `docker run --read-only [image_name]`
+
+37. **How do you execute a command inside a running container without starting a new shell?**
+    Command: `docker exec [container_id/name] [command]`
+
+38. **How can you copy a file from the local filesystem to a running container?**
+    Command: `docker cp [local_file_path] [container_id]:[destination_path]`
+
+39. **What command would you use to list all Docker containers sorted by their creation time?**
+    Command: `docker ps --format "table {{.ID}}\t{{.CreatedAt}}\t{{.Image}}\t{{.Names}}" --sort=created`
+
+40. **How do you enable Docker's experimental features?**
+    Command: Update the Docker daemon configuration file to include `"experimental": true`.
+
+41. **How can you view the detailed history of a specific image layer?**
+    Command: `docker history --no-trunc [image_name]`
+
+42. **What's the command to display the version of Docker Engine?**
+    Command: `docker version`
+
+43. **How do you set up a container to share the network namespace with another container?**
+    Command: Use the `--network container:[container_id/name]` flag during container creation.
+
+44. **How can you run a command on a Docker container directly from a stopped state?**
+    Command: `docker start -a -i [container_id/name]`
+
+45. **What command would you use to list the events emitted by Docker daemon?**
+    Command: `docker events`
+
+46. **How do you set up a container to limit its I/O read and write rate?**
+    Command: `docker run --device-read-bps=/dev/sda:1mb --device-write-bps=/dev/sda:1mb [image_name]`
+
+47. **How can you view detailed information about Docker's resource usage and constraints?**
+    Command: `docker system df`
+
+48. **What command would you use to export a container's filesystem as a tar archive?**
+    Command: `docker export [container_id] > /path/to/container.tar`
+
+49. **How do you view the Docker Hub official images available for pull?**
+    Command: `docker search [image_name]`
+
+50. **How can you create a Docker container with a specific DNS server?**
+    Command: `docker run --dns [dns_server] [image_name]`
 
