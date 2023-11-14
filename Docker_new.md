@@ -75,3 +75,81 @@
     Command: `docker tag [image_id] [new_image_name:tag]`
 
 
+
+1. **How do you list all running containers?**
+   Command: `docker ps`
+
+2. **What command would you use to display the sizes of all containers, images, and volumes?**
+   Command: `docker system df`
+
+3. **How can you show detailed information about a specific container?**
+   Command: `docker inspect [container_id/name]`
+
+4. **How do you remove all stopped containers?**
+   Command: `docker container prune`
+
+5. **What's the command to remove all unused images?**
+   Command: `docker image prune`
+
+6. **How can you remove all unused volumes?**
+   Command: `docker volume prune`
+
+7. **How do you run a container with environment variables?**
+   Command: `docker run -e "KEY=VALUE" [image_name]`
+
+8. **What command would you use to list dangling images?**
+   Command: `docker images -f "dangling=true"`
+
+9. **How can you limit the CPU usage of a container?**
+   Command: `docker run --cpus=0.5 [image_name]`
+
+10. **How do you limit memory usage for a container?**
+    Command: `docker run -m 512m [image_name]`
+
+11. **What's the command to display the history of an image?**
+    Command: `docker history [image_name]`
+
+12. **How can you copy files from a container to the local filesystem?**
+    Command: `docker cp [container_id]:[source_path] [destination_path]`
+
+13. **How do you view real-time resource usage statistics of running containers?**
+    Command: `docker stats`
+
+14. **What command would you use to create a Docker network with a specific subnet and gateway?**
+    Command: `docker network create --subnet=192.168.1.0/24 --gateway=192.168.1.1 [network_name]`
+
+15. **How can you inspect the network configuration of a specific container?**
+    Command: `docker network inspect [network_name]`
+
+16. **How do you attach a container to a specific network at runtime?**
+    Command: `docker network connect [network_name] [container_id/name]`
+
+17. **What's the command to detach a container from a network?**
+    Command: `docker network disconnect [network_name] [container_id/name]`
+
+18. **How do you set up a Docker container to automatically restart on failure?**
+    Command: `docker run --restart=always [image_name]`
+
+19. **What command would you use to stop and remove all containers?**
+    Command: `docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)`
+
+20. **How can you prune all unused Docker resources in a single command?**
+    Command: `docker system prune -a`
+
+21. **How do you change the default location of Docker containers and images storage?**
+    Command: Update Docker daemon configuration.
+
+22. **What's the command to set up a container to restart unless explicitly stopped?**
+    Command: `docker run --restart=unless-stopped [image_name]`
+
+23. **How can you change the Docker container's restart policy post-creation?**
+    Command: `docker update --restart=always [container_id/name]`
+
+24. **How do you create a Docker volume and specify a storage driver?**
+    Command: `docker volume create --driver [driver_name] [volume_name]`
+
+25. **What's the command to prune all stopped containers and volumes?**
+    Command: `docker container prune -f && docker volume prune -f`
+
+
+
