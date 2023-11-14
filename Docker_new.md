@@ -303,3 +303,77 @@ Of course! Here are more challenging Docker-related questions along with their c
 50. **How can you create a Docker container with a specific DNS server?**
     Command: `docker run --dns [dns_server] [image_name]`
 
+51. **How can you create a Docker container with a specific entry point?**
+    Command: `docker run --entrypoint [entry_point_command] [image_name]`
+
+52. **What command would you use to set up a container to use a specific network interface?**
+    Command: Not directly achievable via command; requires configuring Docker networking and potentially using custom network plugins.
+
+53. **How do you limit the container's read-only mounts to specific directories?**
+    Command: `docker run --read-only --tmpfs /tmp [image_name]`
+
+54. **How can you display the layers of a specific image with their IDs and sizes?**
+    Command: `docker image inspect --format='{{json .RootFS.Layers}}' [image_name]`
+
+55. **What's the command to check the Docker daemon's current configuration?**
+    Command: `docker system info`
+
+56. **How do you set up a container to run with a specific capability?**
+    Command: `docker run --cap-add [capability_name] [image_name]`
+
+57. **How can you limit the container's access to specific devices?**
+    Command: `docker run --device=/dev/sda [image_name]`
+
+58. **What command would you use to list all the available Docker plugins?**
+    Command: `docker plugin ls`
+
+59. **How do you mount a host directory into a Docker container with read-write access?**
+    Command: `docker run -v /host/dir:/container/dir [image_name]`
+
+60. **How can you create a Docker container with a specific timezone?**
+    Command: `docker run -e TZ=Europe/London [image_name]`
+
+61. **What's the command to display the Docker container's environmental variables?**
+    Command: `docker inspect --format '{{ .Config.Env }}' [container_id/name]`
+
+62. **How do you set up a Docker container to use a custom network bridge?**
+    Command: `docker run --network [custom_network_bridge] [image_name]`
+
+63. **How can you copy a file from a container to the local filesystem?**
+    Command: `docker cp [container_id]:[source_path] [destination_path]`
+
+64. **What command would you use to view the changes made to a container's file system?**
+    Command: `docker diff [container_id/name]`
+
+65. **How do you set up a container to limit its CPU shares relative to other containers?**
+    Command: `docker run --cpu-shares 512 [image_name]`
+
+66. **How can you set up a container to limit its block IO read and write rate?**
+    Command: `docker run --device-read-iops=/dev/sda:1000 --device-write-iops=/dev/sda:1000 [image_name]`
+
+67. **What's the command to show the Docker container's networking details?**
+    Command: `docker network inspect [network_name]`
+
+68. **How do you set up a container to use a specific DNS search domain?**
+    Command: `docker run --dns-search [search_domain] [image_name]`
+
+69. **How can you check the security configuration of a Docker container?**
+    Command: `docker container inspect [container_id/name] --format '{{ .HostConfig.SecurityOpt }}'`
+
+70. **What command would you use to display a Docker container's PID (Process ID)?**
+    Command: `docker inspect --format '{{ .State.Pid }}' [container_id/name]`
+
+71. **How do you set up a Docker container to share the PID namespace with another container?**
+    Command: Use the `--pid=container:[container_id/name]` flag during container creation.
+
+72. **How can you view the Docker container's CPU usage in percentage?**
+    Command: `docker stats --format "table {{.Container}}\t{{.CPUPerc}}"`
+
+73. **What command would you use to limit the container's memory usage and swap space?**
+    Command: `docker run -m 512m --memory-swap=1g [image_name]`
+
+74. **How do you set up a Docker container to restart only a specific number of times on failure?**
+    Command: `docker run --restart=on-failure:5 [image_name]`
+
+75. **How can you display the Docker container's network statistics?**
+    Command: `docker stats --format "table {{.Container}}\t{{.NetIO}}"`
