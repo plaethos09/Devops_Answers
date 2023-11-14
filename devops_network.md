@@ -168,3 +168,10 @@
     - Command usage: `docker run --link <container_name>:<alias>`
 
 49. Discuss the usage of Docker
+
+ Compose in managing multi-container applications and their networks.
+    - Command usage: `docker-compose`
+
+50. How does Docker networking facilitate microservices architecture and communication between services?
+    - Command usage: `docker-compose`, `docker service create`
+
