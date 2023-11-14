@@ -451,3 +451,65 @@
 100. **How do you set up a Docker container to use a specific SELinux label?**
      Command: `docker run --security-opt "label=type:label_value" [image_name]`
 
+
+101. **How can you set up a Docker container to use a specific namespace for user IDs?**
+     Command: Not directly achievable via command; involves advanced configurations and potentially custom user namespaces.
+
+102. **What command would you use to display the Docker container's mount options for each mounted volume?**
+     Command: `docker inspect --format '{{range .Mounts}}{{.Name}} -> {{.Options}}{{"\n"}}{{end}}' [container_id/name]`
+
+103. **How do you set up a Docker container to limit its network bandwidth ingress and egress separately?**
+     Command: `docker run --network [network_name] --cap-add=NET_ADMIN [image_name]`
+
+104. **How can you view the Docker container's environment variables, including system defaults?**
+     Command: `docker exec [container_id/name] printenv`
+
+105. **What's the command to display Docker container's CPU usage over time?**
+     Command: `docker stats --format "table {{.Container}}\t{{.CPUPerc}}\t{{.CPU}}\t{{.CPUPerc}}"`
+
+106. **How do you set up a Docker container to use a specific kernel namespace?**
+     Command: Not directly achievable via command; involves custom configurations and potentially using specific namespaces.
+
+107. **How can you view the Docker container's CPU and memory usage per process?**
+     Command: `docker top [container_id/name]`
+
+108. **What command would you use to display Docker container's read and write bytes to the filesystem?**
+     Command: `docker stats --format "table {{.Container}}\t{{.BlockIO}}"`
+
+109. **How do you set up a Docker container to use a specific PID namespace?**
+     Command: Not directly achievable via command; requires custom configurations and potentially using specific PID namespaces.
+
+110. **How can you view the Docker container's resource usage and limits in a detailed format?**
+     Command: `docker stats --no-stream`
+
+111. **What's the command to display Docker container's network interface information?**
+     Command: `docker exec [container_id/name] ifconfig`
+
+112. **How do you set up a Docker container to use a specific UTS namespace?**
+     Command: Not directly achievable via command; requires custom configurations and potentially using specific UTS namespaces.
+
+113. **How can you view the Docker container's running processes with resource usage details?**
+     Command: `docker top [container_id/name]`
+
+114. **What command would you use to display Docker container's open network connections?**
+     Command: `docker exec [container_id/name] netstat -tuln`
+
+115. **How do you set up a Docker container to use a specific mount propagation type?**
+     Command: `docker run --mount=type=bind,bind-propagation=[propagation_type] [image_name]`
+
+116. **How can you view the Docker container's utilization of swap space?**
+     Command: `docker stats --format "table {{.Container}}\t{{.MemPerc}}"`
+
+117. **What's the command to display Docker container's detailed information about open file descriptors?**
+     Command: `docker exec [container_id/name] lsof`
+
+118. **How do you set up a Docker container to use a specific network bandwidth limit?**
+     Command: `docker run --network [network_name] --cap-add=NET_ADMIN [image_name]`
+
+119. **How can you view the Docker container's real-time disk I/O stats?**
+     Command: `docker stats --format "table {{.Container}}\t{{.BlockIO}}"`
+
+120. **What command would you use to display Docker container's real-time CPU usage in percentage?**
+     Command: `docker stats --format "table {{.Container}}\t{{.CPUPerc}}"`
+
+
