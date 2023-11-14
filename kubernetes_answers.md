@@ -3460,27 +3460,170 @@ You can also use a PodPreset to inject configuration data into Pods that are use
 Pod presets are a powerful tool that can be used to inject configuration data into Pods. They are easy to use and can be applied to Pods that are created by Deployments, StatefulSets, and other Kubernetes controllers.
 
 
+1. **How do you handle application configuration management in Kubernetes?**
 
-51. How do you handle application configuration management in Kubernetes?
-52. What is a Kubeadm, and how is it used in Kubernetes cluster bootstrapping?
-53. Explain the concept of a custom admission controller in Kubernetes.
-54. How does Kubernetes handle certificate rotation for its components?
-55. What is a CSI (Container Storage Interface) driver, and why is it important in Kubernetes?
-56. How do you handle Pod anti-affinity in Kubernetes?
-57. Explain the concept of a service mesh and its role in microservices architectures.
-58. How does Kubernetes handle network policies for Pod communication?
-59. What is a Kubeflow, and how does it relate to Kubernetes?
-60. How do you perform a blue-green deployment in Kubernetes?
-61. Explain the concept of a Pod disruption budget in Kubernetes.
-62. How does Kubernetes handle rolling updates for Deployments?
-63. What is a Kublet TLS Bootstrap in Kubernetes, and why is it needed?
-64. Explain the concept of a mutating admission webhook in Kubernetes.
-65. How do you secure etcd, the distributed key-value store used by Kubernetes?
-66. What is a kubectl, and how is it used to interact with Kubernetes clusters?
-67. How does Kubernetes handle node affinity for Pod scheduling?
-68. Explain the concept of a Pod lifecycle in Kubernetes.
-69. What is a kube-scheduler in Kubernetes, and what is its role?
-70. How do you configure a high availability setup for the Kubernetes control plane?
+   Kubernetes manages application configuration through ConfigMaps and Secrets. To create a ConfigMap:
+   ```
+   kubectl create configmap my-config --from-file=path/to/config/file
+   ```
+   To create a Secret:
+   ```
+   kubectl create secret generic my-secret --from-literal=key1=value1 --from-literal=key2=value2
+   ```
+
+2. **What is a Kubeadm, and how is it used in Kubernetes cluster bootstrapping?**
+
+   Kubeadm is used to bootstrap Kubernetes clusters. To initialize a control plane node:
+   ```
+   kubeadm init --apiserver-advertise-address=<ip_address>
+   ```
+   To join a worker node to the cluster:
+   ```
+   kubeadm join <ip_address>:<port> --token <token> --discovery-token-ca-cert-hash <hash>
+   ```
+
+3. **Explain the concept of a custom admission controller in Kubernetes.**
+
+   Custom admission controllers modify or validate Kubernetes API requests. To create one:
+   ```
+   // Sample: https://github.com/kubernetes/sample-controller
+   ```
+
+4. **How does Kubernetes handle certificate rotation for its components?**
+
+   Kubernetes components use certificates that are automatically rotated before expiration. To configure:
+   ```
+   // Managed by kube-controller-manager & kubelet
+   ```
+
+5. **What is a CSI (Container Storage Interface) driver, and why is it important in Kubernetes?**
+
+   CSI drivers allow dynamic provisioning of storage volumes in Kubernetes. To deploy a CSI driver:
+   ```
+   kubectl apply -f https://raw.githubusercontent.com/kubernetes/csi-api/release-1.0/pkg/specs/csi-v0.3.0-raw-block.yaml
+   ```
+
+6. **How do you handle Pod anti-affinity in Kubernetes?**
+
+   Pod anti-affinity prevents co-location of pods. To set anti-affinity:
+   ```
+   apiVersion: v1
+   kind: Pod
+   metadata:
+     name: mypod
+   spec:
+     affinity:
+       podAntiAffinity:
+         requiredDuringSchedulingIgnoredDuringExecution:
+         - labelSelector:
+             matchExpressions:
+             - key: app
+               operator: In
+               values:
+               - myapp
+           topologyKey: kubernetes.io/hostname
+   ```
+
+7. **Explain the concept of a service mesh and its role in microservices architectures.**
+
+   Service mesh manages service-to-service communication. To deploy Istio service mesh:
+   ```
+   istioctl install
+   ```
+
+8. **How does Kubernetes handle network policies for Pod communication?**
+
+   Network Policies control traffic between pods. To create a network policy:
+   ```
+   kubectl apply -f network-policy.yaml
+   ```
+
+9. **What is a Kubeflow, and how does it relate to Kubernetes?**
+
+   Kubeflow is an ML toolkit for Kubernetes. To deploy Kubeflow:
+   ```
+   kfctl apply -V -f kfctl_k8s_istio.v1.2.0.yaml
+   ```
+
+10. **How do you perform a blue-green deployment in Kubernetes?**
+
+    Blue-green deployments use two identical environments. To perform:
+    ```
+    // Using Deployment and Service objects, switching traffic between versions
+    ```
+
+11. **Explain the concept of a Pod disruption budget in Kubernetes.**
+
+    Pod Disruption Budgets set disruption thresholds. To create a PDB:
+    ```
+    kubectl create pdb my-pdb --selector=app=myapp --min-available=2
+    ```
+
+12. **How does Kubernetes handle rolling updates for Deployments?**
+
+    Kubernetes performs rolling updates to update Deployments. To perform a rolling update:
+    ```
+    kubectl set image deployment/my-deployment my-container=new-image:tag
+    ```
+
+13. **What is a Kubelet TLS Bootstrap in Kubernetes, and why is it needed?**
+
+    Kubelet TLS Bootstrap provides secure communication between Kubelet and API server. Bootstrap is automated.
+
+14. **Explain the concept of a mutating admission webhook in Kubernetes.**
+
+    Mutating webhooks modify requests. To set up a mutating webhook:
+    ```
+    // Create a MutatingWebhookConfiguration object
+    ```
+
+15. **How do you secure etcd, the distributed key-value store used by Kubernetes?**
+
+    To secure etcd, set up TLS encryption and access controls. To configure:
+    ```
+    // Etcd configuration file - etcd.conf
+    ```
+
+16. **What is a kubectl, and how is it used to interact with Kubernetes clusters?**
+
+    Kubectl is the CLI tool to interact with Kubernetes. To use kubectl:
+    ```
+    kubectl get pods
+    ```
+
+17. **How does Kubernetes handle node affinity for Pod scheduling?**
+
+    Node Affinity directs scheduling. To set node affinity:
+    ```
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: mypod
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/e2e-az-name
+                operator: In
+                values:
+                - e2e-az1
+    ```
+
+18. **Explain the concept of a Pod lifecycle in Kubernetes.**
+
+    Pods go through phases: Pending, Running, Succeeded, Failed, and Unknown.
+
+19. **What is a kube-scheduler in Kubernetes, and what is its role?**
+
+    Kube-scheduler schedules pods onto nodes. It considers resource requirements and constraints.
+
+20. **How do you configure a high availability setup for the Kubernetes control plane?**
+
+  Set up multiple instances of control plane components with load balancing for HA.
+
+
 71. Explain the concept of a CSI (Container Storage Interface) in Kubernetes.
 72. How does Kubernetes handle Pod priority and preemption?
 73. What is a custom metrics API in Kubernetes, and when would you use it?
