@@ -375,3 +375,79 @@
 
 75. **How can you display the Docker container's network statistics?**
     Command: `docker stats --format "table {{.Container}}\t{{.NetIO}}"`
+
+76. **How do you set up a Docker container to use a specific kernel version?**
+    Command: Not directly achievable via command; requires advanced configurations and potentially using custom kernel parameters.
+
+77. **What command would you use to view the Docker container's memory usage statistics?**
+    Command: `docker stats --format "table {{.Container}}\t{{.MemUsage}}"`
+
+78. **How can you view the Docker container's I/O statistics?**
+    Command: `docker stats --format "table {{.Container}}\t{{.BlockIO}}"`
+
+79. **How do you set up a container to restrict its network ingress/egress traffic?**
+    Command: Not directly achievable via command; involves network policies and firewall configurations.
+
+80. **How can you set up a Docker container to use a specific cgroup parent?**
+    Command: `docker run --cgroup-parent [cgroup_parent_name] [image_name]`
+
+81. **What command would you use to display the current Docker container's CPU throttling information?**
+    Command: `docker inspect --format '{{ .HostConfig.CPUQuota }}' [container_id/name]`
+
+82. **How do you set up a Docker container to use a specific MAC address?**
+    Command: `docker run --mac-address [custom_MAC_address] [image_name]`
+
+83. **How can you list all the Docker container's mounted volumes and their paths?**
+    Command: `docker inspect --format '{{range .Mounts}}{{.Source}} -> {{.Destination}}{{"\n"}}{{end}}' [container_id/name]`
+
+84. **What's the command to show the Docker container's hostname?**
+    Command: `docker inspect --format '{{ .Config.Hostname }}' [container_id/name]`
+
+85. **How do you set up a Docker container to use a specific CPU architecture?**
+    Command: Not directly achievable via command; requires building images for specific architectures or using emulators.
+
+86. **How can you view the Docker container's total memory and CPU limits?**
+    Command: `docker inspect --format '{{ .HostConfig.Memory }}' [container_id/name]` and `docker inspect --format '{{ .HostConfig.CPUShares }}' [container_id/name]`
+
+87. **What command would you use to display the Docker container's filesystem type and mounts?**
+    Command: `docker inspect --format '{{json .Mounts}}' [container_id/name]`
+
+88. **How do you set up a Docker container to share the IPC namespace with another container?**
+    Command: Use the `--ipc=container:[container_id/name]` flag during container creation.
+
+89. **How can you display the Docker container's environment variables including defaults?**
+    Command: `docker inspect --format '{{json .Config.Env}}' [container_id/name]`
+
+90. **What's the command to display the Docker container's current state, including running or stopped?**
+    Command: `docker inspect --format '{{ .State.Status }}' [container_id/name]`
+
+91. **How do you set up a Docker container to use a specific UTS namespace?**
+    Command: Not directly achievable via command; requires custom configurations and potentially namespace sharing.
+
+92. **How can you view the Docker container's attached devices and their paths?**
+    Command: `docker inspect --format '{{range .Mounts}}{{.Name}} -> {{.Source}}{{"\n"}}{{end}}' [container_id/name]`
+
+93. **What command would you use to display the Docker container's current health status?**
+    Command: `docker inspect --format '{{ .State.Health.Status }}' [container_id/name]`
+
+94. **How do you set up a Docker container to use a specific user namespace?**
+    Command: Not directly achievable via command; involves advanced configurations and potentially custom namespaces.
+
+95. **How can you view the Docker container's exit code from its last run?**
+    Command: `docker inspect --format '{{ .State.ExitCode }}' [container_id/name]`
+
+96. **What's the command to view Docker container's resource utilization over time?**
+    Command: `docker stats --format "table {{.Container}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.NetIO}}\t{{.BlockIO}}"`
+
+97. **How do you set up a Docker container to share the UTS namespace with another container?**
+    Command: Use the `--uts=container:[container_id/name]` flag during container creation.
+
+98. **How can you display the Docker container's start time and uptime?**
+    Command: `docker inspect --format '{{ .State.StartedAt }}' [container_id/name]` for start time and calculate uptime manually.
+
+99. **What command would you use to display the Docker container's Open ports?**
+    Command: `docker port [container_id/name]`
+
+100. **How do you set up a Docker container to use a specific SELinux label?**
+     Command: `docker run --security-opt "label=type:label_value" [image_name]`
+
