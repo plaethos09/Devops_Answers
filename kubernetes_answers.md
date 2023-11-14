@@ -3624,26 +3624,147 @@ Pod presets are a powerful tool that can be used to inject configuration data in
   Set up multiple instances of control plane components with load balancing for HA.
 
 
-71. Explain the concept of a CSI (Container Storage Interface) in Kubernetes.
-72. How does Kubernetes handle Pod priority and preemption?
-73. What is a custom metrics API in Kubernetes, and when would you use it?
-74. How do you perform canary deployments in Kubernetes?
-75. Explain the concept of a sidecar pattern in Kubernetes.
-76. What is a Kubernetes operator, and how does it extend Kubernetes functionality?
-77. How does Kubernetes handle network policies for egress traffic?
-78. What is a Kubernetes State Metrics exporter, and why is it useful?
-79. Explain the concept of a kube-proxy mode in Kubernetes.
-80. How do you handle multi-cluster deployments in Kubernetes?
-81. What is a Pod security policy in Kubernetes, and how does it enforce security?
-82. How does Kubernetes handle resource quotas for namespaces?
-83. What is a kube-controller-manager, and what are its responsibilities?
-84. Explain the concept of a CRD (Custom Resource Definition) controller in Kubernetes.
-85. How do you handle image pull secrets in Kubernetes?
-86. What is a Vertical Pod Autoscaler, and when would you use it?
-87. How does Kubernetes handle pod scheduling across multiple availability zones?
-88. Explain the concept of a privileged container in Kubernetes.
-89. What is a kube-apiserver, and what is its role in the Kubernetes control plane?
-90. How do you handle Pod affinity and anti-affinity for multiple dimensions in Kubernetes?
+
+71. **Explain the concept of a CSI (Container Storage Interface) in Kubernetes.**
+
+   The CSI (Container Storage Interface) in Kubernetes allows for the integration of third-party storage systems into Kubernetes. To create a PersistentVolumeClaim using a CSI driver:
+   ```bash
+   kubectl apply -f my-pvc.yaml
+   ```
+
+72. **How does Kubernetes handle Pod priority and preemption?**
+
+   Kubernetes uses PriorityClasses to manage Pod priority. To create a PriorityClass:
+   ```bash
+   kubectl create priorityclass my-priority --value=1000
+   ```
+
+73. **What is a custom metrics API in Kubernetes, and when would you use it?**
+
+   Custom Metrics API enables scaling based on custom application metrics. To set up a custom metrics API:
+   ```bash
+   kubectl apply -f custom-metrics-api.yaml
+   ```
+
+74. **How do you perform canary deployments in Kubernetes?**
+
+   Canary deployments can be achieved using Deployment strategies and service configurations. To perform a canary deployment:
+   ```bash
+   kubectl apply -f canary-deployment.yaml
+   ```
+
+75. **Explain the concept of a sidecar pattern in Kubernetes.**
+
+   Sidecar pattern involves running additional containers alongside the main container in a Pod to provide additional functionalities. To create a Pod with a sidecar container:
+   ```bash
+   kubectl apply -f sidecar-pod.yaml
+   ```
+
+76. **What is a Kubernetes operator, and how does it extend Kubernetes functionality?**
+
+   Kubernetes operators automate the management of complex applications. To deploy an operator:
+   ```bash
+   kubectl apply -f operator.yaml
+   ```
+
+77. **How does Kubernetes handle network policies for egress traffic?**
+
+   Network policies in Kubernetes can define egress rules. To create a network policy allowing egress traffic:
+   ```bash
+   kubectl apply -f network-policy-egress.yaml
+   ```
+
+78. **What is a Kubernetes State Metrics exporter, and why is it useful?**
+
+   Kubernetes State Metrics exporter exposes cluster-level metrics. To deploy a State Metrics exporter:
+   ```bash
+   kubectl apply -f kube-state-metrics.yaml
+   ```
+
+79. **Explain the concept of a kube-proxy mode in Kubernetes.**
+
+   Kube-proxy modes determine how networking is configured. To view or set kube-proxy mode:
+   ```bash
+   kubectl get configmap kube-proxy -n kube-system -o yaml
+   ```
+
+80. **How do you handle multi-cluster deployments in Kubernetes?**
+
+    Multi-cluster deployments can be managed using tools like federation or GitOps principles. To set up a multi-cluster deployment using federation:
+    ```bash
+    kubefed init my-federation
+    ```
+
+81. **What is a Pod security policy in Kubernetes, and how does it enforce security?**
+
+    Pod Security Policies define security standards for Pods. To create a Pod Security Policy:
+    ```bash
+    kubectl apply -f pod-security-policy.yaml
+    ```
+
+82. **How does Kubernetes handle resource quotas for namespaces?**
+
+    ResourceQuotas in Kubernetes restrict resource usage within a namespace. To create a ResourceQuota:
+    ```bash
+    kubectl apply -f resource-quota.yaml
+    ```
+
+83. **What is a kube-controller-manager, and what are its responsibilities?**
+
+    The kube-controller-manager is a Kubernetes control plane component responsible for managing various controllers. To check its status:
+    ```bash
+    kubectl get componentstatus
+    ```
+
+84. **Explain the concept of a CRD (Custom Resource Definition) controller in Kubernetes.**
+
+    CRD controllers extend Kubernetes by defining custom resources. To create a Custom Resource Definition:
+    ```bash
+    kubectl apply -f custom-resource-definition.yaml
+    ```
+
+85. **How do you handle image pull secrets in Kubernetes?**
+
+    ImagePullSecrets allow Pods to pull private images from registries. To create an image pull secret:
+    ```bash
+    kubectl create secret docker-registry my-secret --docker-username=<username> --docker-password=<password>
+    ```
+
+86. **What is a Vertical Pod Autoscaler, and when would you use it?**
+
+    Vertical Pod Autoscaler adjusts resource requests for Pods based on usage. To set up a Vertical Pod Autoscaler:
+    ```bash
+    kubectl apply -f vertical-pod-autoscaler.yaml
+    ```
+
+87. **How does Kubernetes handle pod scheduling across multiple availability zones?**
+
+    Kubernetes supports pod scheduling across zones through topology spread constraints. To schedule pods across zones:
+    ```bash
+    kubectl apply -f topology-constraint.yaml
+    ```
+
+88. **Explain the concept of a privileged container in Kubernetes.**
+
+    A privileged container has extended capabilities within the host. To run a privileged container:
+    ```bash
+    kubectl run my-pod --image=my-image --privileged
+    ```
+
+89. **What is a kube-apiserver, and what is its role in the Kubernetes control plane?**
+
+    The kube-apiserver is the Kubernetes API server handling API requests. To check its logs:
+    ```bash
+    kubectl logs kube-apiserver-master -n kube-system
+    ```
+
+90. **How do you handle Pod affinity and anti-affinity for multiple dimensions in Kubernetes?**
+
+    Pod affinity/anti-affinity can be set with multiple selector labels. To configure multiple dimensions of affinity:
+    ```bash
+    kubectl apply -f pod-affinity.yaml
+    ```
+
 91. What is a CSI (Container Storage Interface) provisioner, and how is it used in Kubernetes?
 92. Explain the concept of a Kubernetes custom resource validation webhook.
 93. How does Kubernetes handle secrets encryption at rest?
