@@ -3765,13 +3765,74 @@ Pod presets are a powerful tool that can be used to inject configuration data in
     kubectl apply -f pod-affinity.yaml
     ```
 
-91. What is a CSI (Container Storage Interface) provisioner, and how is it used in Kubernetes?
-92. Explain the concept of a Kubernetes custom resource validation webhook.
-93. How does Kubernetes handle secrets encryption at rest?
-94. What is a kube-scheduler extender, and how does it work?
-95. How do you configure role-based access control (RBAC) in Kubernetes?
-96. Explain the concept of a CSI (Container Storage Interface) snapshot in Kubernetes.
-97. What is a kubelet certificate rotation, and why is it necessary?
-98. How does Kubernetes handle affinity and anti-affinity for Pod topology spread constraints?
-99. What is a kube-proxy IPVS mode in Kubernetes, and how does it improve performance?
-100. How do you configure a Kubernetes cluster for high availability across regions?
+
+91. **What is a CSI (Container Storage Interface) provisioner, and how is it used in Kubernetes?**
+
+   CSI provisioners dynamically provision and manage storage volumes in Kubernetes. To deploy a CSI provisioner:
+   ```bash
+   kubectl apply -f csi-provisioner.yaml
+   ```
+
+92. **Explain the concept of a Kubernetes custom resource validation webhook.**
+
+   Custom resource validation webhooks validate custom resources. To set up a validation webhook:
+   ```bash
+   kubectl apply -f custom-resource-validation-webhook.yaml
+   ```
+
+93. **How does Kubernetes handle secrets encryption at rest?**
+
+   Kubernetes can encrypt secrets at rest. To enable encryption:
+   ```bash
+   kubectl create secret generic my-secret --from-literal=key1=value1 --encryption-provider=aescbc
+   ```
+
+94. **What is a kube-scheduler extender, and how does it work?**
+
+   Kube-scheduler extenders enhance the scheduling process with custom logic. To deploy a scheduler extender:
+   ```bash
+   kubectl apply -f kube-scheduler-extender.yaml
+   ```
+
+95. **How do you configure role-based access control (RBAC) in Kubernetes?**
+
+   RBAC in Kubernetes controls access to resources. To create a role and bind it to a user:
+   ```bash
+   kubectl create role my-role --verb=get,list,create --resource=pods
+   kubectl create rolebinding my-rolebinding --role=my-role --user=user1
+   ```
+
+96. **Explain the concept of a CSI (Container Storage Interface) snapshot in Kubernetes.**
+
+   CSI snapshots allow the creation of point-in-time copies of persistent volumes. To create a snapshot:
+   ```bash
+   kubectl apply -f csi-snapshot.yaml
+   ```
+
+97. **What is a kubelet certificate rotation, and why is it necessary?**
+
+   Kubelet certificate rotation ensures the security of communication between kubelets and the API server. To rotate kubelet certificates:
+   ```bash
+   kubeadm alpha certs renew kubelet
+   ```
+
+98. **How does Kubernetes handle affinity and anti-affinity for Pod topology spread constraints?**
+
+   Kubernetes uses topology spread constraints to control Pod placement across nodes. To set topology spread constraints:
+   ```bash
+   kubectl apply -f topology-constraints.yaml
+   ```
+
+99. **What is a kube-proxy IPVS mode in Kubernetes, and how does it improve performance?**
+
+   Kube-proxy IPVS mode improves load balancing performance. To enable IPVS mode:
+   ```bash
+   kubeadm init --feature-gates="SupportIPVSProxyMode=true"
+   ```
+
+100. **How do you configure a Kubernetes cluster for high availability across regions?**
+
+    To configure high availability across regions, you can use federation or cluster API. To set up federation:
+    ```bash
+    kubefed init my-federation --host-cluster-context=cluster1 --dns-provider=aws-route53
+    ```
