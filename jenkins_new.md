@@ -798,13 +798,117 @@ pipeline {
 To secure Jenkins credentials for various integrations, you can use the Jenkins Credentials plugin. This plugin allows you to store and manage credentials securely in Jenkins. You can create credentials for various types, such as usernames and passwords, SSH private keys, or API tokens. Jenkins provides options to encrypt and protect these credentials, allowing you to securely use them in Jenkins jobs and integrations without exposing sensitive information.
 
 
+### 61 How do you automatically trigger a jenkins jobs when developer commits code in the git repo?
+
+You can set up Jenkins to automatically trigger jobs when developers commit code to a Git repository using webhooks or polling. Here's a general guideline on how to achieve this:
+
+### Using Webhooks:
+
+1. **Install Git Plugin in Jenkins:**
+   Ensure that your Jenkins instance has the Git plugin installed. If not, you can install it through the Jenkins Plugin Manager.
+
+2. **Set Up a Jenkins Job:**
+   Create the Jenkins job that you want to trigger upon a code commit.
+
+3. **Configure Git Repository in Jenkins:**
+   In the Jenkins job configuration, specify the Git repository URL and credentials (if required) under the "Source Code Management" section.
+
+4. **Enable Webhooks in Git Repository:**
+   Within your Git repository hosting service (GitHub, GitLab, Bitbucket, etc.), set up a webhook to trigger Jenkins upon a code push.
+   - Go to your repository settings.
+   - Find the Webhooks or Integrations section.
+   - Add a webhook, specifying your Jenkins server's URL followed by `/git/notifyCommit?url=YOUR_GIT_REPO_URL`. For example: `http://jenkins-server-url/git/notifyCommit?url=https://github.com/username/repository.git`.
+
+5. **Test the Setup:**
+   Make a commit to your repository and check if Jenkins triggers the configured job automatically.
+
+### Using Polling:
+
+1. **Set Up Jenkins Job and Git Repository in Jenkins:**
+   Follow steps 1-3 from the Webhooks section.
+
+2. **Configure Polling in Jenkins:**
+   In the Jenkins job configuration, under the "Build Triggers" section, select the "Poll SCM" option.
+   - Specify a schedule in Cron syntax (`* * * * *` for polling every minute, for example) to check for changes in the repository.
+
+3. **Save the Jenkins Job Configuration.**
+   Jenkins will periodically poll the Git repository at the specified intervals to check for changes and trigger the job if there are any new commits.
+
+### Additional Tips:
+
+- Ensure that Jenkins has the necessary permissions to access the Git repository.
+- For security, use credentials or SSH keys to authenticate Jenkins with the Git repository.
+- Monitor Jenkins logs for any errors related to triggering the job upon commits.
+
+Choose the method (webhooks or polling) that best suits your workflow and integrates well with your Git repository hosting service.
 
 
 
+Here's an example using Jenkins declarative pipeline syntax and GitHub webhook:
 
+### Prerequisites:
+- Jenkins with the Git plugin installed.
+- A Jenkins job configured to run a pipeline from a Git repository.
+- GitHub repository.
 
+### Example Jenkinsfile (Declarative Pipeline):
 
+```groovy
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout code from the Git repository
+                git 'https://github.com/username/repository.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                // Your build steps here
+                sh 'mvn clean package' // Example Maven build command
+            }
+        }
+        // Add more stages as needed (test, deploy, etc.)
+    }
+    
+    // Configure triggers to listen for GitHub webhook events
+    triggers {
+        githubPush()
+    }
+}
+```
 
+### Steps to Set Up:
+
+1. **Create a Jenkins Job:**
+   Create or open the Jenkins job that will execute this pipeline.
+
+2. **Add Jenkinsfile to Repository:**
+   In your Git repository, create a file named `Jenkinsfile` at the root level and paste the provided pipeline code.
+
+3. **Set Up GitHub Webhook:**
+   - Go to your GitHub repository settings.
+   - Click on "Webhooks".
+   - Add a new webhook.
+   - Set the Payload URL to `http://your-jenkins-url/github-webhook/`.
+   - Choose the events you want Jenkins to listen to (typically `Just the push event` for code commits).
+   - Add the webhook.
+
+4. **Configure Jenkins Job:**
+   - Open your Jenkins job configuration.
+   - Under "Pipeline", select "Pipeline script from SCM".
+   - Choose Git as the SCM.
+   - Enter your repository URL (`https://github.com/username/repository.git`).
+   - Save the configuration.
+
+### Explanation:
+
+- The `Jenkinsfile` contains a simple declarative pipeline with stages for checkout and build. Adjust the stages and steps according to your build requirements.
+- The `triggers { githubPush() }` section configures the pipeline to listen for GitHub push events and trigger the Jenkins job accordingly.
+
+This setup ensures that whenever code changes are pushed to the GitHub repository, Jenkins will receive a webhook event and trigger the pipeline defined in the `Jenkinsfile`. Adjust this example to fit your specific build and deployment needs.
 
 
 
