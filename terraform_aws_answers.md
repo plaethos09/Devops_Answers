@@ -1537,156 +1537,1083 @@ Replace placeholder values, such as the region, topic name, display name, and em
 
 This example provides a basic setup for managing AWS SNS topics and subscriptions using Terraform. Depending on your use case, you might need to incorporate additional features, such as setting up different protocols for subscriptions (e.g., HTTP, SMS), configuring filter policies, or defining access control policies.
 
-### 35. Provisioning AWS Kinesis streams and their configurations using Terraform:
-    - Explanation: Define Kinesis streams using `aws_kinesis_stream` resource.
-    ```hcl
-    resource "aws_kinesis_stream" "example" {
-      # ...Kinesis stream configurations...
+
+### 35. Provisioning and managing AWS ECR (Elastic Container Registry) using Terraform:
+
+
+ Provisioning and managing AWS Elastic Container Registry (ECR) using Terraform involves defining the ECR resources, specifying repository settings, and configuring access policies. Below is an example Terraform script that demonstrates creating an AWS ECR repository:
+
+```hcl
+# main.tf
+
+provider "aws" {
+  region = "us-east-1"  # Specify the AWS region
+}
+
+# Define an AWS ECR repository
+resource "aws_ecr_repository" "my_ecr_repo" {
+  name = "my-ecr-repo"
+  
+  # Optionally, specify image scanning configuration
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+
+  # Optionally, specify lifecycle policy
+  image_tag_mutability = "MUTABLE"
+  image_count_limit    = 10
+  rule {
+    rule_priority       = 1
+    description         = "Expire images older than 30 days"
+    selection {
+      tag_status = "untagged"
+      count_type = "sinceImagePushed"
+      count_unit = "days"
+      count_value = 30
     }
-    ```
+    action {
+      type = "expire"
+    }
+  }
+}
+```
+
+In this script:
+
+- An AWS ECR repository (`aws_ecr_repository`) is defined with a name.
+- Optionally, an image scanning configuration is specified to enable image scanning on push.
+- Optionally, a lifecycle policy is defined to set image tag mutability and set a rule to expire images older than 30 days.
+
+To apply the configuration:
+
+1. Run `terraform init` to initialize the working directory.
+2. Run `terraform apply` to apply the changes and create the ECR repository.
+
+Replace placeholder values, such as the region, repository name, and other settings, with your actual values. Customize additional settings based on your specific requirements, such as configuring encryption settings, setting up access policies, or enabling cross-account resource sharing.
+
+This example provides a basic setup for provisioning and managing AWS ECR using Terraform. Depending on your use case, you might want to explore additional features, such as setting up image scanning on a schedule, configuring replication, or integrating with other AWS services like AWS Identity and Access Management (IAM).
 
 ### 36. Purpose of AWS Glue, and integrating it with Terraform:
-    - Explanation: Glue is a fully-managed extract, transform, and load (ETL) service; use `aws_glue_catalog_database` and related resources for integration.
-    ```hcl
-    resource "aws_glue_catalog_database" "example" {
-      # ...Glue database configurations...
-    }
-    ```
+**Purpose of AWS Glue:**
+
+AWS Glue is a fully managed extract, transform, and load (ETL) service that makes it easy for users to prepare and load their data for analysis. AWS Glue simplifies the process of moving and transforming data between data stores, making it easier for data engineers and data scientists to analyze large datasets. Key features and purposes of AWS Glue include:
+
+1. **Data Catalog:** AWS Glue provides a centralized metadata repository, called the AWS Glue Data Catalog, that stores metadata about data sources, transformations, and targets. This makes it easier to discover, manage, and govern your data.
+
+2. **ETL Job Execution:** Users can define and execute ETL jobs using AWS Glue. These jobs can be written in Python or Scala and are executed in a fully managed serverless environment, allowing users to focus on defining the transformation logic.
+
+3. **Crawlers for Discovery:** AWS Glue Crawlers can automatically discover and catalog metadata from various data sources, such as Amazon S3, Amazon RDS, Amazon Redshift, and more. This automated discovery simplifies the process of understanding and accessing data.
+
+4. **Schema Evolution:** AWS Glue supports schema evolution, allowing data engineers to handle changes in data structure over time.
+
+**Integrating AWS Glue with Terraform:**
+
+While Terraform is mainly used for provisioning and managing infrastructure, including AWS resources, AWS Glue jobs and crawlers are often defined using the AWS Glue Console or AWS SDKs. However, you can use Terraform to set up the necessary resources for AWS Glue, such as IAM roles, and potentially create a foundation for Glue jobs and crawlers. Below is a basic example illustrating how to create an IAM role for AWS Glue in Terraform:
+
+```hcl
+# main.tf
+
+provider "aws" {
+  region = "us-east-1"  # Specify the AWS region
+}
+
+# Define an IAM role for AWS Glue
+resource "aws_iam_role" "glue_role" {
+  name = "glue_role"
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [{
+      Action = "sts:AssumeRole",
+      Effect = "Allow",
+      Principal = {
+        Service = "glue.amazonaws.com"
+      }
+    }]
+  })
+}
+
+# Attach a policy to the IAM role (e.g., AWSGlueServiceRole)
+resource "aws_iam_role_policy_attachment" "glue_policy_attachment" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole"
+  role       = aws_iam_role.glue_role.name
+}
+```
+
+In this script:
+
+- An IAM role (`aws_iam_role`) is defined for AWS Glue with a specified name.
+- The assume role policy allows AWS Glue service to assume this IAM role.
+- An IAM role policy (`aws_iam_role_policy_attachment`) is attached to the IAM role to grant the necessary permissions.
+
+To apply the configuration:
+
+1. Run `terraform init` to initialize the working directory.
+2. Run `terraform apply` to apply the changes and create the IAM role for AWS Glue.
+
+Please note that defining AWS Glue jobs, crawlers, and associated transformations is typically done using the AWS Glue Console or AWS SDKs, as Terraform may not provide direct support for AWS Glue job scripting. The above example focuses on setting up the IAM role, which is a common prerequisite for AWS Glue activities.
 
 ### 37. Provisioning AWS CloudWatch Events and their rules using Terraform:
-    - Explanation: Define CloudWatch Events rules using `aws_cloudwatch_event_rule` resource.
-    ```hcl
-    resource "aws_cloudwatch_event_rule" "example" {
-      # ...CloudWatch Events rule configurations...
+Provisioning AWS CloudWatch Events and their rules using Terraform involves defining the CloudWatch Events resources, specifying rule settings, and configuring targets for the rules. Below is an example Terraform script that demonstrates creating an AWS CloudWatch Events rule:
+
+```hcl
+# main.tf
+
+provider "aws" {
+  region = "us-east-1"  # Specify the AWS region
+}
+
+# Define an AWS CloudWatch Events rule
+resource "aws_cloudwatch_event_rule" "my_event_rule" {
+  name        = "my-event-rule"
+  description = "My CloudWatch Events Rule"
+  schedule_expression = "cron(0 0 * * ? *)"  # Example: Trigger every day at midnight
+
+  # Optionally, specify event pattern
+  event_pattern = <<PATTERN
+{
+  "source": ["aws.ec2"],
+  "detail-type": ["EC2 Instance State-change Notification"],
+  "detail": {
+    "state": ["running"]
+  }
+}
+PATTERN
+}
+
+# Define an AWS Lambda function (as a target for the CloudWatch Events rule)
+resource "aws_lambda_function" "my_lambda_function" {
+  function_name = "my-lambda-function"
+  runtime       = "python3.8"
+  handler       = "index.handler"
+  filename      = "lambda_function_payload.zip"  # Replace with your Lambda deployment package
+  role          = aws_iam_role.lambda_execution_role.arn
+
+  source_code_hash = filebase64("lambda_function_payload.zip")
+}
+
+# Define an IAM role for the Lambda function
+resource "aws_iam_role" "lambda_execution_role" {
+  name = "lambda_execution_role"
+
+  assume_role_policy = <<-EOF
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Action": "sts:AssumeRole",
+          "Effect": "Allow",
+          "Principal": {
+            "Service": "lambda.amazonaws.com"
+          }
+        }
+      ]
     }
-    ```
+  EOF
+}
+
+# Attach an IAM policy to the Lambda execution role
+resource "aws_iam_role_policy_attachment" "lambda_execution_attachment" {
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+  role       = aws_iam_role.lambda_execution_role.name
+}
+
+# Define a CloudWatch Events target for the rule (invoke Lambda function)
+resource "aws_cloudwatch_event_target" "lambda_target" {
+  rule      = aws_cloudwatch_event_rule.my_event_rule.name
+  target_id = "my-lambda-target"
+  arn       = aws_lambda_function.my_lambda_function.arn
+}
+```
+
+In this script:
+
+- An AWS CloudWatch Events rule (`aws_cloudwatch_event_rule`) is defined with a name, description, and a schedule expression (in this case, triggering every day at midnight). Optionally, an event pattern can be specified to filter events based on their content.
+
+- An AWS Lambda function (`aws_lambda_function`) is defined as a target for the CloudWatch Events rule.
+
+- An IAM role (`aws_iam_role`) is defined for the Lambda function, allowing it to be invoked by CloudWatch Events.
+
+- An IAM policy (`aws_iam_role_policy_attachment`) is attached to the Lambda execution role to grant necessary permissions.
+
+- A CloudWatch Events target (`aws_cloudwatch_event_target`) is defined to associate the Lambda function with the CloudWatch Events rule.
+
+To apply the configuration:
+
+1. Run `terraform init` to initialize the working directory.
+2. Run `terraform apply` to apply the changes and create the CloudWatch Events rule, Lambda function, and associated resources.
+
+Replace placeholder values, such as the region, rule name, Lambda function details, and other settings, with your actual values. Customize additional settings based on your specific requirements, such as using different targets, adjusting the schedule expression, or incorporating other AWS services.
 
 ### 38. Provisioning AWS Step Functions using Terraform:
-    - Explanation: Define Step Functions using `aws_sfn_state_machine` resource.
-    ```hcl
-    resource "aws_sfn_state_machine" "example" {
-      # ...Step Functions configurations...
+Provisioning AWS Step Functions using Terraform involves defining the Step Functions state machine, specifying states and transitions, and configuring any necessary resources. Below is an example Terraform script that demonstrates creating an AWS Step Functions state machine:
+
+```hcl
+# main.tf
+
+provider "aws" {
+  region = "us-east-1"  # Specify the AWS region
+}
+
+# Define an AWS Step Functions state machine
+resource "aws_sfn_state_machine" "my_state_machine" {
+  name     = "my-state-machine"
+  role_arn = aws_iam_role.step_functions_role.arn
+  definition = <<DEFINITION
+{
+  "Comment": "My State Machine",
+  "StartAt": "HelloWorld",
+  "States": {
+    "HelloWorld": {
+      "Type": "Pass",
+      "Result": "Hello, World!",
+      "End": true
     }
-    ```
+  }
+}
+DEFINITION
+}
+
+# Define an IAM role for AWS Step Functions
+resource "aws_iam_role" "step_functions_role" {
+  name = "step-functions-role"
+
+  assume_role_policy = <<-EOF
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Principal": {
+            "Service": "states.amazonaws.com"
+          },
+          "Action": "sts:AssumeRole"
+        }
+      ]
+    }
+  EOF
+}
+```
+
+In this script:
+
+- An AWS Step Functions state machine (`aws_sfn_state_machine`) is defined with a name, IAM role ARN, and a state machine definition written in Amazon States Language (ASL). In this example, the state machine consists of a single "HelloWorld" state that passes the message "Hello, World!" and ends the execution.
+
+- An IAM role (`aws_iam_role`) is defined for AWS Step Functions with an assume role policy that allows Step Functions service to assume this role.
+
+To apply the configuration:
+
+1. Run `terraform init` to initialize the working directory.
+2. Run `terraform apply` to apply the changes and create the Step Functions state machine and associated resources.
+
+Replace placeholder values, such as the region, state machine name, IAM role details, and other settings, with your actual values. Customize additional settings based on your specific requirements, such as defining more complex state machines with multiple states and transitions.
+
+This example provides a basic setup for provisioning AWS Step Functions using Terraform. Depending on your use case, you might want to explore additional features, such as incorporating AWS Lambda functions as states, using choice states for decision-making, or configuring logging and error handling.
 
 ### 39. Purpose of AWS Systems Manager, and using it with Terraform:
-    - Explanation: Systems Manager automates operational tasks; use `aws_ssm_document` and related resources for integration.
-    ```hcl
-    resource "aws_ssm_document" "example" {
-      # ...Systems Manager document configurations...
+**Purpose of AWS Systems Manager (SSM):**
+
+AWS Systems Manager (SSM) is a set of services that provides visibility and control of your infrastructure on AWS. It simplifies the process of managing and automating operational tasks across your AWS resources. Key features and purposes of AWS Systems Manager include:
+
+1. **Run Command:** Run Command allows you to remotely execute commands on your EC2 instances or on-premises servers. This can be useful for tasks like software updates, patching, or configuration changes.
+
+2. **Automation:** Automation allows you to create, run, and manage workflows that perform operational tasks on your AWS resources. These workflows can be defined using documents (AWS SSM documents) that specify the steps to be executed.
+
+3. **Parameter Store:** Parameter Store provides secure, hierarchical storage for configuration data and secrets. It can store parameters such as database connection strings, API keys, and configuration values.
+
+4. **Session Manager:** Session Manager provides secure, browser-based access to EC2 instances and on-premises servers. It allows you to start interactive sessions with instances for troubleshooting or administration purposes.
+
+5. **State Manager:** State Manager allows you to define and apply a consistent set of configurations to your instances. It helps ensure that your instances are in a desired state and compliant with your configurations.
+
+6. **Patch Manager:** Patch Manager helps you automate the process of patching your instances with security patches. It simplifies the management of patch compliance.
+
+**Using AWS Systems Manager with Terraform:**
+
+While Terraform is primarily used for provisioning and managing infrastructure, you can integrate it with AWS Systems Manager for certain tasks, such as creating and managing SSM documents or configuring Run Command.
+
+Below is an example of how to use Terraform to create an SSM document for Run Command:
+
+```hcl
+# main.tf
+
+provider "aws" {
+  region = "us-east-1"  # Specify the AWS region
+}
+
+# Define an AWS SSM document for Run Command
+resource "aws_ssm_document" "run_command_document" {
+  name          = "MyRunCommandDocument"
+  document_type = "Command"
+  content = <<DOC
+{
+  "schemaVersion": "2.2",
+  "description": "Run a custom command",
+  "mainSteps": [
+    {
+      "action": "aws:runShellScript",
+      "name": "runShellScript",
+      "inputs": [
+        "echo 'Hello, World!'"
+      ]
     }
-    ```
+  ]
+}
+DOC
+}
+```
 
-### 40. Provisioning and managing AWS ECR (Elastic Container Registry) using Terraform:
+In this script:
 
+- An AWS SSM document (`aws_ssm_document`) is defined with a name, document type, and content. The content specifies a simple Run Command to execute the "echo 'Hello, World!'" shell script.
 
-    - Explanation: Define ECR repositories using `aws_ecr_repository` resource.
-    ```hcl
-    resource "aws_ecr_repository" "example" {
-      # ...ECR repository configurations...
-    }
-    ```
+To apply the configuration:
 
+1. Run `terraform init` to initialize the working directory.
+2. Run `terraform apply` to apply the changes and create the SSM document.
+
+Replace placeholder values, such as the region, document name, and content, with your actual values. Depending on your use case, you might want to explore other AWS Systems Manager capabilities and integrate them into your Terraform scripts as needed. Keep in mind that certain SSM features, such as Run Command or Session Manager, may be more commonly used in combination with the AWS Management Console or AWS CLI for interactive tasks.
+
+### 40. Provisioning AWS Kinesis streams and their configurations using Terraform:
+ Provisioning AWS Kinesis streams and their configurations using Terraform involves defining the Kinesis resources, specifying stream settings, and configuring any additional options. Below is an example Terraform script that demonstrates creating an AWS Kinesis stream:
+
+```hcl
+# main.tf
+
+provider "aws" {
+  region = "us-east-1"  # Specify the AWS region
+}
+
+# Define an AWS Kinesis stream
+resource "aws_kinesis_stream" "my_kinesis_stream" {
+  name             = "my-kinesis-stream"
+  shard_count      = 1
+  retention_period = 24  # Retention period in hours (default is 24 hours)
+
+  shard_level_metrics = ["IncomingBytes", "OutgoingBytes"]  # Optional: Enable shard-level metrics
+
+  encryption_type = "KMS"  # Optional: Use KMS encryption
+  kms_key_id      = aws_kms_key.my_kms_key.id  # Specify the KMS key ID
+
+  tags = {
+    Environment = "Production"
+  }
+}
+
+# Define an AWS KMS key for encryption
+resource "aws_kms_key" "my_kms_key" {
+  description             = "Kinesis Encryption Key"
+  enable_key_rotation     = true
+  deletion_window_in_days = 7
+}
+
+# Output the ARN of the Kinesis stream
+output "kinesis_stream_arn" {
+  value = aws_kinesis_stream.my_kinesis_stream.arn
+}
+```
+
+In this script:
+
+- An AWS Kinesis stream (`aws_kinesis_stream`) is defined with a name, shard count, retention period, shard-level metrics, encryption settings, and tags.
+
+- Optionally, a KMS key (`aws_kms_key`) is defined for Kinesis stream encryption. The KMS key is specified in the `kms_key_id` attribute of the Kinesis stream resource.
+
+- An output is defined to display the ARN of the created Kinesis stream.
+
+To apply the configuration:
+
+1. Run `terraform init` to initialize the working directory.
+2. Run `terraform apply` to apply the changes and create the Kinesis stream.
+
+Replace placeholder values, such as the region, stream name, shard count, and other settings, with your actual values. Customize additional settings based on your specific requirements, such as adjusting the retention period, enabling enhanced fan-out, or configuring access policies.
+
+This example provides a basic setup for provisioning AWS Kinesis streams using Terraform. Depending on your use case, you might want to explore additional features, such as setting up Amazon Kinesis Data Firehose for stream data delivery, configuring consumer applications, or implementing additional security and monitoring measures.
 
 ### 41. Provisioning AWS SQS (Simple Queue Service) using Terraform:
-   ```hcl
-   resource "aws_sqs_queue" "example" {
-     name = "example-queue"
-     # ...other SQS configurations...
-   }
-   ```
+Provisioning AWS Simple Queue Service (SQS) using Terraform involves defining the SQS resources, specifying queue settings, and configuring any additional options. Below is an example Terraform script that demonstrates creating an AWS SQS queue:
+
+```hcl
+# main.tf
+
+provider "aws" {
+  region = "us-east-1"  # Specify the AWS region
+}
+
+# Define an AWS SQS queue
+resource "aws_sqs_queue" "my_sqs_queue" {
+  name                      = "my-sqs-queue"
+  delay_seconds             = 0
+  max_message_size          = 262144  # Maximum message size in bytes (256 KB)
+  message_retention_seconds = 345600  # Message retention period in seconds (4 days)
+  visibility_timeout_seconds = 30     # Visibility timeout period in seconds
+  fifo_queue                = false   # Change to true for FIFO queue
+
+  redrive_policy = jsonencode({
+    deadLetterTargetArn = aws_sqs_queue.dead_letter_queue.arn,
+    maxReceiveCount     = 5,
+  })
+}
+
+# Define an AWS SQS dead-letter queue (optional)
+resource "aws_sqs_queue" "dead_letter_queue" {
+  name = "my-sqs-dead-letter-queue"
+}
+
+# Output the URL of the SQS queue
+output "sqs_queue_url" {
+  value = aws_sqs_queue.my_sqs_queue.id
+}
+```
+
+In this script:
+
+- An AWS SQS queue (`aws_sqs_queue`) is defined with a name, delay seconds, maximum message size, message retention period, visibility timeout period, and a dead-letter queue configuration.
+
+- Optionally, a dead-letter queue (`aws_sqs_queue`) is defined. This is a separate queue to which SQS moves messages that cannot be processed successfully.
+
+- An output is defined to display the URL of the created SQS queue.
+
+To apply the configuration:
+
+1. Run `terraform init` to initialize the working directory.
+2. Run `terraform apply` to apply the changes and create the SQS queue.
+
+Replace placeholder values, such as the region, queue name, and other settings, with your actual values. Customize additional settings based on your specific requirements, such as enabling server-side encryption, configuring access policies, or implementing additional SQS features.
+
+This example provides a basic setup for provisioning AWS SQS queues using Terraform. Depending on your use case, you might want to explore additional SQS features, such as message filtering, setting up dead-letter queues with redrive policies, or configuring message attributes.
    - Explanation: Defines an SQS queue named "example-queue" with specified configurations.
 
 ### 42. Purpose of AWS X-Ray, and configuring it with Terraform:
-   ```hcl
-   resource "aws_xray_sampling_rule" "example" {
-     rule_name      = "example-rule"
-     # ...X-Ray sampling rule configurations...
-   }
-   ```
-   - Explanation: X-Ray provides tracing; configures a sampling rule named "example-rule" using Terraform.
+**Purpose of AWS X-Ray:**
+
+AWS X-Ray is a distributed tracing service that helps developers analyze and debug production, distributed applications. It provides insights into the behavior of applications, allowing developers to identify performance bottlenecks, troubleshoot issues, and gain a deeper understanding of how different components interact. Key features and purposes of AWS X-Ray include:
+
+1. **End-to-End Tracing:** X-Ray enables tracing of requests as they travel through various components of a distributed application, including microservices, serverless functions, and AWS resources.
+
+2. **Latency Analysis:** Developers can use X-Ray to identify latency in different parts of their application, helping them optimize performance.
+
+3. **Error Analysis:** X-Ray captures errors and exceptions that occur during the execution of requests, making it easier to diagnose and fix issues.
+
+4. **Service Map:** X-Ray generates a service map that visually represents the dependencies and connections between different components of an application.
+
+5. **Integration with AWS Services:** X-Ray integrates with various AWS services, including AWS Lambda, Amazon EC2, Amazon ECS, and more.
+
+**Configuring AWS X-Ray with Terraform:**
+
+To use AWS X-Ray with Terraform, you need to enable X-Ray tracing for your AWS resources. Below is an example Terraform script that demonstrates enabling X-Ray tracing for an AWS Lambda function:
+
+```hcl
+# main.tf
+
+provider "aws" {
+  region = "us-east-1"  # Specify the AWS region
+}
+
+# Define an AWS Lambda function
+resource "aws_lambda_function" "my_lambda_function" {
+  function_name = "my-lambda-function"
+  runtime       = "python3.8"
+  handler       = "index.handler"
+  filename      = "lambda_function_payload.zip"  # Replace with your Lambda deployment package
+  role          = aws_iam_role.lambda_execution_role.arn
+
+  source_code_hash = filebase64("lambda_function_payload.zip")
+}
+
+# Define an AWS Lambda execution role
+resource "aws_iam_role" "lambda_execution_role" {
+  name = "lambda_execution_role"
+
+  assume_role_policy = <<-EOF
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Principal": {
+            "Service": "lambda.amazonaws.com"
+          },
+          "Action": "sts:AssumeRole"
+        }
+      ]
+    }
+  EOF
+}
+
+# Enable X-Ray tracing for the Lambda function
+resource "aws_lambda_function" "xray_tracing" {
+  function_name = aws_lambda_function.my_lambda_function.function_name
+  tracing_config {
+    mode = "Active"
+  }
+
+  depends_on = [aws_lambda_function.my_lambda_function]
+}
+```
+
+In this script:
+
+- An AWS Lambda function (`aws_lambda_function`) is defined with a specified name, runtime, handler, and role.
+
+- An IAM role (`aws_iam_role`) is defined for the Lambda function's execution role.
+
+- Another instance of the Lambda function (`aws_lambda_function`) is defined to enable X-Ray tracing for the Lambda function by setting the `tracing_config` mode to "Active."
+
+To apply the configuration:
+
+1. Run `terraform init` to initialize the working directory.
+2. Run `terraform apply` to apply the changes and create the Lambda function with X-Ray tracing enabled.
+
+Replace placeholder values, such as the region, Lambda function details, and deployment package, with your actual values. Depending on your use case, you might want to explore additional X-Ray features, such as segmenting traces, using annotations, or integrating X-Ray with other AWS services.
 
 ### 43. Provisioning AWS CodePipeline and its stages using Terraform:
-   ```hcl
-   resource "aws_codepipeline" "example" {
-     name     = "example-pipeline"
-     role_arn = aws_iam_role.example.arn
-     # ...other CodePipeline configurations...
+Provisioning AWS CodePipeline and its stages using Terraform involves defining the CodePipeline resources, specifying the stages, and configuring the actions within each stage. Below is an example Terraform script that demonstrates creating an AWS CodePipeline with two stages:
 
-     stage {
-       # ...first stage configurations...
-     }
+```hcl
+# main.tf
 
-     stage {
-       # ...second stage configurations...
-     }
-   }
-   ```
-   - Explanation: Defines a CodePipeline named "example-pipeline" with stages and associated configurations.
+provider "aws" {
+  region = "us-east-1"  # Specify the AWS region
+}
 
+# Define an AWS CodePipeline
+resource "aws_codepipeline" "my_codepipeline" {
+  name     = "my-codepipeline"
+  role_arn = aws_iam_role.codepipeline_role.arn
+
+  artifact_store {
+    location = "my-codepipeline-artifacts"  # Replace with your S3 bucket name
+    type     = "S3"
+  }
+
+  stage {
+    name = "Source"
+
+    action {
+      name             = "SourceAction"
+      category         = "Source"
+      owner            = "ThirdParty"
+      provider         = "GitHub"
+      version          = "1"
+      output_artifacts = ["MyApp_SourceOutput"]
+
+      configuration = {
+        Owner  = "YourGitHubUsername"
+        Repo   = "YourGitHubRepository"
+        Branch = "master"
+      }
+    }
+  }
+
+  stage {
+    name = "Build"
+
+    action {
+      name             = "BuildAction"
+      category         = "Build"
+      owner            = "AWS"
+      provider         = "CodeBuild"
+      input_artifacts  = ["MyApp_SourceOutput"]
+      output_artifacts = ["MyApp_BuildOutput"]
+
+      configuration = {
+        ProjectName = "MyCodeBuildProject"
+      }
+    }
+  }
+}
+
+# Define an IAM role for AWS CodePipeline
+resource "aws_iam_role" "codepipeline_role" {
+  name = "codepipeline_role"
+
+  assume_role_policy = <<-EOF
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Action": "sts:AssumeRole",
+          "Effect": "Allow",
+          "Principal": {
+            "Service": "codepipeline.amazonaws.com"
+          }
+        }
+      ]
+    }
+  EOF
+}
+```
+
+In this script:
+
+- An AWS CodePipeline (`aws_codepipeline`) is defined with a name, IAM role, and configuration for the source and build stages.
+
+- The pipeline has two stages: "Source" and "Build."
+
+- In the "Source" stage, a GitHub source action is defined to pull code from a GitHub repository.
+
+- In the "Build" stage, a CodeBuild action is defined to perform the build using AWS CodeBuild.
+
+- An IAM role (`aws_iam_role`) is defined for AWS CodePipeline.
+
+To apply the configuration:
+
+1. Run `terraform init` to initialize the working directory.
+2. Run `terraform apply` to apply the changes and create the CodePipeline with its stages.
+
+Replace placeholder values, such as the region, pipeline name, GitHub repository details, CodeBuild project name, and S3 bucket name, with your actual values. Customize additional settings based on your specific requirements, such as adding more stages, integrating with other AWS services, or configuring notifications.
+
+This example provides a basic setup for provisioning AWS CodePipeline and its stages using Terraform. Depending on your use case, you might want to explore additional features, such as deploying to AWS Elastic Beanstalk, integrating with AWS Lambda, or setting up deployment actions for different environments.
 ### 44. Provisioning AWS Elasticsearch Service using Terraform:
-   ```hcl
-   resource "aws_elasticsearch_domain" "example" {
-     domain_name           = "example-domain"
-     elasticsearch_version = "7.10"
-     # ...other Elasticsearch configurations...
-   }
-   ```
-   - Explanation: Defines an Elasticsearch domain named "example-domain" with specified configurations.
+Provisioning AWS Elasticsearch Service using Terraform involves defining the Elasticsearch resources, specifying the configuration settings, and configuring any additional options. Below is an example Terraform script that demonstrates creating an AWS Elasticsearch Service domain:
+
+```hcl
+# main.tf
+
+provider "aws" {
+  region = "us-east-1"  # Specify the AWS region
+}
+
+# Define an AWS Elasticsearch Service domain
+resource "aws_elasticsearch_domain" "my_elasticsearch_domain" {
+  domain_name           = "my-elasticsearch-domain"
+  elasticsearch_version = "7.10"  # Specify the Elasticsearch version
+
+  cluster_config {
+    instance_type  = "t2.small.elasticsearch"  # Specify the instance type
+    instance_count = 1  # Specify the number of instances
+  }
+
+  ebs_options {
+    ebs_enabled = true
+    volume_size = 10  # Specify the volume size in GB
+  }
+
+  snapshot_options {
+    automated_snapshot_start_hour = 0  # Specify the hour for automated snapshots
+  }
+
+  advanced_options {
+    "rest.action.multi.allow_explicit_index" = "true"
+  }
+
+  tags = {
+    Environment = "Production"
+  }
+}
+```
+
+In this script:
+
+- An AWS Elasticsearch Service domain (`aws_elasticsearch_domain`) is defined with a name, Elasticsearch version, cluster configuration, EBS options, snapshot options, advanced options, and tags.
+
+- The Elasticsearch domain is configured with a single instance of type "t2.small.elasticsearch" and a volume size of 10 GB.
+
+- Automated snapshots are scheduled to start at midnight (0th hour).
+
+- An advanced option is set to allow explicit index creation.
+
+- Tags are applied to the Elasticsearch domain.
+
+To apply the configuration:
+
+1. Run `terraform init` to initialize the working directory.
+2. Run `terraform apply` to apply the changes and create the Elasticsearch domain.
+
+Replace placeholder values, such as the region, domain name, instance type, Elasticsearch version, and other settings, with your actual values. Customize additional settings based on your specific requirements, such as enabling encryption, configuring access policies, or adjusting other advanced options.
+
+This example provides a basic setup for provisioning AWS Elasticsearch Service using Terraform. Depending on your use case, you might want to explore additional features, such as enabling VPC access, configuring fine-grained access control, or setting up index policies.
 
 ### 45. urpose of AWS Data Pipeline, and integrating it with Terraform:
-   ```hcl
-   resource "aws_datapipeline_pipeline" "example" {
-     name     = "example-pipeline"
-     # ...Data Pipeline configurations...
-   }
-   ```
-   - Explanation: Data Pipeline orchestrates data workflows; configures a pipeline named "example-pipeline" using Terraform.
+**Purpose of AWS Data Pipeline:**
 
+AWS Data Pipeline is a web service for orchestrating and automating the movement and transformation of data between different AWS services and on-premises data sources. It allows you to define a series of data-driven workflows, called data pipelines, to schedule and automate the processing and movement of data.
+
+Key features and purposes of AWS Data Pipeline include:
+
+1. **Workflow Automation:** AWS Data Pipeline allows you to define, schedule, and automate workflows for data processing and movement.
+
+2. **Data Transformation:** You can use Data Pipeline to transform and process data using various AWS services such as Amazon EMR (Elastic MapReduce) or AWS Glue.
+
+3. **Integration with AWS Services:** Data Pipeline integrates with several AWS services, including Amazon S3, Amazon RDS, Amazon DynamoDB, Amazon Redshift, and more.
+
+4. **Data Source Agnostic:** It supports data movement and transformation from various sources, making it versatile for different data scenarios.
+
+5. **Monitoring and Logging:** AWS Data Pipeline provides monitoring and logging capabilities to track the progress and status of your data workflows.
+
+**Integrating AWS Data Pipeline with Terraform:**
+
+While AWS Data Pipeline itself is not typically provisioned using Terraform (as it is a managed AWS service with no direct Terraform provider support), you can use Terraform to set up the necessary resources that Data Pipeline orchestrates, such as Amazon S3 buckets, Amazon EMR clusters, or AWS Glue jobs.
+
+Here is an example of how you might use Terraform to create an Amazon S3 bucket and an Amazon EMR cluster that could be part of a data pipeline:
+
+```hcl
+# main.tf
+
+provider "aws" {
+  region = "us-east-1"  # Specify the AWS region
+}
+
+# Define an Amazon S3 bucket
+resource "aws_s3_bucket" "my_s3_bucket" {
+  bucket = "my-data-pipeline-bucket"
+  acl    = "private"
+}
+
+# Define an Amazon EMR cluster
+resource "aws_emr_cluster" "my_emr_cluster" {
+  name          = "my-emr-cluster"
+  release_label = "emr-5.33.0"
+  applications  = ["Hadoop", "Spark"]
+
+  instances {
+    master_instance_type = "m5.xlarge"
+    core_instance_type   = "m5.xlarge"
+    instance_count       = 2
+  }
+
+  ec2_attributes {
+    key_name      = "my-key-pair"
+    subnet_id     = "subnet-0123456789abcdef0"
+    emr_managed_slave_security_group = "sg-0123456789abcdef0"
+    emr_managed_master_security_group = "sg-0123456789abcdef1"
+  }
+}
+```
+
+In this script:
+
+- An Amazon S3 bucket (`aws_s3_bucket`) is defined, which could be used as a source or destination in a data pipeline.
+
+- An Amazon EMR cluster (`aws_emr_cluster`) is defined, which could be used for data processing in a data pipeline.
+
+When working with AWS Data Pipeline, you would define your pipeline and its components using the AWS Data Pipeline service itself through the AWS Management Console, AWS Command Line Interface (CLI), or AWS SDKs, as Terraform does not directly support the provisioning of AWS Data Pipeline resources.
+
+Ensure that you have the necessary permissions to create and manage the resources in your AWS account using both Terraform and AWS Data Pipeline.
 ### 46. Provisioning AWS CloudFormation stacks using Terraform:
-   ```hcl
-   resource "aws_cloudformation_stack" "example" {
-     name = "example-stack"
-     # ...other CloudFormation stack configurations...
-   }
-   ```
-   - Explanation: Defines a CloudFormation stack named "example-stack" with specified configurations.
+Provisioning AWS CloudFormation stacks using Terraform involves defining the CloudFormation resources, specifying the stack settings, and configuring any additional options. Below is an example Terraform script that demonstrates creating an AWS CloudFormation stack:
+
+```hcl
+# main.tf
+
+provider "aws" {
+  region = "us-east-1"  # Specify the AWS region
+}
+
+# Define an AWS CloudFormation stack
+resource "aws_cloudformation_stack" "my_cloudformation_stack" {
+  name         = "my-cloudformation-stack"
+  template_body = file("cloudformation_template.json")  # Replace with the path to your CloudFormation template file
+
+  parameters = {
+    KeyName = "my-key-pair"
+    Environment = "Production"
+  }
+
+  tags = {
+    Environment = "Production"
+  }
+}
+```
+
+In this script:
+
+- An AWS CloudFormation stack (`aws_cloudformation_stack`) is defined with a name, CloudFormation template body, parameters, and tags.
+
+- The `template_body` attribute is set to read the CloudFormation template from a local file (`cloudformation_template.json`). Replace this with the actual path to your CloudFormation template file.
+
+- Parameters and tags are specified for the CloudFormation stack.
+
+To apply the configuration:
+
+1. Run `terraform init` to initialize the working directory.
+2. Run `terraform apply` to apply the changes and create the CloudFormation stack.
+
+Replace placeholder values, such as the region, stack name, CloudFormation template file path, parameters, and tags, with your actual values. Customize additional settings based on your specific requirements, such as specifying capabilities, configuring rollback behavior, or using CloudFormation outputs.
+
+This example provides a basic setup for provisioning AWS CloudFormation stacks using Terraform. Depending on your use case, you might want to explore additional features, such as stack policies, defining outputs, or managing CloudFormation drift. Additionally, consider using Terraform modules to modularize your CloudFormation stack definitions for reusability.
 
 ### 47. Provisioning AWS KMS (Key Management Service) using Terraform:
-   ```hcl
-   resource "aws_kms_key" "example" {
-     description = "example-key"
-     # ...other KMS configurations...
-   }
-   ```
-   - Explanation: Defines a KMS key named "example-key" with specified configurations.
+Provisioning AWS Key Management Service (KMS) using Terraform involves defining the KMS key, specifying key settings, and configuring any additional options. Below is an example Terraform script that demonstrates creating an AWS KMS key:
+
+```hcl
+# main.tf
+
+provider "aws" {
+  region = "us-east-1"  # Specify the AWS region
+}
+
+# Define an AWS KMS key
+resource "aws_kms_key" "my_kms_key" {
+  description             = "My KMS Key"
+  deletion_window_in_days = 30  # Specify the deletion window in days
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Id": "key-policy-1",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": "kms:*",
+      "Resource": "*"
+    }
+  ]
+}
+POLICY
+}
+
+# Output the ARN of the KMS key
+output "kms_key_arn" {
+  value = aws_kms_key.my_kms_key.arn
+}
+```
+
+In this script:
+
+- An AWS KMS key (`aws_kms_key`) is defined with a description, deletion window in days, and a key policy that allows all AWS principals to perform any KMS action on the key.
+
+- The key policy is specified as a JSON string. You can customize the policy to meet your security and access control requirements.
+
+- An output is defined to display the ARN of the created KMS key.
+
+To apply the configuration:
+
+1. Run `terraform init` to initialize the working directory.
+2. Run `terraform apply` to apply the changes and create the KMS key.
+
+Replace placeholder values, such as the region, key description, deletion window, and policy, with your actual values. Customize additional settings based on your specific requirements, such as configuring key rotation, setting key usage permissions, or enabling logging.
+
+This example provides a basic setup for provisioning AWS KMS keys using Terraform. Depending on your use case, you might want to explore additional features, such as using customer managed policies, enabling cross-account access, or integrating KMS with other AWS services.
 
 ### 48. Purpose of AWS Cognito, and configuring it with Terraform:
-   ```hcl
-   resource "aws_cognito_user_pool" "example" {
-     name = "example-pool"
-     # ...other Cognito configurations...
-   }
-   ```
-   - Explanation: Cognito manages user identities; configures a user pool named "example-pool" using Terraform.
+**Purpose of AWS Cognito:**
+
+Amazon Cognito is a fully managed service provided by AWS that enables you to easily add user sign-up and sign-in to your mobile and web applications. It also supports the creation of scalable and secure authentication, authorization, and user management solutions. Key features and purposes of AWS Cognito include:
+
+1. **User Pools:** Create and manage a user directory that scales to hundreds of millions of users. User Pools provide features such as sign-up and sign-in functionality, multi-factor authentication, and customizable workflows.
+
+2. **Identity Pools:** Federate identities from social identity providers, such as Google, Facebook, and Amazon, or use your own identity system. Identity Pools provide temporary AWS credentials for accessing other AWS services.
+
+3. **App Integration:** Integrate Cognito with your applications using SDKs and libraries for various platforms, making it easier to build secure user authentication and management into your apps.
+
+4. **Multi-Factor Authentication (MFA):** Enable MFA to add an extra layer of security to user sign-in.
+
+5. **Customizable Workflows:** Customize authentication flows to match the specific needs of your application.
+
+6. **Security and Compliance:** Cognito provides built-in security features and is compliant with various industry standards, helping you meet your security and regulatory requirements.
+
+**Configuring AWS Cognito with Terraform:**
+
+Below is an example Terraform script that demonstrates creating an AWS Cognito User Pool and Identity Pool:
+
+```hcl
+# main.tf
+
+provider "aws" {
+  region = "us-east-1"  # Specify the AWS region
+}
+
+# Define an AWS Cognito User Pool
+resource "aws_cognito_user_pool" "my_user_pool" {
+  name = "my-user-pool"
+
+  schema {
+    name = "email"
+    attribute_data_type = "String"
+    mutable = true
+    required = true
+  }
+
+  password_policy {
+    minimum_length    = 8
+    require_lowercase = true
+    require_numbers   = true
+    require_symbols   = true
+    require_uppercase = true
+  }
+}
+
+# Define an AWS Cognito Identity Pool
+resource "aws_cognito_identity_pool" "my_identity_pool" {
+  identity_pool_name = "my-identity-pool"
+
+  allow_unauthenticated_identities = false
+
+  cognito_identity_providers {
+    client_id               = aws_cognito_user_pool.my_user_pool.client_id
+    provider_name           = aws_cognito_user_pool.my_user_pool.endpoint
+    server_side_token_check = false
+  }
+
+  supported_login_providers = {
+    "cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789" = aws_cognito_user_pool.my_user_pool.client_id
+  }
+}
+```
+
+In this script:
+
+- An AWS Cognito User Pool (`aws_cognito_user_pool`) is defined with a name, email as a required attribute, and a password policy.
+
+- An AWS Cognito Identity Pool (`aws_cognito_identity_pool`) is defined with a name, configuration to disallow unauthenticated identities, and a link to the User Pool.
+
+To apply the configuration:
+
+1. Run `terraform init` to initialize the working directory.
+2. Run `terraform apply` to apply the changes and create the Cognito User Pool and Identity Pool.
+
+Replace placeholder values, such as the region, pool names, and other settings, with your actual values. Customize additional settings based on your specific requirements, such as adding custom attributes, configuring multi-factor authentication, or defining user pool clients.
+
+This example provides a basic setup for provisioning AWS Cognito using Terraform. Depending on your use case, you might want to explore additional features, such as configuring triggers, setting up custom domains, or integrating Cognito with other AWS services.
 
 ### 49. Provisioning AWS Redshift clusters using Terraform:
-   ```hcl
-   resource "aws_redshift_cluster" "example" {
-     cluster_identifier = "example-cluster"
-     # ...other Redshift configurations...
-   }
-   ```
-   - Explanation: Defines a Redshift cluster named "example-cluster" with specified configurations.
+Provisioning AWS Redshift clusters using Terraform involves defining the Redshift resources, specifying the cluster settings, and configuring any additional options. Below is an example Terraform script that demonstrates creating an AWS Redshift cluster:
+
+```hcl
+# main.tf
+
+provider "aws" {
+  region = "us-east-1"  # Specify the AWS region
+}
+
+# Define an AWS Redshift cluster
+resource "aws_redshift_cluster" "my_redshift_cluster" {
+  cluster_identifier      = "my-redshift-cluster"
+  node_type               = "dc2.large"
+  cluster_subnet_group_name = "my-redshift-subnet-group"
+  master_username         = "admin"
+  master_password         = "MySecurePassword123"
+  port                    = 5439
+  number_of_nodes         = 2
+  publicly_accessible     = false
+
+  cluster_parameter_group_name = "default.redshift-1.0"
+
+  vpc_security_group_ids = ["sg-0123456789abcdef0"]  # Replace with your security group ID
+
+  skip_final_snapshot = true
+}
+
+# Output the endpoint address of the Redshift cluster
+output "redshift_cluster_endpoint" {
+  value = aws_redshift_cluster.my_redshift_cluster.endpoint
+}
+```
+
+In this script:
+
+- An AWS Redshift cluster (`aws_redshift_cluster`) is defined with a cluster identifier, node type, subnet group, master username, master password, port, number of nodes, and other configuration settings.
+
+- The cluster is associated with a specific VPC subnet group (`cluster_subnet_group_name`) and security group (`vpc_security_group_ids`).
+
+- The cluster parameter group is specified (`cluster_parameter_group_name`) to define configuration parameters for the cluster.
+
+- The `skip_final_snapshot` parameter is set to `true`, meaning that a final snapshot will not be created when the cluster is deleted.
+
+- An output is defined to display the endpoint address of the created Redshift cluster.
+
+To apply the configuration:
+
+1. Run `terraform init` to initialize the working directory.
+2. Run `terraform apply` to apply the changes and create the Redshift cluster.
+
+Replace placeholder values, such as the region, cluster identifier, node type, subnet group name, security group ID, and other settings, with your actual values. Customize additional settings based on your specific requirements, such as configuring encryption, managing snapshots, or adjusting cluster maintenance settings.
+
+This example provides a basic setup for provisioning AWS Redshift clusters using Terraform. Depending on your use case, you might want to explore additional features, such as enabling audit logging, setting up parameter groups, or integrating Redshift with other AWS services.
 
 ### 50. Provisioning AWS Secrets Manager using Terraform:
-    ```hcl
-    resource "aws_secretsmanager_secret" "example" {
-      name = "example-secret"
-      # ...other Secrets Manager configurations...
-    }
-    ```
-    - Explanation: Defines a Secrets Manager secret named "example-secret" with specified configurations.
+Provisioning AWS Secrets Manager using Terraform involves defining the Secrets Manager resource, specifying the secret settings, and configuring any additional options. Below is an example Terraform script that demonstrates creating an AWS Secrets Manager secret:
+
+```hcl
+# main.tf
+
+provider "aws" {
+  region = "us-east-1"  # Specify the AWS region
+}
+
+# Define an AWS Secrets Manager secret
+resource "aws_secretsmanager_secret" "my_secret" {
+  name = "my-secret"
+  description = "My secret description"
+}
+
+# Define a secret version for the secret
+resource "aws_secretsmanager_secret_version" "my_secret_version" {
+  secret_id = aws_secretsmanager_secret.my_secret.id
+  secret_string = <<EOL
+{
+  "username": "my_username",
+  "password": "MySecurePassword123"
+}
+EOL
+}
+
+# Output the ARN of the Secrets Manager secret
+output "secrets_manager_secret_arn" {
+  value = aws_secretsmanager_secret.my_secret.arn
+}
+```
+
+In this script:
+
+- An AWS Secrets Manager secret (`aws_secretsmanager_secret`) is defined with a name and description.
+
+- A secret version (`aws_secretsmanager_secret_version`) is defined for the secret, providing the actual secret values in JSON format. You can customize the secret string based on your specific use case.
+
+- An output is defined to display the ARN of the created Secrets Manager secret.
+
+To apply the configuration:
+
+1. Run `terraform init` to initialize the working directory.
+2. Run `terraform apply` to apply the changes and create the Secrets Manager secret.
+
+Replace placeholder values, such as the region, secret name, description, username, password, and other settings, with your actual values. Customize additional settings based on your specific requirements, such as configuring rotation policies, tags, or integration with AWS services.
+
+This example provides a basic setup for provisioning AWS Secrets Manager using Terraform. Depending on your use case, you might want to explore additional features, such as using AWS Identity and Access Management (IAM) policies, setting up rotation schedules, or retrieving secrets programmatically in your applications
+
+### 51. Provisioning AWS CloudWatch Logs using Terraform:
+Provisioning AWS CloudWatch Logs using Terraform involves defining the CloudWatch Logs resource, specifying log group settings, and configuring any additional options. Below is an example Terraform script that demonstrates creating an AWS CloudWatch Logs log group:
+
+```hcl
+# main.tf
+
+provider "aws" {
+  region = "us-east-1"  # Specify the AWS region
+}
+
+# Define an AWS CloudWatch Logs log group
+resource "aws_cloudwatch_log_group" "my_log_group" {
+  name = "/my-app-logs"
+  retention_in_days = 30  # Specify the retention period in days
+}
+
+# Output the ARN of the CloudWatch Logs log group
+output "cloudwatch_log_group_arn" {
+  value = aws_cloudwatch_log_group.my_log_group.arn
+}
+```
+
+In this script:
+
+- An AWS CloudWatch Logs log group (`aws_cloudwatch_log_group`) is defined with a name and retention period in days.
+
+- The `name` attribute specifies the name of the log group, which can be customized based on your application and log structure.
+
+- The `retention_in_days` attribute specifies the number of days to retain the log events in the log group.
+
+- An output is defined to display the ARN of the created CloudWatch Logs log group.
+
+To apply the configuration:
+
+1. Run `terraform init` to initialize the working directory.
+2. Run `terraform apply` to apply the changes and create the CloudWatch Logs log group.
+
+Replace placeholder values, such as the region, log group name, retention period, and other settings, with your actual values. Customize additional settings based on your specific requirements, such as configuring log stream names, defining access policies, or creating CloudWatch Alarms.
+
+This example provides a basic setup for provisioning AWS CloudWatch Logs using Terraform. Depending on your use case, you might want to explore additional features, such as log subscriptions, metric filters, or integration with AWS services like AWS Lambda for log event processing.
 
 ### 51. Purpose of AWS Batch, and managing it using Terraform:
     ```hcl
@@ -1723,14 +2650,7 @@ This example provides a basic setup for managing AWS SNS topics and subscription
     ```
     - Explanation: CodeBuild compiles source code; configures a project named "example-project" using Terraform.
 
-### 55. Provisioning AWS CloudWatch Logs using Terraform:
-    ```hcl
-    resource "aws_cloudwatch_log_group" "example" {
-      name = "/example/log/group"
-      # ...other CloudWatch Logs configurations...
-    }
-    ```
-    - Explanation: Defines a CloudWatch Logs group named "/example/log/group" with specified configurations.
+
 
 ### 66. Provisioning AWS S3 Glacier using Terraform:
     ```hcl
