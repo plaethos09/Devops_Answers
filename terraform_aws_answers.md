@@ -434,4 +434,180 @@
       # ...other IoT Core configurations...
     }
     ```
-    - Explanation
+
+
+### 71. Provisioning AWS Config using Terraform:
+   ```hcl
+   resource "aws_config_configuration_recorder" "example" {
+     name     = "example-recorder"
+     role_arn = aws_iam_role.example.arn
+     # ...other AWS Config configurations...
+   }
+   ```
+   - Explanation: Defines an AWS Config recorder named "example-recorder" with specified configurations.
+
+### 72. Provisioning AWS App Runner using Terraform:
+   ```hcl
+   resource "aws_apprunner_service" "example" {
+     service_name = "example-app-runner-service"
+     # ...other App Runner configurations...
+   }
+   ```
+   - Explanation: Defines an App Runner service named "example-app-runner-service" with specified configurations.
+
+### 73. Purpose of AWS Lex, and configuring it with Terraform:
+   ```hcl
+   resource "aws_lex_bot" "example" {
+     name = "example-lex-bot"
+     # ...other Lex bot configurations...
+   }
+   ```
+   - Explanation: Lex is for building conversational interfaces; configures a Lex bot named "example-lex-bot" using Terraform.
+
+### 74. Provisioning AWS CloudFormation StackSets using Terraform:
+   ```hcl
+   resource "aws_cloudformation_stack_set" "example" {
+     name = "example-stack-set"
+     # ...other StackSet configurations...
+   }
+   ```
+   - Explanation: Defines a CloudFormation StackSet named "example-stack-set" with specified configurations.
+
+### 75. Provisioning AWS Service Catalog using Terraform:
+   ```hcl
+   resource "aws_servicecatalog_portfolio" "example" {
+     name = "example-portfolio"
+     # ...other Service Catalog configurations...
+   }
+   ```
+   - Explanation: Defines a Service Catalog portfolio named "example-portfolio" with specified configurations.
+
+### 76. Purpose of AWS Amplify, and configuring it with Terraform:
+   ```hcl
+   resource "aws_amplify_app" "example" {
+     name = "example-amplify-app"
+     # ...other Amplify app configurations...
+   }
+   ```
+   - Explanation: Amplify is for building scalable web applications; configures an Amplify app named "example-amplify-app" using Terraform.
+
+### 77. **Provisioning AWS CloudFront distributions using Terraform:**
+   ```hcl
+   resource "aws_cloudfront_distribution" "example" {
+     # ...CloudFront distribution configurations...
+   }
+   ```
+   - Explanation: Defines a CloudFront distribution with specified configurations using Terraform.
+
+### 78. Provisioning AWS Elastic Transcoder using Terraform:
+   ```hcl
+   resource "aws_elastictranscoder_pipeline" "example" {
+     name = "example-pipeline"
+     # ...other Elastic Transcoder configurations...
+   }
+   ```
+   - Explanation: Defines an Elastic Transcoder pipeline named "example-pipeline" with specified configurations.
+
+### 79. Purpose of AWS Budgets, and managing them using Terraform:
+   ```hcl
+   resource "aws_budgets_budget" "example" {
+     budget_name  = "example-budget"
+     # ...other AWS Budgets configurations...
+   }
+   ```
+   - Explanation: Budgets help control AWS costs; configures a budget named "example-budget" using Terraform.
+
+### 80. Provisioning AWS API Gateway custom domain names using Terraform:
+    ```hcl
+    resource "aws_apigatewayv2_domain_name" "example" {
+      domain_name = "example-api-gateway-domain"
+      # ...other API Gateway custom domain configurations...
+    }
+    ```
+    - Explanation: Defines an API Gateway custom domain named "example-api-gateway-domain" with specified configurations.
+
+### 81. Provisioning AWS DataSync using Terraform:
+    ```hcl
+    resource "aws_datasync_location_s3" "example" {
+      # ...DataSync S3 location configurations...
+    }
+    ```
+    - Explanation: Defines a DataSync S3 location with specified configurations using Terraform.
+
+### 82. Purpose of AWS Fargate, and managing it using Terraform:
+    ```hcl
+    resource "aws_ecs_task_definition" "example" {
+      # ...ECS task definition configurations...
+    }
+    ```
+    - Explanation: Fargate is for running containers without managing infrastructure; configures an ECS task definition using Terraform.
+
+### 83. Provisioning AWS Glue ETL (Extract, Transform, Load) jobs using Terraform:
+    ```hcl
+    resource "aws_glue_job" "example" {
+      name = "example-etl-job"
+      # ...other Glue ETL job configurations...
+    }
+    ```
+    - Explanation: Defines a Glue ETL job named "example-etl-job" with specified configurations.
+
+### 84.Provisioning AWS Network Firewall using Terraform:
+    ```hcl
+    resource "aws_networkfirewall_firewall" "example" {
+      name = "example-firewall"
+      # ...other Network Firewall configurations...
+    }
+    ```
+    - Explanation: Defines a Network Firewall named "example-firewall" with specified configurations using Terraform.
+
+### 85. Purpose of AWS Lake Formation, and configuring it with Terraform:
+    ```hcl
+    resource "aws_lakeformation_data_lake_settings" "example" {
+      # ...Lake Formation data lake settings configurations...
+    }
+    ```
+    - Explanation: Lake Formation simplifies data lake setup; configures data lake settings using Terraform.
+
+### 86. Provisioning AWS SimpleDB using Terraform:
+    ```hcl
+    resource "aws_sdb_domain" "example" {
+      name = "example-simpledb-domain"
+      # ...other SimpleDB configurations...
+    }
+    ```
+    - Explanation: Defines a SimpleDB domain named "example-simpledb-domain" with specified configurations.
+
+### 87. Provisioning AWS Storage Gateway using Terraform:
+    ```hcl
+    resource "aws_storagegateway_gateway" "example" {
+      gateway_name = "example-gateway"
+      # ...other Storage Gateway configurations...
+    }
+    ```
+    - Explanation: Defines a Storage Gateway named "example-gateway" with specified configurations.
+
+### 88. Purpose of AWS Security Hub, and integrating it with Terraform:
+    ```hcl
+    resource "aws_securityhub_account" "example" {
+      # ...Security Hub account configurations...
+    }
+    ```
+    - Explanation: Security Hub provides a comprehensive view of security; configures Security Hub account settings using Terraform.
+
+### 89.Provisioning AWS RoboMaker resources using Terraform:
+    ```hcl
+    resource "aws_robomaker_simulation_application" "example" {
+      name = "example-simulation-app"
+      # ...other RoboMaker configurations...
+    }
+    ```
+    - Explanation: Defines a RoboMaker simulation application named "example-simulation-app" with specified configurations.
+
+### 90.Provisioning AWS GameLift using Terraform:
+    ```hcl
+    resource "aws_gamelift_fleet" "example" {
+      name = "example-game-fleet"
+      # ...other GameLift configurations...
+    }
+    ```
+    - Explanation: Defines a GameLift fleet named "example-game-fleet" with specified configurations using Terraform.
