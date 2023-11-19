@@ -245,3 +245,193 @@
       # ...ECR repository configurations...
     }
     ```
+
+
+### 41. Provisioning AWS SQS (Simple Queue Service) using Terraform:
+   ```hcl
+   resource "aws_sqs_queue" "example" {
+     name = "example-queue"
+     # ...other SQS configurations...
+   }
+   ```
+   - Explanation: Defines an SQS queue named "example-queue" with specified configurations.
+
+### 42. Purpose of AWS X-Ray, and configuring it with Terraform:
+   ```hcl
+   resource "aws_xray_sampling_rule" "example" {
+     rule_name      = "example-rule"
+     # ...X-Ray sampling rule configurations...
+   }
+   ```
+   - Explanation: X-Ray provides tracing; configures a sampling rule named "example-rule" using Terraform.
+
+### 43. Provisioning AWS CodePipeline and its stages using Terraform:
+   ```hcl
+   resource "aws_codepipeline" "example" {
+     name     = "example-pipeline"
+     role_arn = aws_iam_role.example.arn
+     # ...other CodePipeline configurations...
+
+     stage {
+       # ...first stage configurations...
+     }
+
+     stage {
+       # ...second stage configurations...
+     }
+   }
+   ```
+   - Explanation: Defines a CodePipeline named "example-pipeline" with stages and associated configurations.
+
+### 44. Provisioning AWS Elasticsearch Service using Terraform:
+   ```hcl
+   resource "aws_elasticsearch_domain" "example" {
+     domain_name           = "example-domain"
+     elasticsearch_version = "7.10"
+     # ...other Elasticsearch configurations...
+   }
+   ```
+   - Explanation: Defines an Elasticsearch domain named "example-domain" with specified configurations.
+
+### 45. urpose of AWS Data Pipeline, and integrating it with Terraform:
+   ```hcl
+   resource "aws_datapipeline_pipeline" "example" {
+     name     = "example-pipeline"
+     # ...Data Pipeline configurations...
+   }
+   ```
+   - Explanation: Data Pipeline orchestrates data workflows; configures a pipeline named "example-pipeline" using Terraform.
+
+### 46. Provisioning AWS CloudFormation stacks using Terraform:
+   ```hcl
+   resource "aws_cloudformation_stack" "example" {
+     name = "example-stack"
+     # ...other CloudFormation stack configurations...
+   }
+   ```
+   - Explanation: Defines a CloudFormation stack named "example-stack" with specified configurations.
+
+### 47. Provisioning AWS KMS (Key Management Service) using Terraform:
+   ```hcl
+   resource "aws_kms_key" "example" {
+     description = "example-key"
+     # ...other KMS configurations...
+   }
+   ```
+   - Explanation: Defines a KMS key named "example-key" with specified configurations.
+
+### 48. Purpose of AWS Cognito, and configuring it with Terraform:
+   ```hcl
+   resource "aws_cognito_user_pool" "example" {
+     name = "example-pool"
+     # ...other Cognito configurations...
+   }
+   ```
+   - Explanation: Cognito manages user identities; configures a user pool named "example-pool" using Terraform.
+
+### 49. Provisioning AWS Redshift clusters using Terraform:
+   ```hcl
+   resource "aws_redshift_cluster" "example" {
+     cluster_identifier = "example-cluster"
+     # ...other Redshift configurations...
+   }
+   ```
+   - Explanation: Defines a Redshift cluster named "example-cluster" with specified configurations.
+
+### 50. Provisioning AWS Secrets Manager using Terraform:
+    ```hcl
+    resource "aws_secretsmanager_secret" "example" {
+      name = "example-secret"
+      # ...other Secrets Manager configurations...
+    }
+    ```
+    - Explanation: Defines a Secrets Manager secret named "example-secret" with specified configurations.
+
+### 51. Purpose of AWS Batch, and managing it using Terraform:
+    ```hcl
+    resource "aws_batch_compute_environment" "example" {
+      compute_environment_name = "example-environment"
+      # ...other Batch configurations...
+    }
+    ```
+    - Explanation: AWS Batch runs batch computing workloads; configures a compute environment using Terraform.
+
+### 52. Provisioning AWS Certificate Manager (ACM) using Terraform:
+    ```hcl
+    resource "aws_acm_certificate" "example" {
+      domain_name = "example.com"
+      # ...other ACM configurations...
+    }
+    ```
+    - Explanation: Defines an ACM certificate for the domain "example.com" with specified configurations.
+
+### 53. Provisioning AWS Transit Gateway using Terraform:
+    ```hcl
+    resource "aws_ec2_transit_gateway" "example" {
+      # ...Transit Gateway configurations...
+    }
+    ```
+    - Explanation: Defines a Transit Gateway with specified configurations using Terraform.
+
+### 54. Purpose of AWS CodeBuild, and configuring it with Terraform:
+    ```hcl
+    resource "aws_codebuild_project" "example" {
+      name = "example-project"
+      # ...other CodeBuild configurations...
+    }
+    ```
+    - Explanation: CodeBuild compiles source code; configures a project named "example-project" using Terraform.
+
+### 55. Provisioning AWS CloudWatch Logs using Terraform:
+    ```hcl
+    resource "aws_cloudwatch_log_group" "example" {
+      name = "/example/log/group"
+      # ...other CloudWatch Logs configurations...
+    }
+    ```
+    - Explanation: Defines a CloudWatch Logs group named "/example/log/group" with specified configurations.
+
+### 66. Provisioning AWS S3 Glacier using Terraform:
+    ```hcl
+    resource "aws_glacier_vault" "example" {
+      name = "example-vault"
+      # ...other S3 Glacier configurations...
+    }
+    ```
+    - Explanation: Defines an S3 Glacier vault named "example-vault" with specified configurations.
+
+### 67. Purpose of AWS AppSync, and configuring it with Terraform:
+    ```hcl
+    resource "aws_appsync_graphql_api" "example" {
+      name = "example-api"
+      # ...other AppSync configurations...
+    }
+    ```
+    - Explanation: AppSync simplifies development of GraphQL APIs; configures an API named "example-api" using Terraform.
+
+### 68. Provisioning AWS Glue Data Catalog using Terraform:
+    ```hcl
+    resource "aws_glue_catalog_database" "example" {
+      name = "example-database"
+      # ...other Glue Data Catalog configurations...
+    }
+    ```
+    - Explanation: Defines a Glue Data Catalog database named "example-database" with specified configurations.
+
+### 69. Provisioning AWS WAF (Web Application Firewall) using Terraform:
+    ```hcl
+    resource "aws_wafv2_web_acl" "example" {
+      name = "example-web-acl"
+      # ...other WAF configurations...
+    }
+    ```
+    - Explanation: Defines a WAFv2 web ACL named "example-web-acl" with specified configurations.
+
+### 70. Purpose of AWS IoT Core, and integrating it with Terraform:
+    ```hcl
+    resource "aws_iot_core_endpoint" "example" {
+      endpoint_type = "iot:Data-ATS"
+      # ...other IoT Core configurations...
+    }
+    ```
+    - Explanation
