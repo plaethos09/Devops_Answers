@@ -66,6 +66,83 @@ Scaling a deployment in Kubernetes involves adjusting the number of replicas of 
    - Ensure the Kubernetes cluster has a metrics server or a compatible metrics provider running.
    - Create a <link>HorizontalPodAutoscaler</link> resource and define the target deployment, minimum and maximum replica counts, and the target CPU utilization or custom metric.
    - Kubernetes will periodically monitor the specified metrics and adjust the replica count of the deployment accordingly.
+Horizontal Pod Autoscaling (HPA) is a feature in Kubernetes that automatically adjusts the number of pods in a deployment or replica set based on observed CPU or memory utilization. It helps in ensuring that your application can handle varying loads by dynamically scaling the number of running instances.
+
+Here is a basic example of how you can set up Horizontal Pod Autoscaling in Kubernetes using a Deployment and HPA with CPU utilization as the metric.
+
+Let's assume you have a simple web application with a Deployment named `web-deployment`.
+
+1. **Create a Deployment:**
+
+   ```yaml
+   # web-deployment.yaml
+   apiVersion: apps/v1
+   kind: Deployment
+   metadata:
+     name: web-deployment
+   spec:
+     replicas: 3
+     selector:
+       matchLabels:
+         app: web
+     template:
+       metadata:
+         labels:
+           app: web
+       spec:
+         containers:
+         - name: web-container
+           image: your-web-image:latest
+           resources:
+             requests:
+               memory: "64Mi"
+               cpu: "250m"
+             limits:
+               memory: "128Mi"
+               cpu: "500m"
+   ```
+
+   Apply the deployment:
+
+   ```bash
+   kubectl apply -f web-deployment.yaml
+   ```
+
+2. **Create Horizontal Pod Autoscaler (HPA):**
+
+   ```yaml
+   # web-hpa.yaml
+   apiVersion: autoscaling/v2beta2
+   kind: HorizontalPodAutoscaler
+   metadata:
+     name: web-hpa
+   spec:
+     scaleTargetRef:
+       apiVersion: apps/v1
+       kind: Deployment
+       name: web-deployment
+     minReplicas: 3  # Minimum number of replicas
+     maxReplicas: 5  # Maximum number of replicas
+     metrics:
+     - type: Resource
+       resource:
+         name: cpu
+         target:
+           type: Utilization
+           averageUtilization: 50
+   ```
+
+   This HPA configuration specifies that the target deployment is `web-deployment`, and it should maintain an average CPU utilization of 50%. The minimum and maximum replicas are set to 3 and 5, respectively.
+
+   Apply the HPA:
+
+   ```bash
+   kubectl apply -f web-hpa.yaml
+   ```
+
+Now, as the CPU utilization of your pods increases, the HPA will automatically adjust the number of replicas within the specified range.
+
+Remember to replace `"your-web-image:latest"` with the actual image for your web application. Adjust resource requests and limits based on your application's requirements.
 
 2. **Manual Scaling**: Manual scaling involves manually adjusting the replica count of a deployment.
    - To manually scale a deployment, you can use the `kubectl scale` command and specify the desired number of replicas.
